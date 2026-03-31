@@ -1,4 +1,4 @@
-ALLOWED_USERS = [800906903,686105512]  # сюда свой ID
+ALLOWED_USERS = [800906903,686105512,5652216103]  # сюда свой ID
 import os
 from telegram import Update
 from telegram.ext import ApplicationBuilder, MessageHandler, filters, ContextTypes
