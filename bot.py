@@ -123,16 +123,22 @@ async def done_button(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     with open("prices_utf8.txt", "w", encoding="utf-8") as f:
         f.write(full_text)
+print("STORE:", user_store)
+print("CHAT:", chat_id)
 
     # очистка
     user_store[chat_id] = []
     context.user_data.pop("last_msg_id", None)
+await query.message.edit_text("⏳ Обрабатываю...")
 
-    fake_update = update
-    fake_update.message = query.message
+# создаём "фейковый" объект с message
+class FakeUpdate:
+    def __init__(self, message):
+        self.message = message
 
-    await query.message.edit_text("⏳ Обрабатываю...")
-    await process_and_reply(fake_update)
+fake_update = FakeUpdate(query.message)
+
+await process_and_reply(fake_update)
 
 
 # 🚀 запуск
