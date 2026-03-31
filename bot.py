@@ -1,4 +1,4 @@
-
+ALLOWED_USERS = [800906903]  # сюда свой ID
 import os
 from telegram import Update
 from telegram.ext import ApplicationBuilder, MessageHandler, filters, ContextTypes
@@ -56,6 +56,12 @@ async def handle_file(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 # 📩 текст
 async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    user_id = update.message.from_user.id
+
+    if user_id not in ALLOWED_USERS:
+        await update.message.reply_text("⛔ У вас нет доступа")
+        return
+
     text = update.message.text
 
     with open("prices_utf8.txt", "w", encoding="utf-8") as f:
