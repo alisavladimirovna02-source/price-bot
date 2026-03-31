@@ -83,7 +83,9 @@ with open(input_file, "r", encoding="utf-8") as f:
 with open(output_file, "w", newline="", encoding="utf-8") as f:
     writer = csv.writer(f)
     writer.writerow(["Название", "Цена", "Страна", "SKU", "Score", "Status"])
+
     best_prices = {}
+
     for line in lines:
         line = line.strip()
         if not line:
@@ -125,7 +127,7 @@ with open(output_file, "w", newline="", encoding="utf-8") as f:
 
         name = line
 
-        # удаляем именно тот кусок, где была цена (с точками тоже)
+        # удаляем именно цену
         for num in numbers:
             clean = num.replace(".", "").replace(",", "")
             try:
@@ -148,37 +150,42 @@ with open(output_file, "w", newline="", encoding="utf-8") as f:
             score = 0
             not_found.add(name)
 
+        # =========================
+        # 📊 ЛОГИКА ЛУЧШЕЙ ЦЕНЫ
+        # =========================
         if sku:
-    if sku in best_prices:
-        if price > best_prices[sku]["price"]:
-            best_prices[sku] = {
-                "name": name,
-                "price": price,
-                "country": country,
-                "score": score,
-                "status": status
-            }
-    else:
-        best_prices[sku] = {
-            "name": name,
-            "price": price,
-            "country": country,
-            "score": score,
-            "status": status
-        }
-else:
-    # для NOT_FOUND оставляем как есть
-    writer.writerow([name, price, country, sku, score, status])
-    # записываем лучшие цены по SKU
-for sku, data in best_prices.items():
-    writer.writerow([
-        data["name"],
-        data["price"],
-        data["country"],
-        sku,
-        data["score"],
-        data["status"]
-    ])
+            if sku in best_prices:
+                if price > best_prices[sku]["price"]:
+                    best_prices[sku] = {
+                        "name": name,
+                        "price": price,
+                        "country": country,
+                        "score": score,
+                        "status": status
+                    }
+            else:
+                best_prices[sku] = {
+                    "name": name,
+                    "price": price,
+                    "country": country,
+                    "score": score,
+                    "status": status
+                }
+        else:
+            writer.writerow([name, price, country, sku, score, status])
+
+    # =========================
+    # 💾 ЗАПИСЬ ЛУЧШИХ SKU
+    # =========================
+    for sku, data in best_prices.items():
+        writer.writerow([
+            data["name"],
+            data["price"],
+            data["country"],
+            sku,
+            data["score"],
+            data["status"]
+        ])
 
 print("✅ Готово!")
 
@@ -187,9 +194,3 @@ with open("not_found.txt", "w", encoding="utf-8") as f:
         f.write(item + "\n")
 
 print(f"! Не найдено товаров: {len(not_found)}")
-
-
-
-
-
-
