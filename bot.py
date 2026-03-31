@@ -5,6 +5,7 @@ from telegram.ext import ApplicationBuilder, MessageHandler, filters, ContextTyp
 
 import os
 TOKEN = os.getenv("TOKEN")
+user_data_store = {}
 
 # 🚀 универсальная функция обработки
 async def process_and_reply(update: Update):
@@ -57,17 +58,14 @@ async def handle_file(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # 📩 текст
 async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.message.from_user.id
-
-    if user_id not in ALLOWED_USERS:
-        await update.message.reply_text("⛔ У вас нет доступа")
-        return
-
     text = update.message.text
 
-    with open("prices_utf8.txt", "w", encoding="utf-8") as f:
-        f.write(text)
+    if user_id not in user_data_store:
+        user_data_store[user_id] = []
 
-    await process_and_reply(update)
+    user_data_store[user_id].append(text)
+
+    await update.message.reply_text("📩 Добавлено. Когда закончишь — напиши /done")
 
 
 # 🚀 запуск
