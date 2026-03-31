@@ -1,0 +1,32 @@
+15 128 Midnight 🇮🇳 - 45600 🛩
+15 128 Pink 🇮🇳 - 47300 
+15 128 Blue 🇮🇳 - 44400 🛩
+15 128 Yellow 🇮🇳 - 45500 
+
+15 256 Midnight 🇮🇳 - 52900 
+15 256 Pink 🇮🇳 - 58500 
+15 256 Blue 🇮🇳 - 52600 
+
+15 512 Green 🇺🇸 - 56000 
+15 512 Yellow 🇺🇸 - 56000 
+
+15 Plus 128 Green 🇮🇳 - 51200 
+15 Plus 128 Pink 🇮🇳 - 50100 
+15 Plus 128 Blue 🇮🇳 - 50100 
+15 Plus 128 Yellow 🇮🇳 - 50100 
+
+15 Plus 512 Yellow 🇮🇳 - 57200 
+
+15 Pro 128 White 🇺🇸 - 65400 
+15 Pro 128 Blue 🇺🇸 - 65400 
+15 Pro 128 Blue 🇦🇪 - 70700 
+15 Pro 128 Natural 🇺🇸 - 65400 
+
+15 Pro 512 Blue 🇺🇸 - 84400 
+15 Pro 512 Blue 🇯🇵 - 87000 
+
+15 Pro Max 256 Natural 🇯🇵 - 80200 🛩
+
+15 Pro Max 512 Natural 🇦🇪 - 91400 
+
+15 Pro Max 1TB Natural 🇯🇵 - 100000
