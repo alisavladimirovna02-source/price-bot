@@ -83,7 +83,7 @@ with open(input_file, "r", encoding="utf-8") as f:
 with open(output_file, "w", newline="", encoding="utf-8") as f:
     writer = csv.writer(f)
     writer.writerow(["Название", "Цена", "Страна", "SKU", "Score", "Status"])
-best_prices = {}
+    best_prices = {}
     for line in lines:
         line = line.strip()
         if not line:
