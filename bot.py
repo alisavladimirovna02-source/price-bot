@@ -66,6 +66,24 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_data_store[user_id].append(text)
 
     await update.message.reply_text("📩 Добавлено. Когда закончишь — напиши /done")
+    async def done(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    user_id = update.message.from_user.id
+
+    if user_id not in user_data_store or not user_data_store[user_id]:
+        await update.message.reply_text("❌ Нет данных для обработки")
+        return
+
+    # объединяем все сообщения
+    full_text = "\n".join(user_data_store[user_id])
+
+    with open("prices_utf8.txt", "w", encoding="utf-8") as f:
+        f.write(full_text)
+
+    # очищаем память
+    user_data_store[user_id] = []
+
+    # запускаем парсер
+    await process_and_reply(update)
 
 
 # 🚀 запуск
@@ -73,6 +91,9 @@ app = ApplicationBuilder().token(TOKEN).build()
 
 app.add_handler(MessageHandler(filters.Document.ALL, handle_file))
 app.add_handler(MessageHandler(filters.TEXT, handle_text))
+from telegram.ext import CommandHandler
+app.add_handler(CommandHandler("done", done))
+
 
 print("🤖 Бот запущен...")
 
