@@ -1,10 +1,15 @@
 ALLOWED_USERS = [800906903, 686105512, 5652216103]
 
 import os
-from telegram import Update
-from telegram.ext import ApplicationBuilder, MessageHandler, filters, ContextTypes, CommandHandler
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import CallbackQueryHandler
+from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
+from telegram.ext import (
+    ApplicationBuilder,
+    MessageHandler,
+    filters,
+    ContextTypes,
+    CommandHandler,
+    CallbackQueryHandler
+)
 
 TOKEN = os.getenv("TOKEN")
 user_data_store = {}
@@ -61,17 +66,17 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_data_store[user_id].append(text)
 
     keyboard = [
-    [InlineKeyboardButton("✅ Готово", callback_data="done")]
-]
-reply_markup = InlineKeyboardMarkup(keyboard)
+        [InlineKeyboardButton("✅ Готово", callback_data="done")]
+    ]
+    reply_markup = InlineKeyboardMarkup(keyboard)
 
-await update.message.reply_text(
-    "📩 Добавлено. Нажми кнопку, когда закончишь",
-    reply_markup=reply_markup
-)
+    await update.message.reply_text(
+        "📩 Добавлено. Нажми кнопку, когда закончишь",
+        reply_markup=reply_markup
+    )
 
 
-# ✅ ВАЖНО: отдельная функция (не внутри handle_text)
+# команда (оставляем)
 async def done(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.message.from_user.id
 
@@ -87,6 +92,9 @@ async def done(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_data_store[user_id] = []
 
     await process_and_reply(update)
+
+
+# ✅ кнопка
 async def done_button(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()
@@ -104,8 +112,12 @@ async def done_button(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     user_data_store[user_id] = []
 
+    # 🔥 важно: передаём message в process
+    fake_update = update
+    fake_update.message = query.message
+
     await query.message.reply_text("⏳ Обрабатываю...")
-    await process_and_reply(update)
+    await process_and_reply(fake_update)
 
 
 # 🚀 запуск
