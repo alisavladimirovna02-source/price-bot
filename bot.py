@@ -60,12 +60,14 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if "data" not in context.user_data:
         context.user_data["data"] = []
 
+    # 🔥 правильно обрабатываем многострочный текст
     lines = text.split("\n")
 
-for line in lines:
-    line = line.strip()
-    if line:
-        context.user_data["data"].append(line)
+    for line in lines:
+        line = line.strip()
+        if line:
+            context.user_data["data"].append(line)
+
     count = len(context.user_data["data"])
 
     keyboard = [
