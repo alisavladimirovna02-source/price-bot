@@ -3,7 +3,8 @@ import os
 from telegram import Update
 from telegram.ext import ApplicationBuilder, MessageHandler, filters, ContextTypes
 
-TOKEN = "8602141663:AAFyLWNIjLSt5e1Ghcv2uzyKURbIBLgrAwg"
+import os
+TOKEN = os.getenv("TOKEN")
 
 # 🚀 универсальная функция обработки
 async def process_and_reply(update: Update):
