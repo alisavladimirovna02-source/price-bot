@@ -1,5 +1,7 @@
 ALLOWED_USERS = [800906903, 686105512, 5652216103]
 
+user_store = {}
+
 import os
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import (
@@ -11,6 +13,7 @@ from telegram.ext import (
 )
 
 TOKEN = os.getenv("TOKEN")
+
 
 # 🚀 универсальная функция обработки
 async def process_and_reply(update: Update):
@@ -53,14 +56,17 @@ async def handle_file(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await process_and_reply(update)
 
 
-# 📩 текст (УЛУЧШЕННЫЙ UI)
+# 📩 текст
 async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = update.message.text
+    chat_id = update.effective_chat.id
 
-    if "data" not in context.user_data:
-        context.user_data["data"] = []
+    if chat_id not in user_store:
+        user_store[chat_id] = []
 
-    # 🔥 правильно обрабатываем многострочный текст
+    context.user_data["data"] = user_store[chat_id]
+
+    # 🔥 разбиваем на строки
     lines = text.split("\n")
 
     for line in lines:
@@ -80,11 +86,11 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
         f"Отправь ещё или нажми кнопку 👇"
     )
 
-    # 👉 редактируем одно сообщение (без спама)
+    # 👉 редактируем одно сообщение
     if "last_msg_id" in context.user_data:
         try:
             await context.bot.edit_message_text(
-                chat_id=update.effective_chat.id,
+                chat_id=chat_id,
                 message_id=context.user_data["last_msg_id"],
                 text=message_text,
                 reply_markup=reply_markup
@@ -106,7 +112,8 @@ async def done_button(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()
 
-    data = context.user_data.get("data", [])
+    chat_id = query.message.chat.id
+    data = user_store.get(chat_id, [])
 
     if not data:
         await query.message.reply_text("❌ Нет данных для обработки")
@@ -118,7 +125,7 @@ async def done_button(update: Update, context: ContextTypes.DEFAULT_TYPE):
         f.write(full_text)
 
     # очистка
-    context.user_data["data"] = []
+    user_store[chat_id] = []
     context.user_data.pop("last_msg_id", None)
 
     fake_update = update
