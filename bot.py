@@ -7,12 +7,10 @@ from telegram.ext import (
     MessageHandler,
     filters,
     ContextTypes,
-    CommandHandler,
     CallbackQueryHandler
 )
 
 TOKEN = os.getenv("TOKEN")
-user_data_store = {}
 
 # 🚀 универсальная функция обработки
 async def process_and_reply(update: Update):
@@ -55,43 +53,45 @@ async def handle_file(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await process_and_reply(update)
 
 
-# 📩 текст
+# 📩 текст (УЛУЧШЕННЫЙ UI)
 async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    user_id = update.message.from_user.id
     text = update.message.text
 
-    if user_id not in user_data_store:
-        user_data_store[user_id] = []
+    if "data" not in context.user_data:
+        context.user_data["data"] = []
 
-    user_data_store[user_id].append(text)
+    context.user_data["data"].append(text)
+    count = len(context.user_data["data"])
 
     keyboard = [
-        [InlineKeyboardButton("✅ Готово", callback_data="done")]
+        [InlineKeyboardButton("🚀 Обработать", callback_data="done")]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
 
-    await update.message.reply_text(
-        "📩 Добавлено. Нажми кнопку, когда закончишь",
+    message_text = (
+        f"📦 Добавлено позиций: {count}\n\n"
+        f"Отправь ещё или нажми кнопку 👇"
+    )
+
+    # 👉 редактируем одно сообщение (без спама)
+    if "last_msg_id" in context.user_data:
+        try:
+            await context.bot.edit_message_text(
+                chat_id=update.effective_chat.id,
+                message_id=context.user_data["last_msg_id"],
+                text=message_text,
+                reply_markup=reply_markup
+            )
+            return
+        except:
+            pass
+
+    msg = await update.message.reply_text(
+        message_text,
         reply_markup=reply_markup
     )
 
-
-# команда (оставляем)
-async def done(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    user_id = update.message.from_user.id
-
-    if user_id not in user_data_store or not user_data_store[user_id]:
-        await update.message.reply_text("❌ Нет данных для обработки")
-        return
-
-    full_text = "\n".join(user_data_store[user_id])
-
-    with open("prices_utf8.txt", "w", encoding="utf-8") as f:
-        f.write(full_text)
-
-    user_data_store[user_id] = []
-
-    await process_and_reply(update)
+    context.user_data["last_msg_id"] = msg.message_id
 
 
 # ✅ кнопка
@@ -99,24 +99,25 @@ async def done_button(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()
 
-    user_id = query.from_user.id
+    data = context.user_data.get("data", [])
 
-    if user_id not in user_data_store or not user_data_store[user_id]:
+    if not data:
         await query.message.reply_text("❌ Нет данных для обработки")
         return
 
-    full_text = "\n".join(user_data_store[user_id])
+    full_text = "\n".join(data)
 
     with open("prices_utf8.txt", "w", encoding="utf-8") as f:
         f.write(full_text)
 
-    user_data_store[user_id] = []
+    # очистка
+    context.user_data["data"] = []
+    context.user_data.pop("last_msg_id", None)
 
-    # 🔥 важно: передаём message в process
     fake_update = update
     fake_update.message = query.message
 
-    await query.message.reply_text("⏳ Обрабатываю...")
+    await query.message.edit_text("⏳ Обрабатываю...")
     await process_and_reply(fake_update)
 
 
@@ -125,7 +126,6 @@ app = ApplicationBuilder().token(TOKEN).build()
 
 app.add_handler(MessageHandler(filters.Document.ALL, handle_file))
 app.add_handler(MessageHandler(filters.TEXT, handle_text))
-app.add_handler(CommandHandler("done", done))
 app.add_handler(CallbackQueryHandler(done_button, pattern="done"))
 
 print("🤖 Бот запущен...")
