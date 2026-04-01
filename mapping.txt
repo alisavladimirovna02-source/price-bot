@@ -789,7 +789,35 @@ iPad Air 11 M3 128 Grey WFМК = ipadair11m3gray128
 iPad Air 13 M3 2025 256GB LTE Blue = ipadair13m3blue256LTE
 iPad Air 13 M3 2025 256GB LTE Space Gray = ipadair13M3gray256LTE
 iPad Pro 13 M5 2025 2TB Standard Glass WiFi Silver = ipad13prom5silver2tb
-
+16 Pro Max 512 Black = iphone16promaxblack512
+A07 4/128 Violet = a07violet4/128
+A07 6/128 Black = a07black6/128
+A07 6/128 Violet = a07violet6/128
+A07 8/256 Black = a07black8/256
+A07 8/256 Green = a07green8/256
+Honor Magic 7 Pro 12/512 Black = honormagic7problack12/512
+MINI 7 128 Purple WiFi esim = ipad7minipurple128
+MINI 7 256 Blue WiFi esim = ipad7miniblue256
+MINI 7 256 Purple WiFi esim = ipad7minipurple256
+MINI 7 256 Starlight WiFi esim = ipad7ministarlight256
+MINI 7 512 Blue WiFi esim = ipad7miniblue512
+MINI 7 512 Gray WiFi esim = ipad7minigray512
+MINI 7 512 Purple WiFi esim = ipad7minipurple512
+MINI 7 512 Starlight WiFi esim = ipad7ministarlight512
+PRO 11 M4 512 Black WiFi esim = ipad11prom4spaceblack512
+PRO 13 M5 256 Silver LTE esim = ipad13prom5silver256cell
+PRO 13 M5 256 Silver WiFi esim = ipad13prom5silver256
+Poco F6 Pro 5G 16/1024 Black = pocof6problack16/1024
+Poco X7 5G 12/512 Black = pocox7black12/512
+Poco X8 Pro 5G 8/256 Green = pocox8progreen8/256
+S25 12/256 S931B Pinkgold = s25pinkgold12/256
+Tab S11 WiFi X730 12/256 silver = galaxytabS11silver12/256
+iPad 11 128 Blue WiFi esim = ipad11blue128
+iPad 11 128 Pink WiFi esim = ipad11pink128
+iPad 11 128 Silver WiFi esim = ipad11silver128
+iPad 11 128 Yellow WiFi esim = ipad11yellow128
+iPad 11 256 Blue WiFi esim = ipad11blue256
+iPad 11 512 Silver WiFi esim = ipad11silver512
 
 
 
