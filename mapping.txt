@@ -818,8 +818,27 @@ iPad 11 128 Silver WiFi esim = ipad11silver128
 iPad 11 128 Yellow WiFi esim = ipad11yellow128
 iPad 11 256 Blue WiFi esim = ipad11blue256
 iPad 11 512 Silver WiFi esim = ipad11silver512
-
-
+15 Pro Max 1TB White esim = iphone15promaxwhite1tb-esim
+16 Pro 512 Desert = iphone16prodesert512
+16 Pro Max 1TB Black = iphone16promaxblack1tb
+16 Pro Max 1TB Desert = iphone16promaxdesert1tb
+16 Pro Max 1TB Natural = iphone16promaxtitanium1tb
+16 Pro Max 256 Black = iphone16promaxblack256
+Honor 400 12/512 Black = honor400black12/512
+Honor 400 12/512 Blue = honor400blue12/512
+Honor 400 12/512 Gold = honor400gold12/512
+Honor 400 Pro 12/512 Blue = honor400problue12/512
+Honor 400 Pro 12/512 Gray = honor400progray12/512
+Honor Magic 8 Pro 12/512 Gold = honormagic8progold12/512
+Honor Magic 8 Pro 16/1024 Gold = honormagic8progold16/1024
+Pixel 10 Pro 16/256GB Porcelain CA = pixel10proporcelain16/256
+Redmi A5 3/64 Blue = redmiA5blue3/64RU
+Redmi A5 3/64 Green = redmiA5green3/64RU
+Z Fold7 12/256 F966B Blue = zfold7blue12/256
+iPad 11 2025 128GB LTE Silver = ipad11silver128LTE
+iPad 11 2025 512GB WiFi Silver = ipad11silver512
+iPad A16 11 128 Blue Wi Fi esim = ipad11blue128
+iPad Pro 11 M5 2025 2TB Standard Glass LTE Space Black = ipad11prom5black2tbcell
 
 
 
