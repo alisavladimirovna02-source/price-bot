@@ -22,6 +22,7 @@
 15 Pro Max 256 Natural = iphone15promaxtitanium256
 15 Pro Max 512 Natural = iphone15promaxtitanium512
 15 Pro Max 1TB Black = iphone15promaxblack1tb
+15 Pro Max 1TB White esim = iphone15promaxwhite1tb-esim
 15 Pro Max 1TB White = iphone15promaxwhite1tb
 15 Pro Max 1TB Natural = iphone15promaxtitanium1tb
 16Е 128 White = iphone16ewhite128
@@ -818,7 +819,6 @@ iPad 11 128 Silver WiFi esim = ipad11silver128
 iPad 11 128 Yellow WiFi esim = ipad11yellow128
 iPad 11 256 Blue WiFi esim = ipad11blue256
 iPad 11 512 Silver WiFi esim = ipad11silver512
-15 Pro Max 1TB White esim = iphone15promaxwhite1tb-esim
 16 Pro 512 Desert = iphone16prodesert512
 16 Pro Max 1TB Black = iphone16promaxblack1tb
 16 Pro Max 1TB Desert = iphone16promaxdesert1tb
