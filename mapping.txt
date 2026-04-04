@@ -947,7 +947,11 @@ Xiaomi Pad 8 WiFi 8/128 Green = xiaomipad8green8/128
 Xiaomi Pad 8 WiFi 8/256 Gray = xiaomipad8gray8/256
 iPad Pro 11 M5 2025 2TB Standard Glass LTE Silver = ipad11prom5silver2tbcell
 iPad Pro 13 M5 2025 2TB Standard Glass WiFi Space Black = ipad13prom5black2tb
-
+15 Pro 128 Natural 2sim = iphone15protitanium128-2sim
+Note 14 Pro+ 5G 8/256 Black = note14pro+black5G8/256
+S11 46 Jet Black SB Black ML = aws11jetblack46m/l
+iPad Mini 7 256 Blue LTE esim = ipad7miniblue256LTE
+iPad Mini 7 256 Purple LTE esim = ipad7minipurple256LTE
 
 
 
