@@ -12,8 +12,8 @@
 15 Plus 256 Yellow = iphone15plusyellow256
 15 Plus 512 Yellow = iphone15plusyellow512
 15 Pro 128 White esim = iphone15prowhite128-esim
-15 Pro 128 Blue esim = iphone15problue128eSIM
 15 Pro 128 Blue = iphone15problue128
+15 Pro 128 Blue esim = iphone15problue128eSIM
 15 Pro 128 Natural esim = iphone15protitanium128eSIM
 15 Pro 512 Black esim = iphone15problack512eSIM
 15 Pro 512 Blue esim = iphone15problue512eSIM
@@ -889,8 +889,6 @@ Pixel 10 Pro 16/256GB Moonstone CA = pixel10promoonstone16/256
 Pixel 10 Pro 16/256GB Obsidian CA = pixel10proobsidian16/256
 Poco Pad M1 WiFi 8/256 Blue = pocopadM1blue8/256
 Poco Pad M1 WiFi 8/256 Gray = pocopadM1gray8/256
-Poco Pad X1 WiFi 8/512 Blue = pocopadM1blue8/512
-Poco Pad X1 WiFi 8/512 Gray = pocopadM1gray8/512
 Poco X8 Pro 5G 8/512 Green = pocoX8progreen8/512
 Poco X8 Pro 5G 8/512 White = pocoX8prowhite8/512
 Redmi Pad 2 Pro WiFi 8/256 Gray = redmipad2progray8/256
@@ -952,7 +950,11 @@ Note 14 Pro+ 5G 8/256 Black = note14pro+black5G8/256
 S11 46 Jet Black SB Black ML = aws11jetblack46m/l
 iPad Mini 7 256 Blue LTE esim = ipad7miniblue256LTE
 iPad Mini 7 256 Purple LTE esim = ipad7minipurple256LTE
-
+16 512 Black = iphone16black512
+16 512 Teal = iphone16teal512
+16 512 Ultramarine = iphone16ultramarine512
+16 512 White = iphone16white512
+Honor 400 Pro 12/512 Black = honor400problack12/512
 
 
 
