@@ -1052,7 +1052,8 @@ iPad Mini 7 128 Blue LTE esim = ipad7miniblue128LTE
 iPad Mini 7 128 Grey LTE esim = ipad7minigray128LTE
 iPad Mini 7 128 Purple LTE esim = ipad7minipurple128LTE
 iPad Mini 7 256 Blue Wi Fi esim = ipad7miniblue256
-
+iPad Pro M5 11 512 Silver LTE esim = ipad11prom5silver512cell
+iPad Pro M5 13 256 Silver LTE esim = ipad13prom5silver256cell
 
 
 
