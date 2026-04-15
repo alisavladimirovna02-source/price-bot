@@ -1017,7 +1017,6 @@ S26 Ultra 16/1024 S948B White = s26ultrawhite16/1024
 SE2 2024 40 Midnight Ink Loop = awse2024black40inkloop
 SE3 2025 44 Midnight SB ML esim = awse2025black44m/l
 Tab S10 FE 5G X526 12/256 gray = galaxytabs10fegray12/256cell
-Tab S10 FE 5G X526 8/128 silver = galaxytabs10FEgray8/128SM-X526B
 Tab S10 FE WiFi X520 12/256 silver = galaxytabs10fesilver12/256
 Tab S10 FE+ WiFi X620 12/256 blue = galaxytabs10FE+blue12/256SM-X620
 Tab S10 FE+ WiFi X620 12/256 gray = galaxytabs10FE+gray12/256SM-X620
