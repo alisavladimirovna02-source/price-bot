@@ -1054,8 +1054,21 @@ iPad Mini 7 256 Blue Wi Fi esim = ipad7miniblue256
 iPad Pro M5 11 512 Silver LTE esim = ipad11prom5silver512cell
 iPad Pro M5 13 256 Silver LTE esim = ipad13prom5silver256cell
 iPad Pro 13 M5 2025 1TB Standard Glass LTE Silver = ipad13prom5silver1tbcell
-
-
+15 Plus 128 Midnight = iphone15plusblack128
+15 Pro Max 256 Black = iphone15promaxblack256
+15 Pro Max 256 Blue = iphone15promaxblue256
+17 Air 1TB Gold eSim = iphone17airgold1tb
+AirPods 4 = Airpods4
+AirPods 4 ANC = Airpods4ANC
+AirPods MAX USBC Midnight = AirpodsMax2Black
+AirPods MAX USBC Orange = airpodsmax2orange
+AirPods MAX USBC Purple = AirpodsMax2Purple
+AirPods MAX USBC Starlight = AirpodsMax2Starlight
+AirPods Pro 2 TYPEC = airpodspro2typec
+Redmi 15 4G 6/128 Black = redmi15black6/128
+Redmi 15 4G 6/128 Purple = redmi15purple6/128
+S25+ 12/256 S936B Mint = s25plusmint12/256
+Tab S10+ WiFi X820 12/256 gray = galaxytabs10+gray12/256SM-X820
 
 
 
