@@ -1069,7 +1069,17 @@ Redmi 15 4G 6/128 Black = redmi15black6/128
 Redmi 15 4G 6/128 Purple = redmi15purple6/128
 S25+ 12/256 S936B Mint = s25plusmint12/256
 Tab S10+ WiFi X820 12/256 gray = galaxytabs10+gray12/256SM-X820
-
+AirPods Pro 3 = airpodspro3
+Honor 600 Lite 8/256 Black = honor600liteblack8/256
+Honor 600 Lite 8/256 Gold = honor600litegold8/256
+Honor 600 Lite 8/256 Gray = honor600litegray8/256
+Huawei Mate 80 Pro 16/512 Black = huaweimate80problack16/512
+Huawei Mate 80 Pro 16/512 Gold = huaweimate80progold16/512
+Huawei Mate 80 Pro 16/512 Green = huaweimate80progreen16/512
+Poco X8 Pro Max 5G 12/512 White = pocox8promaxwhite12/512
+Tab S10 FE 5G X526 8/128 silver = galaxytabs10fesilver8/128cell
+Tab S11 Ultra 5G X936 12/512 silver = galaxytabs11ultrasilver12/512cell
+Xiaomi 17 Ultra 5G 16/512 Green = mi17ultragreen16/512
 
 
 
