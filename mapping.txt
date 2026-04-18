@@ -1086,7 +1086,23 @@ S25+ 12/512 S936B Blueblack = s25plusnavy12/512
 S26+ 12/256 S947B Purple = s26pluspurple12/256
 Tab S10 Lite 5G X406 8/256 grey = galaxytabs10litegray8/256cell
 Xiaomi 17 5G 12/512 Green = mi17green12/512
-
+15 128 Green = iphone15green128
+16 256 Ultramarine = iphone16ultramarine256
+Dualsense Black = sonydualsenseblack
+Dualsense Camouflage = sonydualsensecamouflage
+Dualsense Chroma Indigo = sonydualsensechromaindigo
+Dualsense Chroma Pearl = sonydualsensechromapearl
+Dualsense Chroma Teal = sonydualsensechromateal
+Dualsense Cobalt Blue = sonydualsensecobaltblue
+Dualsense Cosmic Red = sonydualsensecosmicred
+Dualsense Purple = sonydualsensepurple
+Dualsense White = sonydualsensewhite
+Note 14 4G 8/128 NFC Green = note14green4G8/128
+Note 14S 4G 8/128 NFC Blue = note14Sblue8/128
+Poco X7 Pro 5G 12/256 Black = pocox7problack12/256
+Poco X7 Pro 5G 12/256 Yellow = pocox7proyellow12/256
+Redmi 15C 8/256 NFC Green = redmi15Cgreen8/256
+Redmi Pad 2 WiFi 8/256 Gray = redmipad2gray8/256
 
 
 
