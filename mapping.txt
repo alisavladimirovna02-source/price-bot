@@ -1103,7 +1103,6 @@ Poco X7 Pro 5G 12/256 Black = pocox7problack12/256
 Poco X7 Pro 5G 12/256 Yellow = pocox7proyellow12/256
 Redmi 15C 8/256 NFC Green = redmi15Cgreen8/256
 Redmi Pad 2 WiFi 8/256 Gray = redmipad2gray8/256
-AirPods MAX 2 2026 Starlight = AirpodsMax2Starlight
 Pixel 10 5G 128 Indigo = pixel10indigo12/128
 Pixel 10 5G 128 Obsidian = pixel10obsidian12/128
 Pixel 10 Pro 16/512GB Obsidian CA = pixel10proobsidian16/256
