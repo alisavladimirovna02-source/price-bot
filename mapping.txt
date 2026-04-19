@@ -1081,7 +1081,6 @@ Tab S10 FE 5G X526 8/128 silver = galaxytabs10fesilver8/128cell
 Tab S11 Ultra 5G X936 12/512 silver = galaxytabs11ultrasilver12/512cell
 Xiaomi 17 Ultra 5G 16/512 Green = mi17ultragreen16/512
 Honor X9d 12/256 Black = honorX9dblack12/256
-Redmi Pad Pro 5G 6/128 Green = redmipadprogreen8/256LTE
 S25+ 12/512 S936B Blueblack = s25plusnavy12/512
 S26+ 12/256 S947B Purple = s26pluspurple12/256
 Tab S10 Lite 5G X406 8/256 grey = galaxytabs10litegray8/256cell
