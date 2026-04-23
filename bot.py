@@ -22,14 +22,13 @@ TOKEN = os.getenv("TOKEN")
 def update_mapping_github(new_entry):
     token = os.getenv("GITHUB_TOKEN")
     repo = os.getenv("GITHUB_REPO")
-    path = "price-bot/mapping.txt"
+    path = "mapping.txt"
 
     url = f"https://api.github.com/repos/{repo}/contents/{path}"
 
     headers = {
         "Authorization": f"token {token}"
     }
-    response = requests.get(url, headers=headers)
     data = response.json()
 
     print("STATUS:", response.status_code)
