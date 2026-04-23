@@ -103,7 +103,7 @@ with open(output_file, "w", newline="", encoding="utf-8") as f:
         line = re.sub(r'[^\w\s/.,+]', '', line)
 
         # 🔢 числа
-        numbers = re.findall(r'\d{2,6}[.,]?\d*', line)
+        numbers = re.findall(r'\d[\d.,]*', line)
 
         if not numbers:
             continue
