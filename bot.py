@@ -29,12 +29,15 @@ def update_mapping_github(new_entry):
     headers = {
         "Authorization": f"token {token}"
     }
+
+    response = requests.get(url, headers=headers)
     data = response.json()
 
     print("STATUS:", response.status_code)
     print("DATA:", data)
-    response = requests.get(url, headers=headers)
-    data = response.json()
+
+    if "content" not in data:
+        return "ERROR"
 
     content = base64.b64decode(data["content"]).decode("utf-8")
 
@@ -118,7 +121,9 @@ async def handle_mapping(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
         result = update_mapping_github(entry)
 
-        if result == "EXISTS":
+        if result == "ERROR":
+            await update.message.reply_text("❌ Ошибка GitHub (смотри логи)")
+        elif result == "EXISTS":
             await update.message.reply_text("⚠️ Уже есть в mapping")
         else:
             await update.message.reply_text(
@@ -127,6 +132,7 @@ async def handle_mapping(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     except Exception as e:
         await update.message.reply_text(f"❌ Ошибка: {str(e)}")
+
 
 # 📩 текст
 async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
