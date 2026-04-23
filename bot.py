@@ -3,6 +3,9 @@ ALLOWED_USERS = [800906903, 686105512, 5652216103, 7434891167]
 user_store = {}
 
 import os
+import requests
+import base64
+
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import (
     ApplicationBuilder,
@@ -13,6 +16,42 @@ from telegram.ext import (
 )
 
 TOKEN = os.getenv("TOKEN")
+
+
+# 🔥 GitHub обновление mapping
+def update_mapping_github(new_entry):
+    token = os.getenv("GITHUB_TOKEN")
+    repo = os.getenv("GITHUB_REPO")
+    path = "mapping.txt"
+
+    url = f"https://api.github.com/repos/{repo}/contents/{path}"
+
+    headers = {
+        "Authorization": f"token {token}"
+    }
+
+    response = requests.get(url, headers=headers)
+    data = response.json()
+
+    content = base64.b64decode(data["content"]).decode("utf-8")
+
+    if new_entry in content:
+        return "EXISTS"
+
+    updated_content = content + "\n" + new_entry
+    encoded_content = base64.b64encode(updated_content.encode()).decode()
+
+    requests.put(
+        url,
+        headers=headers,
+        json={
+            "message": f"add mapping: {new_entry}",
+            "content": encoded_content,
+            "sha": data["sha"]
+        }
+    )
+
+    return "ADDED"
 
 
 # 🚀 универсальная функция обработки
@@ -74,16 +113,14 @@ async def handle_mapping(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
         entry = f"{left} = {right}"
 
-        with open("mapping.txt", "r", encoding="utf-8") as f:
-            existing = f.read()
+        result = update_mapping_github(entry)
 
-        if entry not in existing:
-            with open("mapping.txt", "a", encoding="utf-8") as f:
-                f.write(entry + "\n")
-
-        await update.message.reply_text(
-            f"✅ Добавлено:\n{left} → {right}"
-        )
+        if result == "EXISTS":
+            await update.message.reply_text("⚠️ Уже есть в mapping")
+        else:
+            await update.message.reply_text(
+                f"✅ Добавлено в GitHub:\n{left} → {right}"
+            )
 
     except Exception as e:
         await update.message.reply_text(f"❌ Ошибка: {str(e)}")
@@ -102,7 +139,6 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     context.user_data["data"] = user_store[chat_id]
 
-    # 🔥 разбиваем на строки
     lines = text.split("\n")
 
     for line in lines:
@@ -122,7 +158,6 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
         f"Отправь ещё или нажми кнопку 👇"
     )
 
-    # 👉 редактируем одно сообщение
     if "last_msg_id" in context.user_data:
         try:
             await context.bot.edit_message_text(
@@ -163,13 +198,11 @@ async def done_button(update: Update, context: ContextTypes.DEFAULT_TYPE):
     with open("prices_utf8.txt", "w", encoding="utf-8") as f:
         f.write(full_text)
 
-    # очистка
     user_store[chat_id] = []
     context.user_data.pop("last_msg_id", None)
 
     await query.message.edit_text("⏳ Обрабатываю...")
 
-    # создаём "фейковый" update
     class FakeUpdate:
         def __init__(self, message):
             self.message = message
