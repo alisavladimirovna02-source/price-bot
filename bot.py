@@ -22,7 +22,7 @@ TOKEN = os.getenv("TOKEN")
 def update_mapping_github(new_entry):
     token = os.getenv("GITHUB_TOKEN")
     repo = os.getenv("GITHUB_REPO")
-    path = "mapping.txt"
+    path = "price-bot/mapping.txt"
 
     url = f"https://api.github.com/repos/{repo}/contents/{path}"
 
