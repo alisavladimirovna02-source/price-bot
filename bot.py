@@ -29,7 +29,11 @@ def update_mapping_github(new_entry):
     headers = {
         "Authorization": f"token {token}"
     }
+    response = requests.get(url, headers=headers)
+    data = response.json()
 
+    print("STATUS:", response.status_code)
+    print("DATA:", data)
     response = requests.get(url, headers=headers)
     data = response.json()
 
@@ -124,7 +128,6 @@ async def handle_mapping(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     except Exception as e:
         await update.message.reply_text(f"❌ Ошибка: {str(e)}")
-
 
 # 📩 текст
 async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
