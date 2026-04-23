@@ -1,4 +1,4 @@
-ALLOWED_USERS = [800906903, 686105512, 5652216103,7434891167]
+ALLOWED_USERS = [800906903, 686105512, 5652216103, 7434891167]
 
 user_store = {}
 
@@ -56,8 +56,44 @@ async def handle_file(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await process_and_reply(update)
 
 
+# 🧠 обучение mapping
+async def handle_mapping(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    if update.message.from_user.id not in ALLOWED_USERS:
+        return
+
+    text = update.message.text.strip()
+
+    if "=" not in text:
+        return
+
+    try:
+        left, right = text.split("=", 1)
+
+        left = left.strip()
+        right = right.strip()
+
+        entry = f"{left} = {right}"
+
+        with open("mapping.txt", "r", encoding="utf-8") as f:
+            existing = f.read()
+
+        if entry not in existing:
+            with open("mapping.txt", "a", encoding="utf-8") as f:
+                f.write(entry + "\n")
+
+        await update.message.reply_text(
+            f"✅ Добавлено:\n{left} → {right}"
+        )
+
+    except Exception as e:
+        await update.message.reply_text(f"❌ Ошибка: {str(e)}")
+
+
 # 📩 текст
 async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    if update.message.from_user.id not in ALLOWED_USERS:
+        return
+
     text = update.message.text
     chat_id = update.effective_chat.id
 
@@ -147,6 +183,7 @@ async def done_button(update: Update, context: ContextTypes.DEFAULT_TYPE):
 app = ApplicationBuilder().token(TOKEN).build()
 
 app.add_handler(MessageHandler(filters.Document.ALL, handle_file))
+app.add_handler(MessageHandler(filters.TEXT & filters.Regex(r".+=.+"), handle_mapping))
 app.add_handler(MessageHandler(filters.TEXT, handle_text))
 app.add_handler(CallbackQueryHandler(done_button, pattern="done"))
 
