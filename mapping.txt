@@ -32130,3 +32130,7 @@ Magic Mouse White = magicmousewhite
 Pensil Pro = pencilpro
 Pensil USBC = pencilUSB-C
 A36 8/128 Lavander = a36lavender8/128
+A56 8/128 Olive = a56olive8/128
+A57 8/256 Gray = a57gray8/256
+Air 15 MDVA4 Silver = macair15m5silver16/1TB
+AirPods MAX 2 2026 Purple = AirpodsMax2Purple2026
