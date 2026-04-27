@@ -32147,3 +32147,5 @@ A06 4/64 Light Blue = A06LightBlue4/64
 A17 4G 6/128 Black = A17black6/128
 A17 4G 6/128 Blue = A17blue6/128
 A17 4G 6/128 Gray = A17gray6/128
+Air 15 MDVF4 Starlight = macair15m5starlight24/1TB
+Air 15 MDVT4 Sky Blue = macair15m5blue16/1TB
