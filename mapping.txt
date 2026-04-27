@@ -32156,3 +32156,4 @@ S11 46 Jet Black SB Black SM = aws11jetblack/black46s/m
 S24 8/128 S921E Yellow = s24yellow8/128
 S25 FE 8/128 S731B Jetblack = S25FEblack8/128
 S25 FE 8/128 S731B Navy = s25fenavy8/128
+S25 Ultra 12/512 S938B Jadegreen = s25ultrajadegreen12/512
