@@ -32159,3 +32159,5 @@ S25 FE 8/128 S731B Navy = s25fenavy8/128
 S25 Ultra 12/512 S938B Jadegreen = s25ultrajadegreen12/512
 S26 12/512 S942B Pink Gold = S26pinkgold12/512
 SE3 2025 44 Midnight SB ML = awse2025black44m/l
+
+SE3 2025 44 Midnight SB SM = awse2025black44s/m
