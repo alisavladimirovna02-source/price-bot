@@ -32162,3 +32162,4 @@ SE3 2025 44 Midnight SB ML = awse2025black44m/l
 
 SE3 2025 44 Midnight SB SM = awse2025black44s/m
 Tab S11 Ultra 5G X936 16/1024 grey = galaxytabs11ultragray16/1024cell
+U3 Nat Alpine Loop Terra Cotta M esim = awultra3natural/terracotta_alpineloopM
