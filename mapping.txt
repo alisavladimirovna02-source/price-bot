@@ -32164,3 +32164,4 @@ SE3 2025 44 Midnight SB SM = awse2025black44s/m
 Tab S11 Ultra 5G X936 16/1024 grey = galaxytabs11ultragray16/1024cell
 U3 Nat Alpine Loop Terra Cotta M esim = awultra3natural/terracotta_alpineloopM
 U3 Natural TL Black/Charcoal ML esim = awultra3natural/black_charcoalm/l
+Xiaomi 17 5G 12/512 Pink = mi17pink12/512
