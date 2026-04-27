@@ -32151,3 +32151,4 @@ Air 15 MDVF4 Starlight = macair15m5starlight24/1TB
 Air 15 MDVT4 Sky Blue = macair15m5blue16/1TB
 Honor 400 Pro 12/512 Grey = HONOR400progray12/512
 Redmi Pad 2 4G 8/256 Green = redmipad2green8/256cell
+S11 42 Grey SB Black SM = aws11gray/black42s/m
