@@ -32154,3 +32154,4 @@ Redmi Pad 2 4G 8/256 Green = redmipad2green8/256cell
 S11 42 Grey SB Black SM = aws11gray/black42s/m
 S11 46 Jet Black SB Black SM = aws11jetblack/black46s/m
 S24 8/128 S921E Yellow = s24yellow8/128
+S25 FE 8/128 S731B Jetblack = S25FEblack8/128
