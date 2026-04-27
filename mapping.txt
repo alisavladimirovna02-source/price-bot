@@ -32144,3 +32144,6 @@ Z Fold7 12/512 F966B Mint = Zfold7mint12/512
 A06 4/64 Black = A06black4/64
 A06 4/64 Gold = A06gold4/64
 A06 4/64 Light Blue = A06LightBlue4/64
+A17 4G 6/128 Black = A17black6/128
+A17 4G 6/128 Blue = A17blue6/128
+A17 4G 6/128 Gray = A17gray6/128
