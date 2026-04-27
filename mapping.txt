@@ -32141,3 +32141,6 @@ Z Fold7 12/512 F966B Mint = Zfold7mint12/512
 15 256 Yellow = iphone15yellow256
 16 Plus 512 Pink = iphone16pluspink512
 16Е 512 White = iphone16ewhite512
+A06 4/64 Black = A06black4/64
+A06 4/64 Gold = A06gold4/64
+A06 4/64 Light Blue = A06LightBlue4/64
