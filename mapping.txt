@@ -32165,3 +32165,5 @@ Tab S11 Ultra 5G X936 16/1024 grey = galaxytabs11ultragray16/1024cell
 U3 Nat Alpine Loop Terra Cotta M esim = awultra3natural/terracotta_alpineloopM
 U3 Natural TL Black/Charcoal ML esim = awultra3natural/black_charcoalm/l
 Xiaomi 17 5G 12/512 Pink = mi17pink12/512
+Z Flip7 FE 8/256 F761B Black = Zflip7feblack8/256
+Z Flip7 FE 8/256 F761B White = Zflip7fewhite8/256
