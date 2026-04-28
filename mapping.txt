@@ -32173,3 +32173,4 @@ A57 12/256 Icyblue = a57Icyblue12/256
 A57 12/256 Navy = a57navy12/256
 SE2 2024 44 Silver Denim ML = AWSE2024silver44M/L
 S26 12/256 S942B Silver = S26silver12/256
+S26 Ultra 12/256 S948B Silver = s26ultrasilver12/256
