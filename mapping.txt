@@ -32169,3 +32169,5 @@ Z Flip7 FE 8/256 F761B Black = Zflip7feblack8/256
 Z Flip7 FE 8/256 F761B White = Zflip7fewhite8/256
 iPad A16 11 128 Silver LTE esim = ipad11silver128LTE
 A56 8/256 Grahite = a56graphite8/256
+A57 12/256 Icyblue = a57Icyblue12/256
+A57 12/256 Navy = a57navy12/256
