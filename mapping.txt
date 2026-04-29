@@ -32188,3 +32188,4 @@ Tab A9 LTE X115 4/64 graphite = SamsungGalaxyTabA9graphite4/64cell
 Tab A9 WiFi X110 4/64 graphite = SamsungGalaxyTabA9graphite4/64
 Tab A9 WiFi X110 4/64 silver = SamsungGalaxyTabA9silver4/64
 Tab S8 Ultra 5G X906 12/256 graphite = samsunggalaxytabS8ultragraphite12/256cell
+Tab S10 FE 5G X526 8/128 gray = galaxytabs10FEgray8/128cell
