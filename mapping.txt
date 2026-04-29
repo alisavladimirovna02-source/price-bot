@@ -32184,3 +32184,6 @@ Honor X9d 8/256 Terracotta = honorX9dterracotta8/256
 Note 14 NFC 6/128 Blue = note14blue4G6/128RU
 Note 14 NFC 6/128 Green = note14green4G6/128
 Redmi Pad 2 4G 8/256 Gray = redmipad2gray8/256cell
+Tab A9 LTE X115 4/64 graphite = SamsungGalaxyTabA9graphite4/64cell
+Tab A9 WiFi X110 4/64 graphite = SamsungGalaxyTabA9graphite4/64
+Tab A9 WiFi X110 4/64 silver = SamsungGalaxyTabA9silver4/64
