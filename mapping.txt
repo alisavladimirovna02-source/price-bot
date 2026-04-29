@@ -32179,3 +32179,5 @@ Z Flip7 12/256 F766B Blue = Zflip7blueshadow12/256
 iPad Pro 11 M5 2025 1TB NanoStandard Glass WiFi Space Black = ipad11prom5black1tb
 Honor 400 Lite 8/256 Black = HONOR400liteblack8/256
 Honor 400 Lite 8/256 Gray = honor400litegray8/256
+Honor X9d 8/256 Beige = honorX9dbeige8/256
+Honor X9d 8/256 Terracotta = honorX9dterracotta8/256
