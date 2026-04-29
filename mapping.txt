@@ -32177,3 +32177,5 @@ S26 Ultra 12/256 S948B Silver = s26ultrasilver12/256
 SE2 2024 44 Silver Denim ML = awse2024silver44m/l
 Z Flip7 12/256 F766B Blue = Zflip7blueshadow12/256
 iPad Pro 11 M5 2025 1TB NanoStandard Glass WiFi Space Black = ipad11prom5black1tb
+Honor 400 Lite 8/256 Black = HONOR400liteblack8/256
+Honor 400 Lite 8/256 Gray = honor400litegray8/256
