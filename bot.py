@@ -288,7 +288,7 @@ app.add_handler(MessageHandler(filters.TEXT & filters.Regex("^/notfound"), show_
 app.add_handler(MessageHandler(filters.TEXT & filters.Regex(r".+=.+"), handle_mapping))
 app.add_handler(CallbackQueryHandler(add_mapping_button, pattern="addmap:"))
 app.add_handler(CallbackQueryHandler(done_button, pattern="done"))
-app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_text))
+app.add_handler(MessageHandler(filters.TEXT, handle_text))
 
 
 print("🤖 Бот запущен...")
