@@ -682,7 +682,6 @@ Tab S11 Ultra WiFi X930 12/256 silver = galaxytabS11ultrasilver12/256
 Tab S11 Ultra WiFi X930 12/512 gray = galaxytabS11ultragray12/512
 Pixel 10 12/128GB Frost CA = pixel10frost12/128
 Pixel 10 12/128GB Obsidian CA = pixel10obsidian12/128
-Pixel 10 12/128GB Obsidian eSIM USA = pixel10obsidian12/128
 Pixel 10 Pro 12/256GB Obsidian CA = pixel10proobsidian12/256
 Pixel 10 Pro 12/256GB Porcelain CA = pixel10proporcelain12/256
 Pixel 10 Pro 12/256GB Moonstone CA = pixel10promoonstone12/256
