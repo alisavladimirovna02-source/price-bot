@@ -245,7 +245,8 @@ async def show_not_found(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def not_found_nav(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()
-
+    if "page" not in context.user_data:
+        context.user_data["page"] = 0
     if query.data == "nf_next":
         context.user_data["page"] += 1
     elif query.data == "nf_prev":
@@ -299,10 +300,23 @@ async def send_not_found_page(source, context):
     if nav_buttons:
         keyboard.append(nav_buttons)
 
-    if hasattr(source, "data"):
-        await source.message.edit_text(text, reply_markup=InlineKeyboardMarkup(keyboard))
+    from telegram import CallbackQuery
+    if isinstance(source, CallbackQuery):
+        try:
+            await source.message.edit_text(
+            text,
+            reply_markup=InlineKeyboardMarkup(keyboard)
+            )
+        except:
+            await source.message.reply_text(
+            text,
+            reply_markup=InlineKeyboardMarkup(keyboard)
+            )
     else:
-        await source.message.reply_text(text, reply_markup=InlineKeyboardMarkup(keyboard))
+        await source.message.reply_text(
+        text,
+        reply_markup=InlineKeyboardMarkup(keyboard)
+    )
 
 
 async def add_mapping_button(update: Update, context: ContextTypes.DEFAULT_TYPE):
