@@ -166,15 +166,64 @@ async def show_not_found(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text("✅ Все товары сопоставлены")
         return
 
-    for item in lines:
-        keyboard = [
-            [InlineKeyboardButton("➕ Добавить", callback_data=f"addmap:{item}")]
-        ]
+    context.user_data["not_found_list"] = lines
+    context.user_data["page"] = 0
 
-        await update.message.reply_text(
-            f"❌ Не найдено:\n{item}",
-            reply_markup=InlineKeyboardMarkup(keyboard)
+    await send_not_found_page(update, context)
+async def not_found_nav(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    await query.answer()
+
+    if query.data == "nf_next":
+        context.user_data["page"] += 1
+    elif query.data == "nf_prev":
+        context.user_data["page"] -= 1
+
+    # удаляем старое сообщение
+    await query.message.delete()
+    await send_not_found_page(query, context)
+
+async def send_not_found_page(source, context):
+    lines = context.user_data["not_found_list"]
+    page = context.user_data["page"]
+
+    per_page = 5
+    start = page * per_page
+    end = start + per_page
+
+    chunk = lines[start:end]
+
+    text = "❌ Не найдено:\n\n"
+    keyboard = []
+
+    for i, item in enumerate(chunk, start=1):
+        text += f"{i}. {item}\n"
+        keyboard.append([
+            InlineKeyboardButton(f"➕ Добавить {i}", callback_data=f"addmap:{item}")
+        ])
+
+    nav_buttons = []
+
+    if start > 0:
+        nav_buttons.append(
+            InlineKeyboardButton("⬅️ Назад", callback_data="nf_prev")
         )
+
+    if end < len(lines):
+        nav_buttons.append(
+            InlineKeyboardButton("➡️ Дальше", callback_data="nf_next")
+        )
+
+    if nav_buttons:
+        keyboard.append(nav_buttons)
+
+    # 🔥 универсальная отправка
+    await source.message.reply_text(
+    text,
+    reply_markup=InlineKeyboardMarkup(keyboard)
+)
+
+
 
 
 # ➕ кнопка добавления mapping
@@ -286,9 +335,11 @@ app = ApplicationBuilder().token(TOKEN).build()
 
 app.add_handler(MessageHandler(filters.TEXT & filters.Regex("^/notfound"), show_not_found))
 app.add_handler(MessageHandler(filters.TEXT & filters.Regex(r".+=.+"), handle_mapping))
+app.add_handler(CallbackQueryHandler(not_found_nav, pattern="nf_"))
 app.add_handler(CallbackQueryHandler(add_mapping_button, pattern="addmap:"))
 app.add_handler(CallbackQueryHandler(done_button, pattern="done"))
 app.add_handler(MessageHandler(filters.TEXT, handle_text))
+
 
 
 print("🤖 Бот запущен...")
