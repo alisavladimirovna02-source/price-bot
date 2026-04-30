@@ -184,6 +184,7 @@ async def handle_mapping(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     text = update.message.text.strip()
 
+    # 👉 если мы в режиме "ввода SKU через кнопку"
     if "mapping_item" in context.user_data:
         item = context.user_data["mapping_item"]
 
@@ -203,25 +204,45 @@ async def handle_mapping(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text(f"✅ Добавлено:\n{entry}")
         return
 
-    if "=" not in text:
+    # 🔥 МАССОВОЕ ДОБАВЛЕНИЕ
+    lines = text.split("\n")
+
+    added = 0
+    exists = 0
+    errors = 0
+
+    for line in lines:
+        line = line.strip()
+
+        if not line or "=" not in line:
+            continue
+
+        try:
+            left, right = line.split("=", 1)
+            entry = f"{left.strip()} = {right.strip()}"
+
+            result = update_mapping_github(entry)
+
+            if result == "ADDED":
+                added += 1
+            elif result == "EXISTS":
+                exists += 1
+            else:
+                errors += 1
+
+        except:
+            errors += 1
+
+    # 👉 если ничего не обработано — игнор
+    if added == 0 and exists == 0 and errors == 0:
         return
 
-    try:
-        left, right = text.split("=", 1)
-
-        entry = f"{left.strip()} = {right.strip()}"
-
-        result = update_mapping_github(entry)
-
-        if result == "ERROR":
-            await update.message.reply_text("❌ Ошибка GitHub")
-        elif result == "EXISTS":
-            await update.message.reply_text("⚠️ Уже есть в mapping")
-        else:
-            await update.message.reply_text(f"✅ Добавлено:\n{entry}")
-
-    except Exception as e:
-        await update.message.reply_text(f"❌ Ошибка: {str(e)}")
+    await update.message.reply_text(
+        f"📊 Результат:\n\n"
+        f"✅ Добавлено: {added}\n"
+        f"⚠️ Уже было: {exists}\n"
+        f"❌ Ошибок: {errors}"
+    )
 
 
 async def show_not_found(update: Update, context: ContextTypes.DEFAULT_TYPE):
