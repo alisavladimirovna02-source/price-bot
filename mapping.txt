@@ -32193,3 +32193,5 @@ S26 Ultra 12/512 S948B Silver = s26ultrasilver12/512
 U3 Natural Milanese Nat Loop S esim = awultra3naturalmilaneseloopS
 iPad Pro 13 M5 2025 256GB LTE Space Black = ipad13prom5black256cell
 Xiaomi 17 5G 12/256 Black = mi17black12/256
+
+iPad Pro 13 M5 1TB Standard Glass Wi-Fi Space Black = ipad13prom5black1tb
