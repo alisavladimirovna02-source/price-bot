@@ -5,7 +5,7 @@ user_store = {}
 import os
 import requests
 import base64
-
+from telegram import ReplyKeyboardMarkup
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import (
     ApplicationBuilder,
@@ -15,10 +15,85 @@ from telegram.ext import (
     CallbackQueryHandler
 )
 
+def get_main_keyboard():
+    return ReplyKeyboardMarkup(
+        [["📦 Не найдено"]],
+        resize_keyboard=True
+    )
+
 TOKEN = os.getenv("TOKEN")
 
 
-# 🔥 GitHub обновление mapping
+def delete_mapping_github(item):
+    token = os.getenv("GITHUB_TOKEN")
+    repo = os.getenv("GITHUB_REPO")
+    path = "mapping.txt"
+
+    url = f"https://api.github.com/repos/{repo}/contents/{path}"
+
+    headers = {
+        "Authorization": f"token {token}"
+    }
+
+    response = requests.get(url, headers=headers)
+    data = response.json()
+
+    if "content" not in data:
+        return "ERROR"
+
+    content = base64.b64decode(data["content"]).decode("utf-8")
+    lines = content.splitlines()
+
+    new_lines = []
+    removed = False
+
+    for line in lines:
+        if line.startswith(item + " ="):
+            removed = True
+            continue
+        new_lines.append(line)
+
+    if not removed:
+        return "NOT_FOUND"
+
+    updated_content = "\n".join(new_lines)
+    encoded_content = base64.b64encode(updated_content.encode()).decode()
+
+    requests.put(
+        url,
+        headers=headers,
+        json={
+            "message": f"delete mapping: {item}",
+            "content": encoded_content,
+            "sha": data["sha"]
+        }
+    )
+
+    return "DELETED"
+
+
+async def delete_mapping_button(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    await query.answer()
+
+    item = query.data.replace("delmap:", "")
+
+    result = delete_mapping_github(item)
+
+    if result == "DELETED":
+        if "not_found_list" in context.user_data:
+            context.user_data["not_found_list"] = [
+                x for x in context.user_data["not_found_list"] if x != item
+            ]
+
+        await send_not_found_page(query, context)
+
+    elif result == "NOT_FOUND":
+        await query.message.reply_text("❌ Не найдено")
+    else:
+        await query.message.reply_text("❌ Ошибка")
+
+
 def update_mapping_github(new_entry):
     token = os.getenv("GITHUB_TOKEN")
     repo = os.getenv("GITHUB_REPO")
@@ -60,7 +135,10 @@ def update_mapping_github(new_entry):
     return "ADDED"
 
 
-# 🚀 универсальная функция обработки
+async def not_found_button(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await show_not_found(update, context)
+
+
 async def process_and_reply(update: Update):
     try:
         msg = await update.message.reply_text("⏳ Обрабатываю прайс...")
@@ -93,7 +171,6 @@ async def process_and_reply(update: Update):
         await update.message.reply_text(f"❌ Ошибка: {str(e)}")
 
 
-# 📥 файл
 async def handle_file(update: Update, context: ContextTypes.DEFAULT_TYPE):
     file = await update.message.document.get_file()
     await file.download_to_drive("prices_utf8.txt")
@@ -101,14 +178,12 @@ async def handle_file(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await process_and_reply(update)
 
 
-# 🧠 обучение mapping
 async def handle_mapping(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if update.message.from_user.id not in ALLOWED_USERS:
         return
 
     text = update.message.text.strip()
 
-    # 🔥 если пришли из кнопки not_found
     if "mapping_item" in context.user_data:
         item = context.user_data["mapping_item"]
 
@@ -116,44 +191,39 @@ async def handle_mapping(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await update.message.reply_text("❌ Напиши в формате: товар = sku")
             return
 
-        left, right = text.split("=", 1)
+        _, right = text.split("=", 1)
         right = right.strip()
 
         entry = f"{item} = {right}"
 
-        result = update_mapping_github(entry)
+        update_mapping_github(entry)
 
         context.user_data.pop("mapping_item")
 
         await update.message.reply_text(f"✅ Добавлено:\n{entry}")
         return
 
-    # обычный mapping
     if "=" not in text:
         return
 
     try:
         left, right = text.split("=", 1)
 
-        left = left.strip()
-        right = right.strip()
-
-        entry = f"{left} = {right}"
+        entry = f"{left.strip()} = {right.strip()}"
 
         result = update_mapping_github(entry)
 
         if result == "ERROR":
-            await update.message.reply_text("❌ Ошибка GitHub (смотри логи)")
+            await update.message.reply_text("❌ Ошибка GitHub")
         elif result == "EXISTS":
             await update.message.reply_text("⚠️ Уже есть в mapping")
         else:
-            await update.message.reply_text(
-                f"✅ Добавлено в GitHub:\n{left} → {right}"
-            )
+            await update.message.reply_text(f"✅ Добавлено:\n{entry}")
 
     except Exception as e:
         await update.message.reply_text(f"❌ Ошибка: {str(e)}")
-# 🔍 показать not_found с кнопками
+
+
 async def show_not_found(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not os.path.exists("not_found.txt"):
         await update.message.reply_text("❌ Файл not_found.txt не найден")
@@ -170,6 +240,8 @@ async def show_not_found(update: Update, context: ContextTypes.DEFAULT_TYPE):
     context.user_data["page"] = 0
 
     await send_not_found_page(update, context)
+
+
 async def not_found_nav(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()
@@ -179,72 +251,72 @@ async def not_found_nav(update: Update, context: ContextTypes.DEFAULT_TYPE):
     elif query.data == "nf_prev":
         context.user_data["page"] -= 1
 
-    # удаляем старое сообщение
-    await query.message.delete()
     await send_not_found_page(query, context)
 
+
 async def send_not_found_page(source, context):
+    if "not_found_list" not in context.user_data:
+        await source.message.reply_text("❌ Список устарел, открой заново")
+        return
+
     lines = context.user_data["not_found_list"]
     page = context.user_data["page"]
 
     per_page = 5
+    total_pages = (len(lines) - 1) // per_page
+
+    if page > total_pages:
+        page = total_pages
+        context.user_data["page"] = page
+
+    if page < 0:
+        page = 0
+        context.user_data["page"] = page
+
     start = page * per_page
     end = start + per_page
 
     chunk = lines[start:end]
 
-    text = "❌ Не найдено:\n\n"
+    text = f"📄 Страница {page + 1}\n\n❌ Не найдено:\n\n"
     keyboard = []
 
-    for i, item in enumerate(chunk, start=1):
-        text += f"{i}. {item}\n"
+    for item in chunk:
+        text += f"• {item}\n"
         keyboard.append([
-            InlineKeyboardButton(f"➕ Добавить {i}", callback_data=f"addmap:{item}")
+            InlineKeyboardButton("➕ Добавить", callback_data=f"addmap:{item}"),
+            InlineKeyboardButton("🗑 Удалить", callback_data=f"delmap:{item}")
         ])
 
     nav_buttons = []
 
     if start > 0:
-        nav_buttons.append(
-            InlineKeyboardButton("⬅️ Назад", callback_data="nf_prev")
-        )
+        nav_buttons.append(InlineKeyboardButton("⬅️ Назад", callback_data="nf_prev"))
 
     if end < len(lines):
-        nav_buttons.append(
-            InlineKeyboardButton("➡️ Дальше", callback_data="nf_next")
-        )
+        nav_buttons.append(InlineKeyboardButton("➡️ Дальше", callback_data="nf_next"))
 
     if nav_buttons:
         keyboard.append(nav_buttons)
 
-    # 🔥 универсальная отправка
-    await source.message.reply_text(
-    text,
-    reply_markup=InlineKeyboardMarkup(keyboard)
-)
+    if hasattr(source, "data"):
+        await source.message.edit_text(text, reply_markup=InlineKeyboardMarkup(keyboard))
+    else:
+        await source.message.reply_text(text, reply_markup=InlineKeyboardMarkup(keyboard))
 
 
-
-
-# ➕ кнопка добавления mapping
 async def add_mapping_button(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()
 
-    data = query.data
-
-    if not data.startswith("addmap:"):
-        return
-
-    item = data.replace("addmap:", "")
-
+    item = query.data.replace("addmap:", "")
     context.user_data["mapping_item"] = item
 
     await query.message.reply_text(
         f"✏️ Введи SKU для:\n{item}\n\nПример:\n{item} = sku123"
     )
 
-# 📩 текст
+
 async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if update.message.from_user.id not in ALLOWED_USERS:
         return
@@ -257,24 +329,17 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     context.user_data["data"] = user_store[chat_id]
 
-    lines = text.split("\n")
-
-    for line in lines:
+    for line in text.split("\n"):
         line = line.strip()
         if line:
             context.user_data["data"].append(line)
 
     count = len(context.user_data["data"])
 
-    keyboard = [
-        [InlineKeyboardButton("🚀 Обработать", callback_data="done")]
-    ]
+    keyboard = [[InlineKeyboardButton("🚀 Обработать", callback_data="done")]]
     reply_markup = InlineKeyboardMarkup(keyboard)
 
-    message_text = (
-        f"📦 Добавлено позиций: {count}\n\n"
-        f"Отправь ещё или нажми кнопку 👇"
-    )
+    message_text = f"📦 Добавлено позиций: {count}\n\nОтправь ещё или нажми кнопку 👇"
 
     if "last_msg_id" in context.user_data:
         try:
@@ -290,13 +355,12 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     msg = await update.message.reply_text(
         message_text,
-        reply_markup=reply_markup
+        reply_markup=get_main_keyboard()
     )
 
     context.user_data["last_msg_id"] = msg.message_id
 
 
-# ✅ кнопка
 async def done_button(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()
@@ -304,17 +368,12 @@ async def done_button(update: Update, context: ContextTypes.DEFAULT_TYPE):
     chat_id = query.message.chat.id
     data = user_store.get(chat_id, [])
 
-    print("STORE:", user_store)
-    print("CHAT:", chat_id)
-
     if not data:
         await query.message.reply_text("❌ Нет данных для обработки")
         return
 
-    full_text = "\n".join(data)
-
     with open("prices_utf8.txt", "w", encoding="utf-8") as f:
-        f.write(full_text)
+        f.write("\n".join(data))
 
     user_store[chat_id] = []
     context.user_data.pop("last_msg_id", None)
@@ -325,23 +384,19 @@ async def done_button(update: Update, context: ContextTypes.DEFAULT_TYPE):
         def __init__(self, message):
             self.message = message
 
-    fake_update = FakeUpdate(query.message)
-
-    await process_and_reply(fake_update)
+    await process_and_reply(FakeUpdate(query.message))
 
 
-# 🚀 запуск
 app = ApplicationBuilder().token(TOKEN).build()
 
-app.add_handler(MessageHandler(filters.TEXT & filters.Regex("^/notfound"), show_not_found))
+app.add_handler(MessageHandler(filters.TEXT & filters.Regex("📦 Не найдено"), not_found_button))
 app.add_handler(MessageHandler(filters.TEXT & filters.Regex(r".+=.+"), handle_mapping))
-app.add_handler(CallbackQueryHandler(not_found_nav, pattern="nf_"))
-app.add_handler(CallbackQueryHandler(add_mapping_button, pattern="addmap:"))
-app.add_handler(CallbackQueryHandler(done_button, pattern="done"))
 app.add_handler(MessageHandler(filters.TEXT, handle_text))
 
-
+app.add_handler(CallbackQueryHandler(delete_mapping_button, pattern="delmap:"))
+app.add_handler(CallbackQueryHandler(add_mapping_button, pattern="addmap:"))
+app.add_handler(CallbackQueryHandler(not_found_nav, pattern="nf_"))
+app.add_handler(CallbackQueryHandler(done_button, pattern="done"))
 
 print("🤖 Бот запущен...")
-
 app.run_polling()
