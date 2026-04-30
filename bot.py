@@ -108,6 +108,27 @@ async def handle_mapping(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     text = update.message.text.strip()
 
+    # 🔥 если пришли из кнопки not_found
+    if "mapping_item" in context.user_data:
+        item = context.user_data["mapping_item"]
+
+        if "=" not in text:
+            await update.message.reply_text("❌ Напиши в формате: товар = sku")
+            return
+
+        left, right = text.split("=", 1)
+        right = right.strip()
+
+        entry = f"{item} = {right}"
+
+        result = update_mapping_github(entry)
+
+        context.user_data.pop("mapping_item")
+
+        await update.message.reply_text(f"✅ Добавлено:\n{entry}")
+        return
+
+    # обычный mapping
     if "=" not in text:
         return
 
@@ -132,7 +153,47 @@ async def handle_mapping(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     except Exception as e:
         await update.message.reply_text(f"❌ Ошибка: {str(e)}")
+# 🔍 показать not_found с кнопками
+async def show_not_found(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    if not os.path.exists("not_found.txt"):
+        await update.message.reply_text("❌ Файл not_found.txt не найден")
+        return
 
+    with open("not_found.txt", "r", encoding="utf-8") as f:
+        lines = [line.strip() for line in f if line.strip()]
+
+    if not lines:
+        await update.message.reply_text("✅ Все товары сопоставлены")
+        return
+
+    for item in lines[:5]:
+        keyboard = [
+            [InlineKeyboardButton("➕ Добавить", callback_data=f"addmap:{item}")]
+        ]
+
+        await update.message.reply_text(
+            f"❌ Не найдено:\n{item}",
+            reply_markup=InlineKeyboardMarkup(keyboard)
+        )
+
+
+# ➕ кнопка добавления mapping
+async def add_mapping_button(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    await query.answer()
+
+    data = query.data
+
+    if not data.startswith("addmap:"):
+        return
+
+    item = data.replace("addmap:", "")
+
+    context.user_data["mapping_item"] = item
+
+    await query.message.reply_text(
+        f"✏️ Введи SKU для:\n{item}\n\nПример:\n{item} = sku123"
+    )
 
 # 📩 текст
 async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -225,8 +286,11 @@ app = ApplicationBuilder().token(TOKEN).build()
 
 app.add_handler(MessageHandler(filters.Document.ALL, handle_file))
 app.add_handler(MessageHandler(filters.TEXT & filters.Regex(r".+=.+"), handle_mapping))
+app.add_handler(MessageHandler(filters.TEXT & filters.Regex("^/notfound"), show_not_found))
+app.add_handler(CallbackQueryHandler(add_mapping_button, pattern="addmap:"))
 app.add_handler(MessageHandler(filters.TEXT, handle_text))
 app.add_handler(CallbackQueryHandler(done_button, pattern="done"))
+
 
 print("🤖 Бот запущен...")
 
