@@ -355,7 +355,7 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     msg = await update.message.reply_text(
         message_text,
-        reply_markup=get_main_keyboard()
+        reply_markup=reply_markup
     )
 
     context.user_data["last_msg_id"] = msg.message_id
