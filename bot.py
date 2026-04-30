@@ -284,12 +284,11 @@ async def done_button(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # 🚀 запуск
 app = ApplicationBuilder().token(TOKEN).build()
 
-app.add_handler(MessageHandler(filters.Document.ALL, handle_file))
-app.add_handler(MessageHandler(filters.TEXT & filters.Regex(r".+=.+"), handle_mapping))
 app.add_handler(MessageHandler(filters.TEXT & filters.Regex("^/notfound"), show_not_found))
+app.add_handler(MessageHandler(filters.TEXT & filters.Regex(r".+=.+"), handle_mapping))
 app.add_handler(CallbackQueryHandler(add_mapping_button, pattern="addmap:"))
-app.add_handler(MessageHandler(filters.TEXT, handle_text))
 app.add_handler(CallbackQueryHandler(done_button, pattern="done"))
+app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_text))
 
 
 print("🤖 Бот запущен...")
