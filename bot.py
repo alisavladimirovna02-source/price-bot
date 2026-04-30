@@ -166,7 +166,7 @@ async def show_not_found(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text("✅ Все товары сопоставлены")
         return
 
-    for item in lines[:5]:
+    for item in lines:
         keyboard = [
             [InlineKeyboardButton("➕ Добавить", callback_data=f"addmap:{item}")]
         ]
