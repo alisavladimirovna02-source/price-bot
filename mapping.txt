@@ -32198,3 +32198,4 @@ iPad Pro 13 M5 1TB Standard Glass Wi-Fi Space Black = ipad13prom5black1tb
 
 A57 12/256 Gray = a57gray12/256
 Honor X9d 12/256 Terracotta = honorX9dterracotta12/256
+Pixel 10 12/128GB Obsidian eSIM USA = pixel10obsidian12/128USA
