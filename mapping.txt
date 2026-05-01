@@ -32197,3 +32197,4 @@ Xiaomi 17 5G 12/256 Black = mi17black12/256
 iPad Pro 13 M5 1TB Standard Glass Wi-Fi Space Black = ipad13prom5black1tb
 
 A57 12/256 Gray = a57gray12/256
+Honor X9d 12/256 Terracotta = honorX9dterracotta12/256
