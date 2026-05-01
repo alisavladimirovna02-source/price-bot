@@ -32205,3 +32205,4 @@ S24 8/256 S921Е Black = s24black8/256
 SE3 2025 40 Midnight SB ML = awse2025black40m/l
 SE3 2025 40 Starlight SB ML = awse2025starlight40m/l
 iPad А16 11 128 Blue WiFi esim = ipad11blue128cell
+iPad А16 11 128 Pink WiFi esim = ipad11pink128LTE
