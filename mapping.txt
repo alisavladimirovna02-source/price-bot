@@ -32203,3 +32203,4 @@ S11 46 Grey SB Black SM = aws11gray/black46s/m
 S24 8/128 S921Е Yellow = s24yellow8/128
 S24 8/256 S921Е Black = s24black8/256
 SE3 2025 40 Midnight SB ML = awse2025black40m/l
+SE3 2025 40 Starlight SB ML = awse2025starlight40m/l
