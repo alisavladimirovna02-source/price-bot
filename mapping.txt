@@ -32195,3 +32195,5 @@ iPad Pro 13 M5 2025 256GB LTE Space Black = ipad13prom5black256cell
 Xiaomi 17 5G 12/256 Black = mi17black12/256
 
 iPad Pro 13 M5 1TB Standard Glass Wi-Fi Space Black = ipad13prom5black1tb
+
+A57 12/256 Gray = a57gray12/256
