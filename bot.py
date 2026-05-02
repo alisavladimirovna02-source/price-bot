@@ -97,15 +97,18 @@ def load_mvc_from_google():
 def compare_mvc():
     today = load_mvc_from_google()
 
-    # загрузка вчерашнего
     old = {}
     if os.path.exists("mvc_yesterday.csv"):
         with open("mvc_yesterday.csv", "r", encoding="utf-8") as f:
             reader = csv.reader(f)
             for row in reader:
-                old[row[0]] = float(row[1])
+                try:
+                    old[row[0]] = float(row[1])
+                except:
+                    continue
 
     results = []
+    check_results = []
 
     for sku in today:
         new_price = today[sku]
@@ -114,26 +117,54 @@ def compare_mvc():
         if old_price is None:
             status = "NEW"
             diff = ""
-        elif new_price != old_price:
-            status = "CHANGED"
+            ratio = ""
+            need_check = True
+        elif new_price == 0:
+            status = "CHECK"
             diff = round(new_price - old_price, 2)
+            ratio = ""
+            need_check = True
         else:
-            status = "OK"
-            diff = 0
+            diff = round(new_price - old_price, 2)
+            ratio = old_price / new_price
 
-        results.append([sku, old_price, new_price, diff, status])
+            if ratio < 0.95 or ratio > 1.05:
+                status = "CHECK"
+                need_check = True
+            else:
+                status = "OK"
+                need_check = False
 
-    # сохраняем результат
+        row = [
+            sku,
+            old_price,
+            new_price,
+            diff,
+            "" if ratio == "" else round(ratio, 4),
+            status
+        ]
+
+        results.append(row)
+
+        if need_check:
+            check_results.append(row)
+
     with open("mvc_diff.csv", "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
-        writer.writerow(["SKU", "Вчера", "Сегодня", "Разница", "Статус"])
+        writer.writerow(["SKU", "Вчера", "Сегодня", "Разница", "Вчера/Сегодня", "Статус"])
         writer.writerows(results)
 
-    # сохраняем "сегодня" как "вчера"
+    with open("mvc_check.csv", "w", newline="", encoding="utf-8") as f:
+        writer = csv.writer(f)
+        writer.writerow(["SKU", "Вчера", "Сегодня", "Разница", "Вчера/Сегодня", "Статус"])
+        writer.writerows(check_results)
+
     with open("mvc_yesterday.csv", "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
         for sku, price in today.items():
             writer.writerow([sku, price])
+
+    return len(check_results)
 
 
 async def delete_mapping_button(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -484,10 +515,18 @@ async def done_button(update: Update, context: ContextTypes.DEFAULT_TYPE):
             self.message = message
 
     await process_and_reply(FakeUpdate(query.message))
-    compare_mvc()
+    check_count = compare_mvc()
 
-    with open("mvc_diff.csv", "rb") as f:
-        await query.message.reply_document(f)
+    if check_count > 0:
+        await query.message.reply_text(
+            f"⚠️ Проверка МВЦ: найдено позиций для проверки: {check_count}"
+        )
+
+        with open("mvc_check.csv", "rb") as f:
+            await query.message.reply_document(f)
+    else:
+        await query.message.reply_text("✅ Проверка МВЦ: подозрительных изменений нет")
+
 
 
 app = ApplicationBuilder().token(TOKEN).build()
