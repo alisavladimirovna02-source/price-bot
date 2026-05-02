@@ -1,7 +1,8 @@
 ALLOWED_USERS = [800906903, 686105512, 5652216103, 7434891167]
 
 user_store = {}
-
+import csv
+from io import StringIO
 import os
 import requests
 import base64
@@ -70,6 +71,69 @@ def delete_mapping_github(item):
     )
 
     return "DELETED"
+
+
+def load_mvc_from_google():
+    url = os.getenv("MVC_URL")  # можно захардкодить
+
+    response = requests.get(url)
+    data = list(csv.reader(StringIO(response.text)))
+
+    mvc = {}
+
+    for row in data[1:]:
+        try:
+            sku = row[0].strip()
+            price = float(row[12])  # колонка M
+
+            if sku:
+                mvc[sku] = price
+        except:
+            continue
+
+    return mvc
+
+
+def compare_mvc():
+    today = load_mvc_from_google()
+
+    # загрузка вчерашнего
+    old = {}
+    if os.path.exists("mvc_yesterday.csv"):
+        with open("mvc_yesterday.csv", "r", encoding="utf-8") as f:
+            reader = csv.reader(f)
+            for row in reader:
+                old[row[0]] = float(row[1])
+
+    results = []
+
+    for sku in today:
+        new_price = today[sku]
+        old_price = old.get(sku)
+
+        if old_price is None:
+            status = "NEW"
+            diff = ""
+        elif new_price != old_price:
+            status = "CHANGED"
+            diff = round(new_price - old_price, 2)
+        else:
+            status = "OK"
+            diff = 0
+
+        results.append([sku, old_price, new_price, diff, status])
+
+    # сохраняем результат
+    with open("mvc_diff.csv", "w", newline="", encoding="utf-8") as f:
+        writer = csv.writer(f)
+        writer.writerow(["SKU", "Вчера", "Сегодня", "Разница", "Статус"])
+        writer.writerows(results)
+
+    # сохраняем "сегодня" как "вчера"
+    with open("mvc_yesterday.csv", "w", newline="", encoding="utf-8") as f:
+        writer = csv.writer(f)
+        for sku, price in today.items():
+            writer.writerow([sku, price])
 
 
 async def delete_mapping_button(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -325,19 +389,19 @@ async def send_not_found_page(source, context):
     if isinstance(source, CallbackQuery):
         try:
             await source.message.edit_text(
-            text,
-            reply_markup=InlineKeyboardMarkup(keyboard)
+                text,
+                reply_markup=InlineKeyboardMarkup(keyboard)
             )
         except:
             await source.message.reply_text(
-            text,
-            reply_markup=InlineKeyboardMarkup(keyboard)
+                text,
+                reply_markup=InlineKeyboardMarkup(keyboard)
             )
     else:
         await source.message.reply_text(
-        text,
-        reply_markup=InlineKeyboardMarkup(keyboard)
-    )
+            text,
+            reply_markup=InlineKeyboardMarkup(keyboard)
+        )
 
 
 async def add_mapping_button(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -420,6 +484,10 @@ async def done_button(update: Update, context: ContextTypes.DEFAULT_TYPE):
             self.message = message
 
     await process_and_reply(FakeUpdate(query.message))
+    compare_mvc()
+
+    with open("mvc_diff.csv", "rb") as f:
+        await query.message.reply_document(f)
 
 
 app = ApplicationBuilder().token(TOKEN).build()
@@ -435,3 +503,4 @@ app.add_handler(CallbackQueryHandler(done_button, pattern="done"))
 
 print("🤖 Бот запущен...")
 app.run_polling()
+
