@@ -255,15 +255,25 @@ async def process_and_reply(update: Update):
             f"❌ Не найдено: {not_found_count}"
         )
 
-        with open("prices_parsed.csv", "rb") as f:
+                with open("prices_parsed.csv", "rb") as f:
             await update.message.reply_document(f)
 
         if not_found_count > 0:
             with open("not_found.txt", "rb") as f:
                 await update.message.reply_document(f)
 
-    except Exception as e:
-        await update.message.reply_text(f"❌ Ошибка: {str(e)}")
+        check_count = compare_mvc()
+
+        if check_count > 0:
+            await update.message.reply_text(
+                f"⚠️ Проверка МВЦ: найдено позиций для проверки: {check_count}"
+            )
+
+            with open("mvc_check.csv", "rb") as f:
+                await update.message.reply_document(f)
+        else:
+            await update.message.reply_text("✅ Проверка МВЦ: подозрительных изменений нет")
+
 
 
 async def handle_file(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -515,17 +525,7 @@ async def done_button(update: Update, context: ContextTypes.DEFAULT_TYPE):
             self.message = message
 
     await process_and_reply(FakeUpdate(query.message))
-    check_count = compare_mvc()
-
-    if check_count > 0:
-        await query.message.reply_text(
-            f"⚠️ Проверка МВЦ: найдено позиций для проверки: {check_count}"
-        )
-
-        with open("mvc_check.csv", "rb") as f:
-            await query.message.reply_document(f)
-    else:
-        await query.message.reply_text("✅ Проверка МВЦ: подозрительных изменений нет")
+    
 
 
 
