@@ -76,7 +76,6 @@ def delete_mapping_github(item):
 def load_mvc_from_google():
     url = "https://docs.google.com/spreadsheets/d/1FPMu1Q7cmtQu8KxXNJqhqI97L-KXTR43V8DcDnDfTZs/export?format=csv&gid=0"
 
-
     response = requests.get(url, timeout=20)
     response.raise_for_status()
 
@@ -87,7 +86,7 @@ def load_mvc_from_google():
     for row in data[1:]:
         try:
             sku = row[0].strip()
-            price = float(row[12])  # колонка M
+            price = float(row[12].replace(" ", "").replace(",", "."))
 
             if sku:
                 mvc[sku] = price
@@ -95,6 +94,7 @@ def load_mvc_from_google():
             continue
 
     return mvc
+
 
 
 def compare_mvc():
