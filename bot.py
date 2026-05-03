@@ -6,7 +6,6 @@ from io import StringIO
 import os
 import requests
 import base64
-print("БОТ ЗАПУЩЕН ИЗ ФАЙЛА:", os.path.abspath(__file__))
 from telegram import ReplyKeyboardMarkup
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import (
@@ -243,7 +242,6 @@ async def not_found_button(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def process_and_reply(update: Update):
     try:
         msg = await update.message.reply_text("⏳ Обрабатываю прайс...")
-        await update.message.reply_text("🧪 Это новая версия кода")
 
 
         os.system("python3 parse_prices.py")
