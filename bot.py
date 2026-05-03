@@ -74,7 +74,8 @@ def delete_mapping_github(item):
 
 
 def load_mvc_from_google():
-    url = os.getenv("MVC_URL")  # можно захардкодить
+    url = "https://docs.google.com/spreadsheets/d/1FPMu1Q7cmtQu8KxXNJqhqI97L-KXTR43V8DcDnDfTZs/export?format=csv&gid=0"
+
 
     response = requests.get(url)
     data = list(csv.reader(StringIO(response.text)))
