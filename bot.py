@@ -242,6 +242,8 @@ async def not_found_button(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def process_and_reply(update: Update):
     try:
         msg = await update.message.reply_text("⏳ Обрабатываю прайс...")
+        await update.message.reply_text("🧪 Это новая версия кода")
+
 
         os.system("python3 parse_prices.py")
 
