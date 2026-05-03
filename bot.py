@@ -77,7 +77,9 @@ def load_mvc_from_google():
     url = "https://docs.google.com/spreadsheets/d/1FPMu1Q7cmtQu8KxXNJqhqI97L-KXTR43V8DcDnDfTZs/export?format=csv&gid=0"
 
 
-    response = requests.get(url)
+    response = requests.get(url, timeout=20)
+    response.raise_for_status()
+
     data = list(csv.reader(StringIO(response.text)))
 
     mvc = {}
@@ -97,6 +99,8 @@ def load_mvc_from_google():
 
 def compare_mvc():
     today = load_mvc_from_google()
+    if not today:
+        raise Exception("МВЦ не загрузилась или в колонке M не нашлись цены")
 
     old = {}
     if os.path.exists("mvc_yesterday.csv"):
@@ -262,6 +266,7 @@ async def process_and_reply(update: Update):
         if not_found_count > 0:
             with open("not_found.txt", "rb") as f:
                 await update.message.reply_document(f)
+        await update.message.reply_text("🔎 Запускаю проверку МВЦ...")
 
         check_count = compare_mvc()
 
