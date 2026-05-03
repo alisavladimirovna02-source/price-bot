@@ -255,7 +255,7 @@ async def process_and_reply(update: Update):
             f"❌ Не найдено: {not_found_count}"
         )
 
-                with open("prices_parsed.csv", "rb") as f:
+        with open("prices_parsed.csv", "rb") as f:
             await update.message.reply_document(f)
 
         if not_found_count > 0:
@@ -273,6 +273,9 @@ async def process_and_reply(update: Update):
                 await update.message.reply_document(f)
         else:
             await update.message.reply_text("✅ Проверка МВЦ: подозрительных изменений нет")
+
+    except Exception as e:
+        await update.message.reply_text(f"❌ Ошибка: {str(e)}")
 
 
 
