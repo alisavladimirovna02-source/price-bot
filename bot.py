@@ -86,7 +86,7 @@ def load_mvc_from_google():
     for row in data[1:]:
         try:
             sku = row[0].strip()
-            price = float(row[12].replace(" ", "").replace(",", "."))
+            price = float(row[10].replace(" ", "").replace(",", "."))
 
             if sku:
                 mvc[sku] = price
@@ -243,7 +243,6 @@ async def process_and_reply(update: Update):
     try:
         msg = await update.message.reply_text("⏳ Обрабатываю прайс...")
 
-
         os.system("python3 parse_prices.py")
 
         total = 0
@@ -261,28 +260,57 @@ async def process_and_reply(update: Update):
             f"❌ Не найдено: {not_found_count}"
         )
 
-        with open("prices_parsed.csv", "rb") as f:
-            await update.message.reply_document(f)
+        try:
+            with open("prices_parsed.csv", "rb") as f:
+                await update.message.reply_document(
+                    f,
+                    read_timeout=120,
+                    write_timeout=120,
+                    connect_timeout=30,
+                    pool_timeout=30
+                )
+        except Exception as e:
+            await update.message.reply_text(f"⚠️ Не удалось отправить prices_parsed.csv: {e}")
 
         if not_found_count > 0:
-            with open("not_found.txt", "rb") as f:
-                await update.message.reply_document(f)
+            try:
+                with open("not_found.txt", "rb") as f:
+                    await update.message.reply_document(
+                        f,
+                        read_timeout=120,
+                        write_timeout=120,
+                        connect_timeout=30,
+                        pool_timeout=30
+                    )
+            except Exception as e:
+                await update.message.reply_text(f"⚠️ Не удалось отправить not_found.txt: {e}")
+
         await update.message.reply_text("🔎 Запускаю проверку МВЦ...")
 
-        check_count = compare_mvc()
+        try:
+            check_count = compare_mvc()
 
-        if check_count > 0:
-            await update.message.reply_text(
-                f"⚠️ Проверка МВЦ: найдено позиций для проверки: {check_count}"
-            )
+            if check_count > 0:
+                await update.message.reply_text(
+                    f"⚠️ Проверка МВЦ: найдено позиций для проверки: {check_count}"
+                )
 
-            with open("mvc_check.csv", "rb") as f:
-                await update.message.reply_document(f)
-        else:
-            await update.message.reply_text("✅ Проверка МВЦ: подозрительных изменений нет")
+                with open("mvc_check.csv", "rb") as f:
+                    await update.message.reply_document(
+                        f,
+                        read_timeout=120,
+                        write_timeout=120,
+                        connect_timeout=30,
+                        pool_timeout=30
+                    )
+            else:
+                await update.message.reply_text("✅ Проверка МВЦ: подозрительных изменений нет")
+
+        except Exception as e:
+            await update.message.reply_text(f"❌ Ошибка проверки МВЦ: {e}")
 
     except Exception as e:
-        await update.message.reply_text(f"❌ Ошибка: {str(e)}")
+        await update.message.reply_text(f"❌ Ошибка обработки прайса: {e}")
 
 
 
