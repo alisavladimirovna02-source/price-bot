@@ -6,6 +6,7 @@ from io import StringIO
 import os
 import requests
 import base64
+print("БОТ ЗАПУЩЕН ИЗ ФАЙЛА:", os.path.abspath(__file__))
 from telegram import ReplyKeyboardMarkup
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import (
