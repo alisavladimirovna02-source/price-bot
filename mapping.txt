@@ -32208,3 +32208,4 @@ iPad А16 11 128 Blue WiFi esim = ipad11blue128cell
 iPad А16 11 128 Pink WiFi esim = ipad11pink128LTE
 iPad А16 11 128 Silver WiFi esim = ipad11silver128LTE
 A37 12/256 Charcoal = a37charcoal12/256
+S24 8/128 S921Е Black = S24black8/128
