@@ -790,6 +790,7 @@ iPad Air 11 M3 128 Grey WFМК = ipadair11m3gray128
 iPad Air 13 M3 2025 256GB LTE Blue = ipadair13m3blue256LTE
 iPad Air 13 M3 2025 256GB LTE Space Gray = ipadair13M3gray256LTE
 iPad Pro 13 M5 2025 2TB Standard Glass WiFi Silver = ipad13prom5silver2tb
+16 Pro Max 512 Black esim = iphone16promaxblack512esim
 16 Pro Max 512 Black = iphone16promaxblack512
 A07 4/128 Violet = a07violet4/128
 A07 6/128 Black = a07black6/128
