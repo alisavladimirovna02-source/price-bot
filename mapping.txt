@@ -32212,3 +32212,4 @@ S24 8/128 S921Е Black = S24black8/128
 S24 Ultra 12/512 S928B Black = s24ultrablack12/512
 S24 Ultra 12/512 S928B Gray = s24ultragray12/512
 S26+ 12/512 S947B Pink Gold = S26pluspinkgold12/512
+S26+ 12/512 S947B Silver = S26plussilver12/512
