@@ -32225,3 +32225,4 @@ Tab S11 5G X736 12/512 gray = galaxytabS11gray12/512cell
 Tab S11 Ultra 5G X936 12/256 silver = galaxytabS11ultrasilver12/256cell
 Tab S10 FE 5G X526 8/128 blue = galaxytabs10FEblue8/128SM-X526B
 Xiaomi 15T Pro 5G 12/256 Gold = mi15TProGold12/256
+Z Fold7 12/256 F966B Mint = Zfold7mint12/256
