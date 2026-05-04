@@ -32218,3 +32218,4 @@ SE3 2025 40 Midnight SB SM = awse2025black40s/m
 Tab A11+ 5G X236 6/128 silver = galaxytabA11+silver6/128cell
 Tab A11+ WiFi X230 6/128 silver = galaxytabA11+silver128
 Tab A11+ WiFi X230 8/256 gray = galaxytabA11+gray256
+Tab S10 FE WiFi X520 12/256 gray = galaxytabs10FEgray12/256SM-X520
