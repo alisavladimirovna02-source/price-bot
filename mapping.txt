@@ -32221,3 +32221,4 @@ Tab A11+ WiFi X230 8/256 gray = galaxytabA11+gray256
 Tab S10 FE WiFi X520 12/256 gray = galaxytabs10FEgray12/256SM-X520
 Tab S10 FE WiFi X520 8/128 silver = galaxytabs10fesilver8/128
 Tab S10 FE+ WiFi X620 8/128 gray = galaxytabs10FE+gray8/128SM-X620
+Tab S11 5G X736 12/512 gray = galaxytabS11gray12/512cell
