@@ -1,5 +1,9 @@
 import re
 import csv
+import os
+import base64
+import requests
+
 
 # =========================
 # 📦 ЗАГРУЗКА КАТАЛОГА
@@ -16,22 +20,55 @@ print(f"Загружено SKU: {len(catalog)}")
 
 not_found = set()
 
-# =========================
-# 📌 ЗАГРУЗКА MAPPING
-# =========================
-mapping = {}
 
-with open("mapping.txt", "r", encoding="utf-8") as f:
-    for line in f:
+# =========================
+# 📌 ЗАГРУЗКА MAPPING ИЗ GITHUB
+# =========================
+def load_mapping_from_github():
+    token = os.getenv("GITHUB_TOKEN")
+    repo = os.getenv("GITHUB_REPO")
+    path = "mapping.txt"
+
+    if not token or not repo:
+        raise Exception("Не заданы GITHUB_TOKEN или GITHUB_REPO")
+
+    url = f"https://api.github.com/repos/{repo}/contents/{path}"
+
+    headers = {
+        "Authorization": f"token {token}"
+    }
+
+    response = requests.get(url, headers=headers, timeout=20)
+    response.raise_for_status()
+
+    data = response.json()
+
+    if "content" not in data:
+        raise Exception("Не удалось получить mapping.txt из GitHub")
+
+    content = base64.b64decode(data["content"]).decode("utf-8")
+
+    mapping = {}
+
+    for line in content.splitlines():
         if "=" in line:
-            left, right = line.split("=")
+            left, right = line.split("=", 1)
             mapping[left.strip()] = right.strip()
+
+    return mapping
+
+
+mapping = load_mapping_from_github()
+
+print(f"Загружено mapping из GitHub: {len(mapping)}")
+
 
 # =========================
 # 🧹 НОРМАЛИЗАЦИЯ ТЕКСТА
 # =========================
 def normalize_text(text):
     return " ".join(text.lower().split())
+
 
 # =========================
 # 🔍 МАТЧИНГ ПО MAPPING
@@ -46,6 +83,7 @@ def match_from_mapping(name):
             return mapping[key], "OK"
 
     return "", "NOT_FOUND"
+
 
 # =========================
 # 🌍 ФЛАГИ
@@ -65,17 +103,20 @@ region_map = {
     "HK": "2sim",
 }
 
+
 # =========================
 # 📂 ФАЙЛЫ
 # =========================
 input_file = "prices_utf8.txt"
 output_file = "prices_parsed.csv"
 
+
 # =========================
 # 📖 ЧТЕНИЕ
 # =========================
 with open(input_file, "r", encoding="utf-8") as f:
     lines = f.readlines()
+
 
 # =========================
 # 💾 ЗАПИСЬ CSV
@@ -194,3 +235,4 @@ with open("not_found.txt", "w", encoding="utf-8") as f:
         f.write(item + "\n")
 
 print(f"! Не найдено товаров: {len(not_found)}")
+
