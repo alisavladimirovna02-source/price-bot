@@ -32210,3 +32210,4 @@ iPad А16 11 128 Silver WiFi esim = ipad11silver128LTE
 A37 12/256 Charcoal = a37charcoal12/256
 S24 8/128 S921Е Black = S24black8/128
 S24 Ultra 12/512 S928B Black = s24ultrablack12/512
+S24 Ultra 12/512 S928B Gray = s24ultragray12/512
