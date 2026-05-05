@@ -18,6 +18,7 @@
 15 Pro 512 Black esim = iphone15problack512eSIM
 15 Pro 512 Blue esim = iphone15problue512eSIM
 15 Pro 512 Blue = iphone15problue512
+15 Pro Max 256 White 2sim = iphone15promaxwhite256-2sim
 15 Pro Max 256 White = iphone15promaxwhite256
 15 Pro Max 256 Natural = iphone15promaxtitanium256
 15 Pro Max 512 Natural = iphone15promaxtitanium512
