@@ -32241,3 +32241,4 @@ S26 12/256 S942B Pink Gold = S26pinkgold12/256
 S26+ 12/256 S947B Pink Gold = S26pluspinkgold12/256
 S26+ 12/256 S947B Silver = S26plussilver12/256
 SE2 2024 40 Silver Cloud Loop esim = awse2024silver40bluecloud
+Z Flip7 12/256 F766B CoralRed = Zflip7coralred12/256
