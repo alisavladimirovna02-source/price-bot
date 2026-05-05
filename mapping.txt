@@ -32240,3 +32240,4 @@ S25 Edge 12/512 S9370 Jetblack = s25Edgeblack12/512
 S26 12/256 S942B Pink Gold = S26pinkgold12/256
 S26+ 12/256 S947B Pink Gold = S26pluspinkgold12/256
 S26+ 12/256 S947B Silver = S26plussilver12/256
+SE2 2024 40 Silver Cloud Loop esim = awse2024silver40bluecloud
