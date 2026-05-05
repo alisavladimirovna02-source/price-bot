@@ -32232,3 +32232,4 @@ A37 12/256 Lavender = a37lavender12/256
 A57 12/256 Lilac = a57lilac12/256
 Galaxy Tab S10 Lite WiFi 8/256 Coral Red = galaxytabS10litered8/256
 Galaxy Tab S10 Lite WiFi 8/256 Silver = galaxytabS10litesilver8/256
+Huawei Nova 14i 8/128 Black = huaweinova14iblack8/128
