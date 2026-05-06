@@ -32248,3 +32248,4 @@ A07 4/64 Black = a07black4/64
 A37 8/256 Charcoal = a37charcoal8/256
 A37 8/256 Graygreen = a37graygreen8/256
 A37 8/256 Lavender = a37lavender8/256
+A37 8/256 White = a37white8/256
