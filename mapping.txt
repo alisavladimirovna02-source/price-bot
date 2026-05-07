@@ -32258,3 +32258,4 @@ Redmi A7 Pro 4/128 Blue = redmiA7problue4/128
 Redmi A7 Pro 4/64 Black = redmiA7problack4/64
 Redmi A7 Pro 4/64 Blue = redmiA7problue4/64
 Tab A11 LTE X135 8/128 silver = galaxytabA11silver8/128cell
+Tab A9+ LTE X216 4/64 navy = SamsungGalaxyTabA9+navy4G4/64cell
