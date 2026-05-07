@@ -32256,3 +32256,4 @@ Honor Magic 7 Pro 12/512 Blue = honormagic7problue12/512
 Redmi A7 Pro 4/128 Black = redmiA7problack4/128
 Redmi A7 Pro 4/128 Blue = redmiA7problue4/128
 Redmi A7 Pro 4/64 Black = redmiA7problack4/64
+Redmi A7 Pro 4/64 Blue = redmiA7problue4/64
