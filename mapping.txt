@@ -32252,3 +32252,4 @@ A37 8/256 White = a37white8/256
 S11 46 Gold Ti Milanese Loop ML esim = aws11gold46milaneseloopm/l
 U3 Natural Alpine Loop Blue L = awultra3natural/blue_alpineloopL
 iPad A16 11 256 Blue LTE esim = ipad11blue256cell
+Honor Magic 7 Pro 12/512 Blue = honormagic7problue12/512
