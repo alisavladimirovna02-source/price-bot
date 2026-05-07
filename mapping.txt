@@ -32260,3 +32260,4 @@ Redmi A7 Pro 4/64 Blue = redmiA7problue4/64
 Tab A11 LTE X135 8/128 silver = galaxytabA11silver8/128cell
 Tab A9+ LTE X216 4/64 navy = SamsungGalaxyTabA9+navy4G4/64cell
 Tab S9 5G X716 8/128 graphite = SamsungGalaxytabs9graphite8/128cell
+U2 Black Ocean Band Black esim = awUltra2black/black_oceanBand
