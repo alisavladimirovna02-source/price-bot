@@ -32152,7 +32152,7 @@ Air 15 MDVF4 Starlight = macair15m5starlight24/1TB
 Air 15 MDVT4 Sky Blue = macair15m5blue16/1TB
 Honor 400 Pro 12/512 Grey = HONOR400progray12/512
 Redmi Pad 2 4G 8/256 Green = redmipad2green8/256cell
-S11 42 Grey SB Black SM = aws11gray/black42s/m
+S11 42 Grey SB Black SM = aws11gray42s/m
 S11 46 Jet Black SB Black SM = aws11jetblack/black46s/m
 S24 8/128 S921E Yellow = s24yellow8/128
 S25 FE 8/128 S731B Jetblack = S25FEblack8/128
@@ -32160,7 +32160,6 @@ S25 FE 8/128 S731B Navy = s25fenavy8/128
 S25 Ultra 12/512 S938B Jadegreen = s25ultrajadegreen12/512
 S26 12/512 S942B Pink Gold = S26pinkgold12/512
 SE3 2025 44 Midnight SB ML = awse2025black44m/l
-
 SE3 2025 44 Midnight SB SM = awse2025black44s/m
 Tab S11 Ultra 5G X936 16/1024 grey = galaxytabs11ultragray16/1024cell
 U3 Nat Alpine Loop Terra Cotta M esim = awultra3natural/terracotta_alpineloopM
