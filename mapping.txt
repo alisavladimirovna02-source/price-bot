@@ -32265,3 +32265,4 @@ iPad Pro M5 11 256 Black Wi i esim = ipad11proM5black256
 15 Pro 256 Blue 2sim = iphone15problue256-2sim
 Honor 400 8/256 Grey = HONOR400gray8/256
 Poco Pad X1 WiFi 8/512 Gray = pocopadX1gray8/512
+S25 Edge 12/256 S937B Iceblue = S25EdgeIceblue12/256
