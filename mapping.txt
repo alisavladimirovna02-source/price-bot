@@ -32263,3 +32263,4 @@ Tab S9 5G X716 8/128 graphite = SamsungGalaxytabs9graphite8/128cell
 U2 Black Ocean Band Black esim = awUltra2black/black_oceanBand
 iPad Pro M5 11 256 Black Wi i esim = ipad11proM5black256
 15 Pro 256 Blue 2sim = iphone15problue256-2sim
+Honor 400 8/256 Grey = HONOR400gray8/256
