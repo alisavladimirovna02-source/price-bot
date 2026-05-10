@@ -32285,3 +32285,4 @@ S25 Edge 12/256 S937B Icyblue = S25EdgeIceblue12/256
 S25 Edge 12/512 S937B Jetblack = s25Edgeblack12/512
 SE2 44 Midnight SL 2024 esim = AWSE2024black44sportloop
 SE3 40 MidnightS/M 2025 esim = awse2025black40s/m
+SE3 44 StarlightS/M 2025 esim = awse2025starlight44s/m
