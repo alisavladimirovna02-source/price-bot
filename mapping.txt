@@ -32279,3 +32279,4 @@ S11 42 Space GrayS/M esim = aws11gray42s/m
 S11 46 Jet BlackM/L esim = aws11jetblack46m/l
 S11 46 SilverM/L esim = aws11silverpurple46m/l
 S11 46 Slate Milanese Loop S/M esim = aws11slate46milaneseloops/m
+S11 46 Space GrayM/L esim = aws11gray/black46m/l
