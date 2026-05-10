@@ -32282,3 +32282,4 @@ S11 46 Slate Milanese Loop S/M esim = aws11slate46milaneseloops/m
 S11 46 Space GrayM/L esim = aws11gray/black46m/l
 S11 46 Space GrayS/M esim = aws11gray/black46s/m
 S25 Edge 12/256 S937B Icyblue = S25EdgeIceblue12/256
+S25 Edge 12/512 S937B Jetblack = s25Edgeblack12/512
