@@ -32277,3 +32277,4 @@ S11 42 Jet BlackM/L esim = aws11jetblack/black42m/l
 S11 42 Jet BlackS/M esim = aws11jetblack42s/m
 S11 42 Space GrayS/M esim = aws11gray42s/m
 S11 46 Jet BlackM/L esim = aws11jetblack46m/l
+S11 46 SilverM/L esim = aws11silverpurple46m/l
