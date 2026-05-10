@@ -32271,3 +32271,4 @@ Galaxy Watch 8 40mm Graphite = GalaxyWatch8graphite40
 Galaxy Watch 8 44mm Silver = GalaxyWatch8silver44
 Galaxy Watch 8 Classic 46mm Black = galaxywatch8classicblack46
 Redmi 15C 8/256 NFC Blue = redmi15Cblue8/256
+S10 42 Jet Black S/M esim = aws10black42s/m
