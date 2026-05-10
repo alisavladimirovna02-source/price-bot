@@ -32269,3 +32269,4 @@ S25 Edge 12/256 S937B Jetblack = S25EdgeJetblack12/256
 
 Galaxy Watch 8 40mm Graphite = GalaxyWatch8graphite40
 Galaxy Watch 8 44mm Silver = GalaxyWatch8silver44
+Galaxy Watch 8 Classic 46mm Black = galaxywatch8classicblack46
