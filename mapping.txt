@@ -32306,3 +32306,4 @@ U3 Black TL Black/ Charcoal ML esim = awultra3Black/charcoal_trailloopM/L
 U3 Black TL Black/ Charcoal SM esim = awultra3black/charcoal_trailloops/m
 U3 Natural AL Terra Cotta L esim = awultra3natural/terracotta_alpineloopL
 U3 Natural Alpine Loop Black L esim = awultra3natural/black_alpineloopL
+U3 Natural OB Neon Green esim = awultra3natural/neongreen_oceanband
