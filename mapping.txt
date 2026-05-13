@@ -32300,3 +32300,4 @@ Honor X6c 6/256GB Black = honorx6cblack6/256
 Honor X6c 6/256GB Blue = honorx6cblue6/256
 Redmi A7 Pro 4/128 Orange = redmiA7proorange4/128
 S11 42 Rose Gold SB LB ML = awS11rosegold42m/l
+SE2 2024 40 Silver SB Denim ML esim = awse2024silver40m/l
