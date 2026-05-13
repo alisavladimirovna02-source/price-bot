@@ -32297,3 +32297,4 @@ UL 3 Natural / Light Blue ALM esim = awultra3natural/blue_alpineloopM
 A57 12/512 Icyblue = A57blue12/512
 A57 12/512 Navy = A57navy12/512
 Honor X6c 6/256GB Black = honorx6cblack6/256
+Honor X6c 6/256GB Blue = honorx6cblue6/256
