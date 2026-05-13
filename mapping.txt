@@ -32303,3 +32303,4 @@ S11 42 Rose Gold SB LB ML = awS11rosegold42m/l
 SE2 2024 40 Silver SB Denim ML esim = awse2024silver40m/l
 Tab S11 WiFi X730 12/128 grey = galaxytabs11gray12/128
 U3 Black TL Black/ Charcoal ML esim = awultra3Black/charcoal_trailloopM/L
+U3 Black TL Black/ Charcoal SM esim = awultra3black/charcoal_trailloops/m
