@@ -32294,3 +32294,4 @@ UL 3 Natural / Anchor Blue OB esim = awultra3natural/anchorblue_oceanband
 UL 3 Natural / Blue/Bright Blue TLS/M esim = awultra3natural/blue_trailloops/m
 UL 3 Natural / Light Blue ALM esim = awultra3natural/blue_alpineloopM
 17e 512 Pink 1Sim+eSim = iphone17epink512
+A57 12/512 Icyblue = A57blue12/512
