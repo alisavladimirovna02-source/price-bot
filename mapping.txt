@@ -32308,3 +32308,4 @@ U3 Natural AL Terra Cotta L esim = awultra3natural/terracotta_alpineloopL
 U3 Natural Alpine Loop Black L esim = awultra3natural/black_alpineloopL
 U3 Natural OB Neon Green esim = awultra3natural/neongreen_oceanband
 Xiaomi 15T 5G 12/512 Gold = Mi15Tgold12/512
+iPad Pro 11 M5 2025 2TB Standard Glass WiFi Silver = ipad11prom5silver2tb
