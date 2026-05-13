@@ -32295,3 +32295,4 @@ UL 3 Natural / Blue/Bright Blue TLS/M esim = awultra3natural/blue_trailloops/m
 UL 3 Natural / Light Blue ALM esim = awultra3natural/blue_alpineloopM
 17e 512 Pink 1Sim+eSim = iphone17epink512
 A57 12/512 Icyblue = A57blue12/512
+A57 12/512 Navy = A57navy12/512
