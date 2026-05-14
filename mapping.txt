@@ -1196,7 +1196,14 @@ iPad Pro M5 13 512 Black Wi Fi esim = ipad13prom5black512
 iPad Pro M5 13 512 Silver LTE esim = ipad13prom5silver512cell
 iPad Pro M5 13 512 Silver Wi Fi esim = ipad13prom5silver512
 iPad Pro M5 11 512 Black Wi Fi = ipad11prom5black512
-
+16 Pro 256 White esim = iphone16prowhite256esim
+A57 12/512 Gray = A57gray12/512
+U3 Natural Alpine Loop Black M esim = awultra3natural/black_alpineloopM
+Xiaomi Pad 7 WiFi 12/256 Blue = xiaomipad7blue12/256
+Xiaomi Pad 7 WiFi 12/256 Gray = xiaomipad7gray12/256
+Xiaomi Pad 7 WiFi 12/256 Green = xiaomipad7green12/256
+Z Flip7 12/512 F766B Jetblack = Zflip7black12/512
+iPad Pro 11 M5 2025 2TB Standard Glass WiFi Space Black = ipad11prom5black2tb
 
 
 
