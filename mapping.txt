@@ -1107,6 +1107,7 @@ Pixel 10 5G 128 Indigo = pixel10indigo12/128
 Pixel 10 5G 128 Obsidian = pixel10obsidian12/128
 Pixel 10 Pro 16/512GB Obsidian CA = pixel10proobsidian16/512
 iPad 11 2025 128GB LTE Blue = ipad11blue128cell
+iPad А16 11 128 Blue WiFi esim = ipad11blue128
 iPad 11 2025 256Gb LTE Blue = ipad11blue256cell
 17e 512 White eSim = iphone17ewhite512esim
 A17 4G 4/128 Black = A17black4/128
