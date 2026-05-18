@@ -32350,3 +32350,4 @@ Sony Dual Sense Cosmic Red = sonydualsensecosmicred
 Sony Dual Sense Edge Black = sonydualsenseedgeblack
 Sony Dual Sense Edge White = sonydualsenseedgewhite
 Sony Dual Sense Fortnite = sonydualsenseFortnite
+Sony Dual Sense Galactic Purple = sonydualsensepurple
