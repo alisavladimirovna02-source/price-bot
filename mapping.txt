@@ -32382,3 +32382,4 @@ iPad Air 13 M4 2026 512GB WiFi Starlight = ipadair13M4starlight512
 Pro 16 MGEA4 Space Black = macpro16m5black24/1tb
 SE3 40 StarlightS/M 2025 esim = awse2025starlight40s/m
 SE3 44 MidnightS/M 2025 esim = awse2025black40s/m
+Sony Dual Sense Genshin Impact = sonydualsenseGenshinImpact
