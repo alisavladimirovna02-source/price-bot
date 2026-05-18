@@ -32372,3 +32372,4 @@ UL 3 Natural / Light Blue ALL esim = awultra3natural/blue_alpineloopL
 UL 3 Natural / Natural Titanium Milanese Loop M esim = awultra3naturalmilaneseloopM
 Z Flip7 12/512 F766B Blue = Zflip7blueshadow12/512
 iPad 11 2025 128GB LTE Pink = ipad11pink128LTE
+iPad Air 11 M4 2026 512GB LTE Purple = ipadair11m4purple512LTE
