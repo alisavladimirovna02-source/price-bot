@@ -32331,3 +32331,4 @@ S10 46 Rose Gold M/L esim = aws10rose46m/l
 S10 46 Rose Gold S/M esim = aws10rosegold46s/m
 S10 46 Silver M/L esim = aws10silverdenim46m/l
 S10 46 Silver S/M esim = aws10silverdenim46s/m
+S11 42 Rose GoldM/L esim = aws11rosegold42m/l
