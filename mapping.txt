@@ -32344,3 +32344,4 @@ Sony Dual Sence Chroma Indigo = sonydualsensechromaindigo
 Sony Dual Sence Cobalt Blue = sonydualsensecobaltblue
 Sony Dual Sense 30th Anniversary Limited Edition = sonydualsense30thlimited
 Sony Dual Sense AstroBot = sonydualsenseAstroBot
+Sony Dual Sense Camouflage Gray = sonydualsensecamouflage
