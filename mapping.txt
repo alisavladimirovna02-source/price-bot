@@ -32322,3 +32322,4 @@ A26 6/128 Mint = A26mint6/128
 Honor 600 12/256 Black = honor600black12/256
 Honor 600 12/256 Golden White = honor600goldenwhite12/256
 Honor X7d 8/256 Gold = honorX7dgold8/256
+Note 15 4G 8/256 Black = note15black8/256
