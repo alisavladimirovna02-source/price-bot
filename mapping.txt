@@ -32347,3 +32347,4 @@ Sony Dual Sense AstroBot = sonydualsenseAstroBot
 Sony Dual Sense Camouflage Gray = sonydualsensecamouflage
 Sony Dual Sense Chroma Teal = sonydualsensechromateal
 Sony Dual Sense Cosmic Red = sonydualsensecosmicred
+Sony Dual Sense Edge Black = sonydualsenseedgeblack
