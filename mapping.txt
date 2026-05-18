@@ -32346,3 +32346,4 @@ Sony Dual Sense 30th Anniversary Limited Edition = sonydualsense30thlimited
 Sony Dual Sense AstroBot = sonydualsenseAstroBot
 Sony Dual Sense Camouflage Gray = sonydualsensecamouflage
 Sony Dual Sense Chroma Teal = sonydualsensechromateal
+Sony Dual Sense Cosmic Red = sonydualsensecosmicred
