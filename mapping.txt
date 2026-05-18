@@ -32386,3 +32386,4 @@ Sony Dual Sense Genshin Impact = sonydualsenseGenshinImpact
 Sony Dual Sense Marathon = sonydualsenseMarathon
 iPad Air 13 M4 2026 128GB LTE Purple = ipadair13M4purple128LTE
 iPad Air 13 M4 2026 1TB WiFi Purple = ipadair13M4purple1TB
+iPad Air 13 M4 2026 512GB WiFi Space Gray = ipadair13M4gray512
