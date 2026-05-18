@@ -32352,3 +32352,4 @@ Sony Dual Sense Edge White = sonydualsenseedgewhite
 Sony Dual Sense Fortnite = sonydualsenseFortnite
 Sony Dual Sense Galactic Purple = sonydualsensepurple
 Sony Dual Sense Ghost of Yotei Black = sonydualsenseGhostofYoteiBlack
+Sony Dual Sense Ghost of Yotei Gold = sonydualsenseGhostofYoteiGold
