@@ -32366,3 +32366,4 @@ Sony Dual Sense Techno Red = sonydualsenseTechnoRed
 Sony Dual Sense Volcanic Red = sonydualsenseVolcanitRed
 UL 3 Black / Black OB esim = awultra3black/black_oceanband
 UL 3 Black / Black Titanium Milanese Loop L esim = awultra3BlackmilaneseloopL
+UL 3 Black / Black/Charcoal TLM/L esim = awultra3Black/charcoal_trailloopM/L
