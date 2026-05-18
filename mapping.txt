@@ -32319,3 +32319,5 @@ iPad Pro 11 M5 2025 2TB Standard Glass WiFi Silver = ipad11prom5silver2tb
 S26 Ultra 12/512 S948B Pink Gold = s26ultrapinkgold12/512
 
 A26 6/128 Mint = A26mint6/128
+Honor 600 12/256 Black = honor600black12/256
+Honor 600 12/256 Golden White = honor600goldenwhite12/256
