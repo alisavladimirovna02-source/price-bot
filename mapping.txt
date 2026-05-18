@@ -32357,3 +32357,4 @@ Sony Dual Sense God of War 20th Anniversary = sonydualsenseGodofWarAnniversary
 Sony Dual Sense Icon Blue Edition = sonydualsenseIconBlueEdition
 Sony Dual Sense Last of Us Edition = sonydualsenseLastofUsEdition
 Sony Dual Sense Midnight Black = sonydualsenseblack
+Sony Dual Sense Monster Hunter Edition = sonydualsenseMonsterHunterEdition
