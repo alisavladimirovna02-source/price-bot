@@ -32336,3 +32336,4 @@ S11 42 Space GrayM/L esim = aws11gray/black42m/l
 S11 46 Gold Milanese Loop M/L esim = aws11gold46milaneseloopm/l
 S11 46 Jet BlackS/M esim = aws11jetblack/black46s/m
 S11 46 Rose GoldM/L esim = aws11rosegold46m/l
+S25 Ultra 12/256 S938B Jatblack = s25ultrajetblack12/256
