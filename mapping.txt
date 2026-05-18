@@ -32374,3 +32374,4 @@ Z Flip7 12/512 F766B Blue = Zflip7blueshadow12/512
 iPad 11 2025 128GB LTE Pink = ipad11pink128LTE
 iPad Air 11 M4 2026 512GB LTE Purple = ipadair11m4purple512LTE
 iPad Air 13 M3 2025 512GB LTE Space Gray = ipadair13M3gray512LTE
+iPad Air 13 M4 2026 128GB LTE Blue = ipadair13M4blue128LTE
