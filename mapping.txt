@@ -32355,3 +32355,4 @@ Sony Dual Sense Ghost of Yotei Black = sonydualsenseGhostofYoteiBlack
 Sony Dual Sense Ghost of Yotei Gold = sonydualsenseGhostofYoteiGold
 Sony Dual Sense God of War 20th Anniversary = sonydualsenseGodofWarAnniversary
 Sony Dual Sense Icon Blue Edition = sonydualsenseIconBlueEdition
+Sony Dual Sense Last of Us Edition = sonydualsenseLastofUsEdition
