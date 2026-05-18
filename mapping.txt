@@ -32377,3 +32377,4 @@ iPad Air 13 M3 2025 512GB LTE Space Gray = ipadair13M3gray512LTE
 iPad Air 13 M4 2026 128GB LTE Blue = ipadair13M4blue128LTE
 iPad Air 13 M4 2026 128GB LTE Space Gray = ipadair13M4gray128LTE
 iPad Air 13 M4 2026 1TB LTE Space Gray = ipadair13M4gray1TBLTE
+iPad Air 13 M4 2026 256GB LTE Blue = ipadair13M4blue256LTE
