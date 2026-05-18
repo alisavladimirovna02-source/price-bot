@@ -32363,3 +32363,4 @@ Sony Dual Sense Rhythm Blue = sonydualsenseRhythmBlue
 Sony Dual Sense Starlight Blue = sonydualsenseStarlightBlue
 Sony Dual Sense Sterling Silver = sonydualsenseIconSterlingSilver
 Sony Dual Sense Techno Red = sonydualsenseTechnoRed
+Sony Dual Sense Volcanic Red = sonydualsenseVolcanitRed
