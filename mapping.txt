@@ -32395,3 +32395,4 @@ Note 14S 4G NFC 8/256 Blue = note14sblue8/256
 Note 14S 4G NFC 8/256 Purple = note14spurple8/256
 Pro 14 MGDN4 Silver M5 Pro 24/1TB = macpro14m5silver24/1tb
 S10 46 Jet Black SL esim = aws10black46sportloop
+S25 Edge 12/256 S937 Icyblue = S25EdgeIceblue12/256
