@@ -32399,3 +32399,4 @@ S25 Edge 12/256 S937 Icyblue = S25EdgeIceblue12/256
 SE3 40 StarlightM/L 2025 esim = awse2025starlight40m/l
 SE3 44 StarlightM/L 2025 esim = awse2025starlight44m/l
 Tab S10 FE WiFi X520 8/128 blue = galaxytabs10FEblue8/128SM-X520
+Tab S10 FE+ WiFi X620 8/128 blue = galaxytabs10FE+blue8/128SM-X620
