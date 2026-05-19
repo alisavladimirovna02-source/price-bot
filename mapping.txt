@@ -32397,3 +32397,4 @@ Pro 14 MGDN4 Silver M5 Pro 24/1TB = macpro14m5silver24/1tb
 S10 46 Jet Black SL esim = aws10black46sportloop
 S25 Edge 12/256 S937 Icyblue = S25EdgeIceblue12/256
 SE3 40 StarlightM/L 2025 esim = awse2025starlight40m/l
+SE3 44 StarlightM/L 2025 esim = awse2025starlight44m/l
