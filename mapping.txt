@@ -32391,3 +32391,4 @@ Note 14S 4G NFC 12/512 Black = note14sblack12/512
 Note 14S 4G NFC 8/128 Blue = note14Sblue8/128
 Note 14S 4G NFC 8/128 Purple = note14Spurple8/128
 Note 14S 4G NFC 8/256 Black = note14Sblack8/256
+Note 14S 4G NFC 8/256 Blue = note14sblue8/256
