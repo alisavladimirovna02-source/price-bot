@@ -32393,3 +32393,4 @@ Note 14S 4G NFC 8/128 Purple = note14Spurple8/128
 Note 14S 4G NFC 8/256 Black = note14Sblack8/256
 Note 14S 4G NFC 8/256 Blue = note14sblue8/256
 Note 14S 4G NFC 8/256 Purple = note14spurple8/256
+Pro 14 MGDN4 Silver M5 Pro 24/1TB = macpro14m5silver24/1tb
