@@ -1205,7 +1205,36 @@ Xiaomi Pad 7 WiFi 12/256 Gray = xiaomipad7gray12/256
 Xiaomi Pad 7 WiFi 12/256 Green = xiaomipad7green12/256
 Z Flip7 12/512 F766B Jetblack = Zflip7black12/512
 iPad Pro 11 M5 2025 2TB Standard Glass WiFi Space Black = ipad11prom5black2tb
-
+Honor 200 8/256 Black = honor200black8/256
+Honor 200 8/256 Green = honor200green8/256
+Honor 200 8/256 White = honor200white8/256
+Nacon Revolution 5 Pro Black = naconrevolution5problack
+Nacon Revolution 5 Pro Forest Camo = naconrevolution5proforestcamo
+Nacon Revolution 5 Pro Urban Camo = naconrevolution5prourbancamo
+Nacon Revolution 5 Pro White = naconrevolution5prowhite
+Note 14 4G NFC 6/128 Blue = note14blue4G6/128RU
+Note 14 4G NFC 6/128 Green = note14green4G6/128
+Pro 13 MNEX3 Silver M2 24/1TB = macpro13M2silver24/1tb
+S10 42 Natural Ti SB Stone Gray ML = aws10natural/gray42m/l
+S10 42 Slate Titanium SB Black ML = aws10slate/black42m/l
+S10 42 Slate Titanium SB Black SM = aws10slate/black42s/m
+S10 46 Jet Black Ink Lopp Cell = aws10black46inloopcell
+S10 46 Jet Black SB Black SM Cell = aws10black46s/mcell
+S10 46 Silver SB Denim ML Cell = aws10silver46m/lcell
+S11 46 Grey SB Black ML = aws11gray/black46m/l
+S24 8/256 S921B Gray = s24gray8/256
+S25 12/256 S931B Blueblack = s25blueblack12/256
+S25 Edge 12/256 S937 Jetblack = s25edgejetblack12/256
+S25 Ultra 12/512 S928B Black = s25ultrablack12/512
+S25 Ultra 12/512 S928B Gray = s25ultragray12/512
+Tab S11 WiFi X730 12/512 gray = galaxytabS11gray12/512
+Tab S11 WiFi X730 12/512 silver = galaxytabS11silver12/512
+Tab S9 FE 5G X516 6/128 gray = galaxytabS9FEgray6/128SM-X516B
+Tab S9 Ultra 5G X916 12/512 beige = galaxytabs9ultrabeige12/512cell
+Tab S9 Ultra WiFi X910 12/256 graphite = galaxytabs9ultragraphite12/256
+Xiaomi 15T Pro 5G 12/1024 Black = mi15TProBlack12/1024
+Xiaomi 15T Pro 5G 12/1024 Gray = Mi15Tprogray12/1tb
+Xiaomi 17T 5G 12/512 Black = mi17Tblack12/512
 
 
 
