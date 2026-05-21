@@ -61,6 +61,7 @@
 16 Pro Max 256 Desert = iphone16promaxdesert256
 16 Pro Max 512 White = iphone16promaxwhite512
 16 Pro Max 512 Natural = iphone16promaxtitanium512
+16 Pro Max 512 Natural esim = iphone16promaxtitanium512esim
 16 Pro Max 512 Desert = iphone16promaxdesert512
 17e 256 White eSim = iphone17ewhite256esim
 17e 256 Black 1Sim+eSim = iphone17eblack256
@@ -32381,7 +32382,7 @@ iPad Air 13 M4 2026 256GB LTE Blue = ipadair13M4blue256LTE
 iPad Air 13 M4 2026 512GB WiFi Starlight = ipadair13M4starlight512
 Pro 16 MGEA4 Space Black = macpro16m5black24/1tb
 SE3 40 StarlightS/M 2025 esim = awse2025starlight40s/m
-SE3 44 MidnightS/M 2025 esim = awse2025black40s/m
+SE3 44 MidnightS/M 2025 esim = awse2025black44s/m
 Sony Dual Sense Genshin Impact = sonydualsenseGenshinImpact
 Sony Dual Sense Marathon = sonydualsenseMarathon
 iPad Air 13 M4 2026 128GB LTE Purple = ipadair13M4purple128LTE
