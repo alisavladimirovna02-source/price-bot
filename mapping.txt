@@ -60,8 +60,8 @@
 16 Pro Max 256 Natural = iphone16promaxtitanium256
 16 Pro Max 256 Desert = iphone16promaxdesert256
 16 Pro Max 512 White = iphone16promaxwhite512
-16 Pro Max 512 Natural = iphone16promaxtitanium512
 16 Pro Max 512 Natural esim = iphone16promaxtitanium512esim
+16 Pro Max 512 Natural = iphone16promaxtitanium512
 16 Pro Max 512 Desert = iphone16promaxdesert512
 17e 256 White eSim = iphone17ewhite256esim
 17e 256 Black 1Sim+eSim = iphone17eblack256
