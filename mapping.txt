@@ -32452,3 +32452,4 @@ S11 46 Natural Ti Milans Loop ML esim = aws11natural46milaneseloopm/l/cell
 Tab S11 Ultra 5G X936 16/1024 gray = galaxytabs11ultragray16/1024cell
 Tab S11 Ultra 5G X936 16/1024 silver = galaxytabs11ultrasilver16/1024cell
 Tab S11 Ultra WiFi X930 16/1024 gray = galaxytabs11ultragray16/1024
+Tab S11 Ultra WiFi X930 16/1024 silver = galaxytabs11ultrasilver16/1024
