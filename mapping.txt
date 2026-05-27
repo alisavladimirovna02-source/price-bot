@@ -32448,3 +32448,4 @@ Redmi 15 4G 6/128 Gray = redmi15gray6/128
 Redmi A5 4/128 Blue = redmiA5blue4/128
 S10 42 Natural Ti Milanese Loop = aws10natural42milaneseloop
 S10 46 Rose Gold SB LB ML Cell = aws10rosegold46sportloop/ml/cell
+S11 46 Natural Ti Milans Loop ML esim = aws11natural46milaneseloopm/l/cell
