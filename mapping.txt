@@ -32458,3 +32458,4 @@ U3 Black TL Black/Charcoal ML esim = awultra3Black/charcoal_trailloopM/L
 iPad A16 11 128 Blue Wi Fi = ipad11blue128
 iPad A16 11 128 Pink Wi Fi = ipad11pink128
 iPad Air 11 M4 256 Blue LTE esim = ipadair11m4blue256LTE
+iPad Air 11 M4 256 Grey LTE esim = ipadair11m4gray256LTE
