@@ -32435,3 +32435,5 @@ Pro 14 MGDN4 Silver M5 Pro 24/1TB = macpro14m5silver24/1tb2026
 
 Honor 200 8/256 Black = honor200black8/256
 Honor 200 8/256 Green = honor200black8/256
+
+17e 512 Pink eSim = iphone17epink512esim
