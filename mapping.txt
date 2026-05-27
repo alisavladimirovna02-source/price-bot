@@ -32444,3 +32444,4 @@ Honor X8d 8/128 Grey = honorX8dgray8/128
 Poco M8 5G 12/512 Black = pocoM8black12/512
 Poco M8 5G 12/512 Green = pocom8green12/512
 Poco M8 5G 12/512 Silver = pocoM8silver12/512
+Redmi 15 4G 6/128 Gray = redmi15gray6/128
