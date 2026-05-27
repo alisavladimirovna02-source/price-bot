@@ -32438,3 +32438,4 @@ Honor 200 8/256 Green = honor200black8/256
 
 17e 512 Pink eSim = iphone17epink512esim
 Honor 600 12/256 White = honor600goldenwhite12/256
+Honor Magic 7 Pro 12/512GB Blue = honormagic7problue12/512
