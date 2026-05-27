@@ -32443,3 +32443,4 @@ Honor X6c 6/256GB White = honorx6cwhite6/256
 Honor X8d 8/128 Grey = honorX8dgray8/128
 Poco M8 5G 12/512 Black = pocoM8black12/512
 Poco M8 5G 12/512 Green = pocom8green12/512
+Poco M8 5G 12/512 Silver = pocoM8silver12/512
