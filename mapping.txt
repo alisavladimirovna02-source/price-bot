@@ -32440,3 +32440,4 @@ Honor 200 8/256 Green = honor200black8/256
 Honor 600 12/256 White = honor600goldenwhite12/256
 Honor Magic 7 Pro 12/512GB Blue = honormagic7problue12/512
 Honor X6c 6/256GB White = honorx6cwhite6/256
+Honor X8d 8/128 Grey = honorX8dgray8/128
