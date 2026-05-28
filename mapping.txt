@@ -32469,3 +32469,4 @@ S25+ 12/256 S937B Navy = s25plusnavy12/256
 Tab S10 FE+ 5G X626 12/256 blue = galaxytabs10FE+blue12/256cell
 Tab S10 FE+ 5G X626 12/256 gray = galaxytabs10FE+gray12/256cell
 Tab S10 FE+ 5G X626 12/256 silver = galaxytabs10FE+silver12/256cell
+Tab S10 Lite 5G X406 6/128 gray = galaxytabs10litegray6/128cell
