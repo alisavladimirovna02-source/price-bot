@@ -32485,3 +32485,4 @@ iPad Pro 13 M5 2025 1TB Standard Glass WiFi Space Black = ipad13prom5black1tb
 16 Pro Max 1TB Natural ae = iphone16promaxtitanium1tb
 16 Pro Max 1TB White ae = iphone16promaxwhite1tb
 16 Pro Max 256 Black 2sim = iphone16promaxblack256-2sim
+16 Pro Max 256 Desert ae = iphone16promaxdesert256
