@@ -32479,3 +32479,4 @@ iPad Pro 13 M5 2025 1TB Standard Glass WiFi Space Black = ipad13prom5black1tb
 15 Pro Max 256 Natural ae = iphone15promaxtitanium256
 16 Plus 512 Black esim = iphone16plusblack512esim
 16 Plus 512 Pink esim = iphone16pluspink512esim
+16 Plus 512 White esim = iphone16pluswhite512esim
