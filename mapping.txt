@@ -32465,3 +32465,4 @@ Pixel 10 Pro XL 16/256GB Obsidian CA = pixel10proXLobsidian16/256
 Pixel 10 Pro XL 16/512GB Moonstone CA = pixel10proXLmoonstone16/512
 Pixel 10 Pro XL 16/512GB Obsidian CA = pixel10proXLobsidian16/512
 S11 42 Slate Ti SB Black SM/ML esim = aws11state42SBblackS/M
+S25+ 12/256 S937B Navy = s25plusnavy12/256
