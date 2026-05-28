@@ -32467,3 +32467,4 @@ Pixel 10 Pro XL 16/512GB Obsidian CA = pixel10proXLobsidian16/512
 S11 42 Slate Ti SB Black SM/ML esim = aws11state42SBblackS/M
 S25+ 12/256 S937B Navy = s25plusnavy12/256
 Tab S10 FE+ 5G X626 12/256 blue = galaxytabs10FE+blue12/256cell
+Tab S10 FE+ 5G X626 12/256 gray = galaxytabs10FE+gray12/256cell
