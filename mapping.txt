@@ -32463,3 +32463,4 @@ Honor X8d 8/256 Grey = honorX8dgray8/256
 Pixel 10 Pro XL 16/256GB Moonstone CA = pixel10proXLmoonstone16/256
 Pixel 10 Pro XL 16/256GB Obsidian CA = pixel10proXLobsidian16/256
 Pixel 10 Pro XL 16/512GB Moonstone CA = pixel10proXLmoonstone16/512
+Pixel 10 Pro XL 16/512GB Obsidian CA = pixel10proXLobsidian16/512
