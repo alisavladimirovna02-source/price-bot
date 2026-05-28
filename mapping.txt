@@ -32471,3 +32471,4 @@ Tab S10 FE+ 5G X626 12/256 gray = galaxytabs10FE+gray12/256cell
 Tab S10 FE+ 5G X626 12/256 silver = galaxytabs10FE+silver12/256cell
 Tab S10 Lite 5G X406 6/128 gray = galaxytabs10litegray6/128cell
 Tab S11 Ultra 5G X936 12/512 gray = galaxytabS11ultragray12/512cell
+iPad Pro 13 M5 2025 1TB Standard Glass WiFi Space Black = ipad13prom5black1tb
