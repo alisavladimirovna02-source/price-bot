@@ -32475,3 +32475,4 @@ iPad Pro 13 M5 2025 1TB Standard Glass WiFi Space Black = ipad13prom5black1tb
 15 256 Yellow ae = iphone15yellow256
 15 Pro 128 Blue 2sim = iphone15problue128-2sim
 15 Pro 128 Blue ae = iphone15problue128
+15 Pro Max 256 Blue ae = iphone15promaxblue256
