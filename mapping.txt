@@ -32460,3 +32460,4 @@ iPad A16 11 128 Pink Wi Fi = ipad11pink128
 iPad Air 11 M4 256 Blue LTE esim = ipadair11m4blue256LTE
 iPad Air 11 M4 256 Grey LTE esim = ipadair11m4gray256LTE
 Honor X8d 8/256 Grey = honorX8dgray8/256
+Pixel 10 Pro XL 16/256GB Moonstone CA = pixel10proXLmoonstone16/256
