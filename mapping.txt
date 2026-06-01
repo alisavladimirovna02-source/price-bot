@@ -32500,3 +32500,4 @@ Honor 600 Pro 12/512Gb Black = honor600problack12/512
 Honor 600 Pro 12/512Gb Golden White = honor600prowhite12/512
 Honor 600 Pro 12/512Gb Orange = honor600proorange12/512
 Poco X7 5G 12/512 Silver = pocox7silver12/512
+Poco X7 5G 8/256 Green = pocox7green8/256
