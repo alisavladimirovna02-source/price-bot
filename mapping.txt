@@ -32497,3 +32497,4 @@ iPad Pro 13 M5 2025 1TB Standard Glass WiFi Space Black = ipad13prom5black1tb
 Honor X7d 8/128 Black = honorX7dblack8/128
 S25 12/256 S931B Coralred = s25coralred12/256
 Honor 600 Pro 12/512Gb Black = honor600problack12/512
+Honor 600 Pro 12/512Gb Golden White = honor600prowhite12/512
