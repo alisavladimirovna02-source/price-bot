@@ -32507,3 +32507,4 @@ Xiaomi 17T Pro 5G 12/1024 Black = mi17Tproblack12/1024
 Xiaomi 17T Pro 5G 12/1024 Violet = mi17Tproviolet12/1024
 iPad A16 11 256 Blue Wi Fi = ipad11blue256
 iPad A16 11 256 Silver Wi Fi = ipad11silver256
+iPad Air 13 M4 2026 256GB LTE Space Gray = ipadair13M4gray256LTE
