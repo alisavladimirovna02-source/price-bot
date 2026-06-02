@@ -32516,3 +32516,4 @@ S11 42 Space GrayM/L = aws11gray/black42m/l
 S11 42 Space GrayS/M = aws11gray42s/m
 S11 46 Rose GoldM/L = aws11rosegold46m/l
 SE2 44 Midnight SB M/L 2024 = AWSE2024black44M/L
+SE2 44 Midnight SB S/M 2024 = awse2024black44s/m
