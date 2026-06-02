@@ -32526,3 +32526,4 @@ UL 2 Black / Dark Green AL S 2024 = awUltra2black/green49_AlpineLoopS
 UL 2 Natural / Blue TL M/L 2024 = awUltra2natural/blue49_TrailLoopM/L
 UL 3 Black / Black ALL = awultra3black/black_alpineloopL
 UL 3 Black / Black ALS = awultra3black/black_alpineloopS
+UL 3 Black / Black OB = awultra3black/black_oceanband
