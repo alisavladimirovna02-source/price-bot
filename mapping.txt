@@ -32522,3 +32522,4 @@ SE3 40 MidnightS/M 2025 = awse2025black40s/m
 SE3 40 StarlightS/M 2025 = awse2025starlight40s/m
 SE3 44 StarlightM/L 2025 = awse2025starlight44m/l
 Tab A11 LTE X135 4/64 gray = galaxytabA11gray4/64LTE
+UL 2 Black / Dark Green AL S 2024 = awUltra2black/green49_AlpineLoopS
