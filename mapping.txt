@@ -32528,3 +32528,4 @@ UL 3 Black / Black ALL = awultra3black/black_alpineloopL
 UL 3 Black / Black ALS = awultra3black/black_alpineloopS
 UL 3 Black / Black OB = awultra3black/black_oceanband
 UL 3 Black / Black Titanium Milanese Loop L = awultra3BlackmilaneseloopL
+UL 3 Black / Black/Charcoal TLM/L = awultra3Black/charcoal_trailloopM/L
