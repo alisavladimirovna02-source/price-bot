@@ -32512,3 +32512,4 @@ iPad Mini 7 2024 128GB LTE Space Gray = ipad7minigray128LTE
 Redmi 15C 8/256 NFC Orange = redmi15Corange8/256
 S11 42 Jet BlackM/L = aws11jetblack/black42m/l
 S11 42 SilverS/M = aws11silverpurple42s/m
+S11 42 Space GrayM/L = aws11gray/black42m/l
