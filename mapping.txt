@@ -32532,3 +32532,4 @@ UL 3 Black / Black/Charcoal TLM/L = awultra3Black/charcoal_trailloopM/L
 UL 3 Natural / Anchor Blue OB = awultra3natural/anchorblue_oceanband
 UL 3 Natural / Blue/Bright Blue TLM/L = awultra3natural/blue_trailloopm/l
 UL 3 Natural / Natural Titanium Milanese Loop M = awultra3naturalmilaneseloopM
+Xiaomi 17T Pro 5G 12/1024 Blue = mi17Tproblue12/1024
