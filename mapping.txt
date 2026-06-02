@@ -32518,3 +32518,4 @@ S11 46 Rose GoldM/L = aws11rosegold46m/l
 SE2 44 Midnight SB M/L 2024 = AWSE2024black44M/L
 SE2 44 Midnight SB S/M 2024 = awse2024black44s/m
 SE3 40 MidnightM/L 2025 = awse2025black40m/l
+SE3 40 MidnightS/M 2025 = awse2025black40s/m
