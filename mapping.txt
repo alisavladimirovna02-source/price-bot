@@ -32509,3 +32509,4 @@ iPad A16 11 256 Blue Wi Fi = ipad11blue256
 iPad A16 11 256 Silver Wi Fi = ipad11silver256
 iPad Air 13 M4 2026 256GB LTE Space Gray = ipadair13M4gray256LTE
 iPad Mini 7 2024 128GB LTE Space Gray = ipad7minigray128LTE
+Redmi 15C 8/256 NFC Orange = redmi15Corange8/256
