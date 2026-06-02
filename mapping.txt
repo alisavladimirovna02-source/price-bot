@@ -32531,3 +32531,4 @@ UL 3 Black / Black Titanium Milanese Loop L = awultra3BlackmilaneseloopL
 UL 3 Black / Black/Charcoal TLM/L = awultra3Black/charcoal_trailloopM/L
 UL 3 Natural / Anchor Blue OB = awultra3natural/anchorblue_oceanband
 UL 3 Natural / Blue/Bright Blue TLM/L = awultra3natural/blue_trailloopm/l
+UL 3 Natural / Natural Titanium Milanese Loop M = awultra3naturalmilaneseloopM
