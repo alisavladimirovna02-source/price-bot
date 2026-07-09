@@ -32571,3 +32571,4 @@ Tab S10 FE+ X620 WiFi 12/256 blue = galaxytabs10FE+blue12/256SM-X620
 Tab S10 FE+ X620 WiFi 12/256 gray = galaxytabs10FE+gray12/256SM-X620
 Tab S10 FE+ X620 WiFi 12/256 silver = galaxytabs10FE+silver12/256
 Tab S10 Ultra WiFi X920 12/256 gray = galaxytabs10ULTRAgray12/256SM-X920
+Tab S11 5G X736 12/256 gray = galaxytabS11gray12/256
