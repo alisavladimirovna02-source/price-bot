@@ -32541,3 +32541,4 @@ AIR 11 M4 128 Gray WiFi = ipadair11m4gray128
 AIR 11 M4 256 Blue WiFi = ipadair11m4blue256
 AIR 13 M3 128 Blue WiFi = ipadair13M3blue128
 AIR 13 M3 128 Gray LTE = ipadair13M3gray128LTE
+AIR 13 M3 128 Purple WiFi = ipadair13M3purple128
