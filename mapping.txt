@@ -32559,3 +32559,4 @@ Poco X8 Pro Max 5G 12/256 Orange = pocox8promaxorange12/256
 Realme 15T 12/512 Suit Titanium = realme15Tsuit12/512
 Realme GT 7T 5G 12/256 Синий Ледник = realmegt7Tblue12/256
 Realme GT 8 Pro 16/512 Синий = realmegt8problue16/512
+S11 42 Jet BlackS/M = aws11jetblack42s/m
