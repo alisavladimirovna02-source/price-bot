@@ -32553,3 +32553,4 @@ Note 14 4G NFC 8/256 Purple = note14purple8/256
 POCO Pad 8/256 Gray = Pocopadgray8/256
 POCO Pad X1 8/512 Grey = pocopadX1gray8/512
 POCO X8 Pro Max 12/512 Black = pocox8promaxblack12/512
+POCO X8 Pro Max 12/512 Blue = pocox8promaxblue12/512
