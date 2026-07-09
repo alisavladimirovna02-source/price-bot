@@ -32579,3 +32579,4 @@ UL 3 Natural / Blue/Bright Blue TLS/M = awultra3natural/blue_trailloops/m
 UL 3 Natural / Light Blue ALM = awultra3natural/blue_alpineloopM
 UL 3 Natural / Light Blue ALS = awultra3natural/blue_alpineloopS
 Vivo V2538 V70 12/256 Grey = VivoV70gray12/256
+Vivo V2550 V70FE 8/256 Blue = VivoV70feblue8/256
