@@ -32576,3 +32576,4 @@ Tab S11 5G X736 12/256 silver = galaxytabS11silver12/256
 UL 2 Black / Black Titan Milanese Loop M 2024 = awUltra2black/blackti_milaneseLoopM
 UL 3 Black / Black/Charcoal TLS/M = awultra3black/charocoal_trailloopS/M
 UL 3 Natural / Blue/Bright Blue TLS/M = awultra3natural/blue_trailloops/m
+UL 3 Natural / Light Blue ALM = awultra3natural/blue_alpineloopM
