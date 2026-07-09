@@ -32536,3 +32536,4 @@ Xiaomi 17T Pro 5G 12/1024 Blue = mi17Tproblue12/1024
 iPad A16 11 256 Pink Wi Fi = ipad11pink256
 16 512 Ultramarine ae = iphone16ultramarine512
 16 512 White ae = iphone16white512
+AIR 11 M3 128 Starlight WiFi = ipadair11M3starlight128
