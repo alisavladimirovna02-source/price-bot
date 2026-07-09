@@ -32562,3 +32562,4 @@ Realme GT 8 Pro 16/512 Синий = realmegt8problue16/512
 S11 42 Jet BlackS/M = aws11jetblack42s/m
 S11 46 Jet BlackM/L = aws11jetblack46m/l
 S11 46 Jet BlackS/M = aws11jetblack/black46s/m
+S11 46 Rose GoldS/M = aws11rosegold46s/m
