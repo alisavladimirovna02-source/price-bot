@@ -32584,3 +32584,4 @@ Xiaomi 17T 5G 12/256 Black = mi17Tblack12/256
 Xiaomi 17T Pro 5G 12/256 Black = mi17Tproblack12/256
 Xiaomi 17T Pro 5G 12/256 Blue = mi17Tproblue12/256
 Xiaomi 17T Pro 5G 12/512 Black = mi17Tproblack12/512
+iPad 11 256 Yellow WiFi = ipad11yellow256
