@@ -32574,3 +32574,4 @@ Tab S10 Ultra WiFi X920 12/256 gray = galaxytabs10ULTRAgray12/256SM-X920
 Tab S11 5G X736 12/256 gray = galaxytabS11gray12/256
 Tab S11 5G X736 12/256 silver = galaxytabS11silver12/256
 UL 2 Black / Black Titan Milanese Loop M 2024 = awUltra2black/blackti_milaneseLoopM
+UL 3 Black / Black/Charcoal TLS/M = awultra3black/charocoal_trailloopS/M
