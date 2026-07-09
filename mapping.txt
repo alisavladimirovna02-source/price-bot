@@ -32555,3 +32555,4 @@ POCO Pad X1 8/512 Grey = pocopadX1gray8/512
 POCO X8 Pro Max 12/512 Black = pocox8promaxblack12/512
 POCO X8 Pro Max 12/512 Blue = pocox8promaxblue12/512
 Poco X7 5G 12/512 Green = pocox7green12/512
+Poco X8 Pro Max 5G 12/256 Orange = pocox8promaxorange12/256
