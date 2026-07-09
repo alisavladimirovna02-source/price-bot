@@ -32551,3 +32551,4 @@ Huawei Nova 15 Max 8/256 Blue = huaweinova15maxblue8/256
 Mac Mini MU9E3 M4/16/512 Silver = macminiM416/512
 Note 14 4G NFC 8/256 Purple = note14purple8/256
 POCO Pad 8/256 Gray = Pocopadgray8/256
+POCO Pad X1 8/512 Grey = pocopadX1gray8/512
