@@ -32547,3 +32547,4 @@ Apple Magic Mouse 3 White = magicmouse3whitelightning
 Honor 600 8/256 Orange = honor600orange8/256
 Honor Magic 7 12/256 White = honorMagic7white12/256
 Huawei Nova 15 Max 8/256 Black = huaweinova15maxblack8/256
+Huawei Nova 15 Max 8/256 Blue = huaweinova15maxblue8/256
