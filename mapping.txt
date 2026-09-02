@@ -32665,3 +32665,4 @@ Redmi 17 4G 4/128 NFC Black = redmi17black4/128
 Redmi 17 4G 4/128 NFC Blue = redmi17blue4/128
 Redmi 17 4G 4/256 NFC Blue = redmi17blue4/256
 Redmi 17 4G 8/256 NFC Blue = redmi17blue8/256
+Redmi 17 4G 8/256 NFC Green = redmi17green8/256
