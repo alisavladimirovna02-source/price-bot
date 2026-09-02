@@ -32646,3 +32646,4 @@ Note 15 4G 6/128 NFC Black = note15black6/128
 Note 15 4G 6/128 NFC Blue = note15blue6/128
 Note 17 4G 6/256 NFC Black = note17black6/256
 Note 17 Pro 5G 8/256 NFC Black = note17problack8/256
+Note 17 Pro 5G 8/256 NFC Purple = note17propurple8/256
