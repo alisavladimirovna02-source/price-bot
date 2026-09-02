@@ -32660,3 +32660,4 @@ PRO 13 M4 512 Silver LTE esim = ipad13prom4silver512cell
 PRO 13 M5 256 Black LTE esim = ipad13prom5black256cell
 Poco C81 Pro 4/256 Gold = pococ81progold4/256
 Poco Pad X1 WiFi 8/512 Grey = pocopadX1gray8/512
+Pro 14 MGDT4 Space Black M5 Pro 24/2TB = macpro14m5black24/2tb
