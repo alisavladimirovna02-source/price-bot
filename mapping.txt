@@ -32622,3 +32622,4 @@ AIR 11 M4 256 Gray WiFi esim = ipadair11m4gray256
 Honor 600 12/256 Orange = honor600orange12/256
 Honor 600 8/256 Black = honor600black8/256
 Honor 600 8/256 Golden White = honor600goldenwhite8/256
+Honor 600 Pro 12/256 Black = honor600problack12/256
