@@ -32591,3 +32591,4 @@ iPad Air 11 M4 128 Starlight LTE = ipadair11m4starlight128LTE
 iPad Air 11 M4 256 Purple LTE = ipadair11m4purple256LTE
 iPad Air 11 M4 256 Purple Wi Fi = ipadair11m4purple256
 iPad Air 11 M4 256 Starlight WF = ipadair11m4starlight256
+12 128 White = iphone12white128
