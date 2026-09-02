@@ -32640,3 +32640,4 @@ Huawei Pura 90S Pro Max 12/512 Graphite = huaweipura90Spromaxgraphite12/512
 Huawei Pura 90S Pro Max 12/512 Orange Blue = huaweipura90Spromaxorangeblue12/512
 Huawei Pura 90S Pro Max 12/512 Pink = huaweipura90Spromaxpink12/512
 MINI 7 128 Blue WiFi esim = ipad7miniblue128
+MINI 7 128 Starlight WiFi esim = ipad7ministarlight128
