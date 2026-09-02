@@ -32636,3 +32636,4 @@ Huawei Pura 90S Pro Max 12/256 Beige Violet = huaweipura90Spromaxbeigeviolet12/2
 Huawei Pura 90S Pro Max 12/256 Orange Blue = huaweipura90Spromaxorangeblue12/256
 Huawei Pura 90S Pro Max 12/256 Pink = huaweipura90Spromaxpink12/256
 Huawei Pura 90S Pro Max 12/512 Beige Violet = huaweipura90Spromaxbeigeviolet12/512
+Huawei Pura 90S Pro Max 12/512 Graphite = huaweipura90Spromaxgraphite12/512
