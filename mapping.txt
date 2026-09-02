@@ -32629,3 +32629,4 @@ Honor X5d Plus 4/256GB Black = honorx5d+black4/256
 Huawei Mate XT 16/1024 Red = huaweimateXTred16/1024
 Huawei Pura 90S Pro 12/256 Orange = huaweipura90Sproorange12/256
 Huawei Pura 90S Pro 12/256 Pink Green = huaweipura90Spropinkgreen12/256
+Huawei Pura 90S Pro 12/512 Black = huaweipura90Sproblack12/512
