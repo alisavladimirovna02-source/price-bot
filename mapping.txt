@@ -32658,3 +32658,4 @@ PRO 13 M4 256 Black LTE esim = ipad13prom4black256cell
 PRO 13 M4 256 Silver LTE esim = ipad13prom4silver256cell
 PRO 13 M4 512 Silver LTE esim = ipad13prom4silver512cell
 PRO 13 M5 256 Black LTE esim = ipad13prom5black256cell
+Poco C81 Pro 4/256 Gold = pococ81progold4/256
