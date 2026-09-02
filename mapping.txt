@@ -32649,3 +32649,4 @@ Note 17 Pro 5G 8/256 NFC Black = note17problack8/256
 Note 17 Pro 5G 8/256 NFC Purple = note17propurple8/256
 Note 17 Pro 5G 8/512 NFC Black = note17problack8/512
 Note 17 Pro Max 5G 8/256 NFC Black = note17promaxblack8/256
+Note 17 Pro Max 5G 8/512 NFC Black = note17promaxblack8/512
