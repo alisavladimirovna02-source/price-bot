@@ -32592,3 +32592,4 @@ iPad Air 11 M4 256 Purple LTE = ipadair11m4purple256LTE
 iPad Air 11 M4 256 Purple Wi Fi = ipadair11m4purple256
 iPad Air 11 M4 256 Starlight WF = ipadair11m4starlight256
 12 128 White = iphone12white128
+13 128 Midnight esim = iphone13black128esim
