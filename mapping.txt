@@ -32596,3 +32596,4 @@ iPad Air 11 M4 256 Starlight WF = ipadair11m4starlight256
 14 128 Midnight esim = iphone14black128esim
 14 512 Blue = iphone14blue512
 14 512 Purple = iphone14purple512
+14 512 Red = iphone14red512
