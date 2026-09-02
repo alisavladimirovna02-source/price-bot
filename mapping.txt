@@ -32651,3 +32651,4 @@ Note 17 Pro 5G 8/512 NFC Black = note17problack8/512
 Note 17 Pro Max 5G 8/256 NFC Black = note17promaxblack8/256
 Note 17 Pro Max 5G 8/512 NFC Black = note17promaxblack8/512
 PRO 11 M4 1TB Black WiFi Nano Texture esim = ipad11prom4black1TB
+PRO 11 M5 256 Black WiFi esim = ipad11proM5black256
