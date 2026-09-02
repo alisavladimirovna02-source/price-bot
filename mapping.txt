@@ -32618,3 +32618,4 @@ AIR 13 M3 128 Gray WiFi esim = ipadair11m4gray128
 15 Pro 1TB Natural = iphone15protitanium1tb
 A27 6/128 Black = a27black6/128
 A27 8/256 Pink = a27pink8/256
+AIR 11 M4 256 Gray WiFi esim = ipadair11m4gray256
