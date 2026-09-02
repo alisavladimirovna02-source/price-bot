@@ -32643,3 +32643,4 @@ MINI 7 128 Blue WiFi esim = ipad7miniblue128
 MINI 7 128 Starlight WiFi esim = ipad7ministarlight128
 MINI 7 256 Gray WiFi esim = ipad7minigray256
 Note 15 4G 6/128 NFC Black = note15black6/128
+Note 15 4G 6/128 NFC Blue = note15blue6/128
