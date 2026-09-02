@@ -32625,3 +32625,4 @@ Honor 600 8/256 Golden White = honor600goldenwhite8/256
 Honor 600 Pro 12/256 Black = honor600problack12/256
 Honor 600 Pro 12/512 Black = honor600problack12/512
 Honor 600 Pro 12/512 Golden White = honor600prowhite12/512
+Honor X5d Plus 4/256GB Black = honorx5d+black4/256
