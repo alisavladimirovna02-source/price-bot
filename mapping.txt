@@ -32613,3 +32613,4 @@ AIR 11 M4 128 Blue WiFi esim = ipadair11m4blue128
 AIR 11 M4 128 Purple WiFi esim = ipadair11m4purple128
 AIR 11 M4 128 Starlight WiFi esim = ipadair11m4starlight128
 AIR 11 M4 256 Purple WiFi esim = ipadair11m4purple256
+AIR 13 M3 128 Gray WiFi esim = ipadair11m4gray128
