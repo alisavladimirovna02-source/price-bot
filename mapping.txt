@@ -32610,3 +32610,4 @@ A37 8/128 GrayGreen = a37graygreen8/128
 A37 8/128 Lavender = a37lavender8/128
 A37 8/128 White = a37white8/128
 AIR 11 M4 128 Blue WiFi esim = ipadair11m4blue128
+AIR 11 M4 128 Purple WiFi esim = ipadair11m4purple128
