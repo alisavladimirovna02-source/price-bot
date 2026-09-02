@@ -32631,3 +32631,4 @@ Huawei Pura 90S Pro 12/256 Orange = huaweipura90Sproorange12/256
 Huawei Pura 90S Pro 12/256 Pink Green = huaweipura90Spropinkgreen12/256
 Huawei Pura 90S Pro 12/512 Black = huaweipura90Sproblack12/512
 Huawei Pura 90S Pro 12/512 Pink Green = huaweipura90Spropinkgreen12/512
+Huawei Pura 90S Pro 12/512 White = huaweipura90Sprowhite12/512
