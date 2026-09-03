@@ -32686,3 +32686,4 @@ iPad Air 11 M4 2026 512GB LTE Space Gray = ipadair11m4gray512LTE(2026)
 iPad Air 11 M4 2026 512GB WiFi Blue = ipadair11m4blue512(2026)
 iPad Air 13 M4 2026 256GB LTE Starlight = ipadair13m4starlight256LTE(2026)
 iPad Pro 11 M5 2025 2TB Nanotexture Glass WiFi Space Black = ipad11prom5black2tb/nanoglass
+iPad Pro 13 M5 2025 1TB Standard Glass WiFi Silver = ipad13prom5silver1tb
