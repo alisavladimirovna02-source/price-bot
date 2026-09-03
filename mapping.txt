@@ -32671,3 +32671,4 @@ Redmi Pad 2 WiFi 4/128 Purple = redmipad2purple4/128
 S11 42 Rose GoldS/M esim = aws11rosegold42s/mcell
 UL 2 Black / Black TL S/M 2024 esim = awUltra2blackti/black49_TrailLoopS/M
 UL 2 White OB esim = awUltra2white49_OceanBand
+UL 3 Black / Black Titanium Milanese Loop S esim = awultra3BlackmilaneseloopS
