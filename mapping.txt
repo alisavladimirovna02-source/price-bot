@@ -32678,3 +32678,4 @@ Xiaomi 17T 5G 12/512 Blue = mi17Tblue12/512
 Xiaomi Pad 8 Pro WiFi 12/512 Blue = xiaomipad8problue12/512
 Xiaomi Pad 8 Pro WiFi 8/128 Blue = xiaomipad8problue8/128
 Xiaomi Pad 8 Pro WiFi 8/128 Green = xiaomipad8progreen8/128
+Z Flip8 12/256 F776B Cream = ZFlip8cream12/256
