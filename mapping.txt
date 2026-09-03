@@ -32682,3 +32682,4 @@ Z Flip8 12/256 F776B Cream = ZFlip8cream12/256
 iPad 11 256 Silver WiFi esim = ipad11silver256
 iPad Air 11 M4 2026 1TB WiFi Starlight = ipadair11m4starlight1TB(2026)
 iPad Air 11 M4 2026 512GB LTE Blue = ipadair11m4blue512LTE(2026)
+iPad Air 11 M4 2026 512GB LTE Space Gray = ipadair11m4gray512LTE(2026)
