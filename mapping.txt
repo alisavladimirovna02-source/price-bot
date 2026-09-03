@@ -32674,3 +32674,4 @@ UL 2 White OB esim = awUltra2white49_OceanBand
 UL 3 Black / Black Titanium Milanese Loop S esim = awultra3BlackmilaneseloopS
 UL 3 Natural / Terra Cotta ALS esim = awultra3natural/terracotta_alpineloopS
 Xiaomi 17T 5G 12/256 Violet = mi17Tviolet12/256
+Xiaomi 17T 5G 12/512 Blue = mi17Tblue12/512
