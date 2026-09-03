@@ -32669,3 +32669,4 @@ Redmi 17 4G 8/256 NFC Green = redmi17green8/256
 Redmi Pad 2 4G 4/256 Gray = redmipad2gray4/256cell
 Redmi Pad 2 WiFi 4/128 Purple = redmipad2purple4/128
 S11 42 Rose GoldS/M esim = aws11rosegold42s/mcell
+UL 2 Black / Black TL S/M 2024 esim = awUltra2blackti/black49_TrailLoopS/M
