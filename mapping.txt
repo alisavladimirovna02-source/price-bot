@@ -32676,3 +32676,4 @@ UL 3 Natural / Terra Cotta ALS esim = awultra3natural/terracotta_alpineloopS
 Xiaomi 17T 5G 12/256 Violet = mi17Tviolet12/256
 Xiaomi 17T 5G 12/512 Blue = mi17Tblue12/512
 Xiaomi Pad 8 Pro WiFi 12/512 Blue = xiaomipad8problue12/512
+Xiaomi Pad 8 Pro WiFi 8/128 Blue = xiaomipad8problue8/128
