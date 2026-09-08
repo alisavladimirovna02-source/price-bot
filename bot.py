@@ -4,6 +4,8 @@ user_store = {}
 import csv
 from io import StringIO
 import os
+import subprocess
+import sys
 import requests
 import base64
 from telegram import ReplyKeyboardMarkup
@@ -243,7 +245,7 @@ async def process_and_reply(update: Update):
     try:
         msg = await update.message.reply_text("⏳ Обрабатываю прайс...")
 
-        os.system("python3 parse_prices.py")
+        subprocess.run([sys.executable, "parse_prices.py"], check=True)
 
         total = 0
         with open("prices_parsed.csv", "r", encoding="utf-8") as f:
@@ -580,4 +582,3 @@ app.add_handler(CallbackQueryHandler(done_button, pattern="done"))
 
 print("🤖 Бот запущен...")
 app.run_polling()
-

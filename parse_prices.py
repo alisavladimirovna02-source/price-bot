@@ -1,93 +1,11 @@
-import re
+import base64
 import csv
 import os
-import base64
+import re
+
 import requests
 
 
-# =========================
-# 📦 ЗАГРУЗКА КАТАЛОГА
-# =========================
-catalog = []
-
-with open("catalog.txt", "r", encoding="utf-8") as f:
-    for line in f:
-        item = line.strip()
-        if item:
-            catalog.append(item)
-
-print(f"Загружено SKU: {len(catalog)}")
-
-not_found = set()
-
-
-# =========================
-# 📌 ЗАГРУЗКА MAPPING ИЗ GITHUB
-# =========================
-def load_mapping_from_github():
-    token = os.getenv("GITHUB_TOKEN")
-    repo = os.getenv("GITHUB_REPO")
-    path = "mapping.txt"
-
-    if not token or not repo:
-        raise Exception("Не заданы GITHUB_TOKEN или GITHUB_REPO")
-
-    url = f"https://api.github.com/repos/{repo}/contents/{path}"
-
-    headers = {
-        "Authorization": f"token {token}"
-    }
-
-    response = requests.get(url, headers=headers, timeout=20)
-    response.raise_for_status()
-
-    data = response.json()
-
-    if "content" not in data:
-        raise Exception("Не удалось получить mapping.txt из GitHub")
-
-    content = base64.b64decode(data["content"]).decode("utf-8")
-
-    mapping = {}
-
-    for line in content.splitlines():
-        if "=" in line:
-            left, right = line.split("=", 1)
-            mapping[left.strip()] = right.strip()
-
-    return mapping
-
-
-mapping = load_mapping_from_github()
-
-print(f"Загружено mapping из GitHub: {len(mapping)}")
-
-
-# =========================
-# 🧹 НОРМАЛИЗАЦИЯ ТЕКСТА
-# =========================
-def normalize_text(text):
-    return " ".join(text.lower().split())
-
-
-# =========================
-# 🔍 МАТЧИНГ ПО MAPPING
-# =========================
-def match_from_mapping(name):
-    normalized = normalize_text(name)
-
-    for key in mapping:
-        key_norm = normalize_text(key)
-
-        if key_norm in normalized:
-            return mapping[key], "OK"
-
-    return "", "NOT_FOUND"
-
-
-# =========================
-# 🌍 ФЛАГИ
-# =========================
 flag_map = {
     "🇷🇺": "RU",
     "🇦🇪": "AE",
@@ -104,135 +22,155 @@ region_map = {
 }
 
 
-# =========================
-# 📂 ФАЙЛЫ
-# =========================
-input_file = "prices_utf8.txt"
-output_file = "prices_parsed.csv"
+def clean_text(text):
+    """Одинаковая очистка названия в прайсе и слева от '=' в mapping."""
+    return re.sub(r"[^\w\s/.,+]", "", text)
 
 
-# =========================
-# 📖 ЧТЕНИЕ
-# =========================
-with open(input_file, "r", encoding="utf-8") as f:
-    lines = f.readlines()
+def normalize_text(text):
+    return " ".join(clean_text(text).lower().split())
 
 
-# =========================
-# 💾 ЗАПИСЬ CSV
-# =========================
-with open(output_file, "w", newline="", encoding="utf-8") as f:
-    writer = csv.writer(f)
-    writer.writerow(["Название", "Цена", "Страна", "SKU", "Score", "Status"])
+def parse_mapping(content):
+    """Сохраняем все SKU одного названия, чтобы обнаруживать конфликты."""
+    mapping = {}
+    for line in content.splitlines():
+        if "=" not in line:
+            continue
+        left, right = line.split("=", 1)
+        name = normalize_text(left)
+        sku = right.strip()
+        if name and sku:
+            mapping.setdefault(name, set()).add(sku)
+    return mapping
 
+
+def load_mapping_from_github():
+    token = os.getenv("GITHUB_TOKEN")
+    repo = os.getenv("GITHUB_REPO")
+
+    if not token or not repo:
+        raise Exception("Не заданы GITHUB_TOKEN или GITHUB_REPO")
+
+    url = f"https://api.github.com/repos/{repo}/contents/mapping.txt"
+    response = requests.get(
+        url, headers={"Authorization": f"token {token}"}, timeout=20
+    )
+    response.raise_for_status()
+    data = response.json()
+
+    if "content" not in data:
+        raise Exception("Не удалось получить mapping.txt из GitHub")
+
+    content = base64.b64decode(data["content"]).decode("utf-8-sig")
+    return parse_mapping(content)
+
+
+def match_from_mapping(name, mapping):
+    """Только полное совпадение. Дополнительные слова не отбрасываются."""
+    candidates = mapping.get(normalize_text(name), set())
+    if not candidates:
+        return "", "NOT_FOUND"
+    if len(candidates) > 1:
+        return "", "MAPPING_CONFLICT"
+    return next(iter(candidates)), "OK"
+
+
+def parse_price_line(line):
+    line = line.strip()
+    if not line:
+        return None
+
+    country = ""
+    for emoji, code in flag_map.items():
+        if emoji in line:
+            country = code
+            line = line.replace(emoji, "")
+            break
+
+    line = clean_text(line)
+    numbers = re.findall(r"\d[\d.,]*", line)
+    parsed_numbers = []
+    for num in numbers:
+        clean = num.replace(".", "").replace(",", "")
+        try:
+            parsed_numbers.append(int(clean))
+        except ValueError:
+            continue
+
+    if not parsed_numbers:
+        return None
+
+    price = max(parsed_numbers)
+    name = line
+    for num in numbers:
+        clean = num.replace(".", "").replace(",", "")
+        try:
+            if int(clean) == price:
+                name = name.replace(num, "")
+        except ValueError:
+            continue
+
+    name = " ".join(name.split())
+
+    # Сохраняем определение SIM по стране, если SIM не указана явно.
+    # Например, "Black eSim 🇺🇸" не должно стать "Black eSim esim".
+    has_sim = re.search(r"(?<!\w)(?:e\s*sim|[12]\s*sim)(?!\w)", name, re.I)
+    if country in region_map and not has_sim:
+        name += " " + region_map[country]
+
+    return name, price, country
+
+
+def parse_prices(lines, mapping):
+    rows = []
+    not_found = set()
     best_prices = {}
 
     for line in lines:
-        line = line.strip()
-        if not line:
+        parsed = parse_price_line(line)
+        if parsed is None:
             continue
 
-        # 🌍 страна
-        country = ""
-        for emoji, code in flag_map.items():
-            if emoji in line:
-                country = code
-                line = line.replace(emoji, "")
-                break
-
-        # 🧹 чистка
-        line = re.sub(r'[^\w\s/.,+]', '', line)
-
-        # 🔢 числа
-        numbers = re.findall(r'\d[\d.,]*', line)
-
-        if not numbers:
-            continue
-
-        parsed_numbers = []
-
-        for num in numbers:
-            clean = num.replace(".", "").replace(",", "")
-            try:
-                value = int(clean)
-                parsed_numbers.append(value)
-                if value > 2000:
-                    parsed_numbers.append(value)
-            except:
-                continue
-
-        if not parsed_numbers:
-            continue
-
-        price = max(parsed_numbers)
-
-        name = line
-
-        # удаляем именно цену
-        for num in numbers:
-            clean = num.replace(".", "").replace(",", "")
-            try:
-                if int(clean) == price:
-                    name = name.replace(num, "")
-            except:
-                continue
-
-        name = re.sub(r'\s+', ' ', name).strip()
-
-        if country in region_map:
-            name += " " + region_map[country]
-
-        # 🔍 mapping
-        sku, status = match_from_mapping(name)
+        name, price, country = parsed
+        sku, status = match_from_mapping(name, mapping)
+        score = 100 if sku else 0
+        row = [name, price, country, sku, score, status]
 
         if sku:
-            score = 100
+            # Сохраняем существующее правило выбора цены для одного SKU.
+            if sku not in best_prices or price > best_prices[sku][1]:
+                best_prices[sku] = row
         else:
-            score = 0
             not_found.add(name)
+            rows.append(row)
 
-        # =========================
-        # 📊 ЛОГИКА ЛУЧШЕЙ ЦЕНЫ
-        # =========================
-        if sku:
-            if sku in best_prices:
-                if price > best_prices[sku]["price"]:
-                    best_prices[sku] = {
-                        "name": name,
-                        "price": price,
-                        "country": country,
-                        "score": score,
-                        "status": status
-                    }
-            else:
-                best_prices[sku] = {
-                    "name": name,
-                    "price": price,
-                    "country": country,
-                    "score": score,
-                    "status": status
-                }
-        else:
-            writer.writerow([name, price, country, sku, score, status])
+    rows.extend(best_prices.values())
+    return rows, not_found
 
-    # =========================
-    # 💾 ЗАПИСЬ ЛУЧШИХ SKU
-    # =========================
-    for sku, data in best_prices.items():
-        writer.writerow([
-            data["name"],
-            data["price"],
-            data["country"],
-            sku,
-            data["score"],
-            data["status"]
-        ])
 
-print("✅ Готово!")
+def main():
+    mapping = load_mapping_from_github()
+    print(f"Загружено названий из mapping GitHub: {len(mapping)}")
+    conflicts = sum(len(skus) > 1 for skus in mapping.values())
+    if conflicts:
+        print(f"⚠️ Названий с разными SKU в mapping: {conflicts}")
 
-with open("not_found.txt", "w", encoding="utf-8") as f:
-    for item in sorted(not_found):
-        f.write(item + "\n")
+    with open("prices_utf8.txt", "r", encoding="utf-8-sig") as f:
+        rows, not_found = parse_prices(f, mapping)
 
-print(f"! Не найдено товаров: {len(not_found)}")
+    with open("prices_parsed.csv", "w", newline="", encoding="utf-8") as f:
+        writer = csv.writer(f)
+        writer.writerow(["Название", "Цена", "Страна", "SKU", "Score", "Status"])
+        writer.writerows(rows)
 
+    with open("not_found.txt", "w", encoding="utf-8") as f:
+        for item in sorted(not_found):
+            f.write(item + "\n")
+
+    print("✅ Готово!")
+    print(f"! Не найдено товаров: {len(not_found)}")
+
+
+if __name__ == "__main__":
+    main()
