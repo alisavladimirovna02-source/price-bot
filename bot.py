@@ -9,6 +9,7 @@ import subprocess
 import sys
 import requests
 import base64
+import wb_handlers
 from telegram import ReplyKeyboardMarkup
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import (
@@ -23,7 +24,7 @@ from telegram.ext import (
 
 def get_main_keyboard():
     return ReplyKeyboardMarkup(
-        [["📦 Не найдено"]],
+        [["📦 Не найдено"], [wb_handlers.BUTTON]],
         resize_keyboard=True
     )
 
@@ -34,7 +35,9 @@ logger = logging.getLogger("price_bot")
 class RedactingFormatter(logging.Formatter):
     def format(self, record):
         message = super().format(record)
-        for secret in (TOKEN, os.getenv("GITHUB_TOKEN")):
+        secrets = [TOKEN, os.getenv("GITHUB_TOKEN")]
+        secrets.extend(value for key, value in os.environ.items() if key.startswith("WB_TOKEN_"))
+        for secret in secrets:
             if secret:
                 message = message.replace(secret, "[REDACTED]")
         return message
@@ -99,7 +102,8 @@ async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not await check_access(update):
         return
     await update.effective_message.reply_text(
-        "✅ Бот на связи.\nПришли прайс текстом, затем нажми «Обработать».",
+        "✅ Бот на связи.\nПришли прайс текстом, затем нажми «Обработать».\n"
+        "Для остатков Wildberries нажми «Обнулить остатки WB» или /wb.",
         reply_markup=get_main_keyboard(),
     )
 
@@ -651,7 +655,8 @@ def build_application():
         raise RuntimeError("На сервере не задана переменная TOKEN")
     app = (ApplicationBuilder().token(TOKEN)
            .post_init(log_telegram_initialized).build())
-    app.add_handler(TypeHandler(Update, log_update), group=-1)
+    app.add_handler(TypeHandler(Update, log_update), group=-2)
+    wb_handlers.register_handlers(app, check_access)
     app.add_handler(CommandHandler("start", start_command))
     app.add_handler(MessageHandler(filters.TEXT & filters.Regex("📦 Не найдено"), not_found_button))
     app.add_handler(MessageHandler(filters.TEXT & filters.Regex(r".+=.+"), handle_mapping))
