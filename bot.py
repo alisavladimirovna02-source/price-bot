@@ -2,8 +2,11 @@ ALLOWED_USERS = [800906903, 686105512, 5652216103, 7434891167]
 
 user_store = {}
 import csv
+import logging
 from io import StringIO
 import os
+import subprocess
+import sys
 import requests
 import base64
 from telegram import ReplyKeyboardMarkup
@@ -13,7 +16,9 @@ from telegram.ext import (
     MessageHandler,
     filters,
     ContextTypes,
-    CallbackQueryHandler
+    CallbackQueryHandler,
+    CommandHandler,
+    TypeHandler
 )
 
 def get_main_keyboard():
@@ -23,6 +28,80 @@ def get_main_keyboard():
     )
 
 TOKEN = os.getenv("TOKEN")
+logger = logging.getLogger("price_bot")
+
+
+class RedactingFormatter(logging.Formatter):
+    def format(self, record):
+        message = super().format(record)
+        for secret in (TOKEN, os.getenv("GITHUB_TOKEN")):
+            if secret:
+                message = message.replace(secret, "[REDACTED]")
+        return message
+
+
+def configure_logging():
+    handler = logging.StreamHandler(sys.stdout)
+    handler.setFormatter(RedactingFormatter(
+        "%(asctime)s %(levelname)s %(name)s: %(message)s"
+    ))
+    logging.basicConfig(level=logging.INFO, handlers=[handler], force=True)
+    # HTTP-запросы содержат токен в URL и не нужны в обычном журнале.
+    logging.getLogger("httpx").setLevel(logging.WARNING)
+    logging.getLogger("httpcore").setLevel(logging.WARNING)
+
+
+async def log_telegram_initialized(application):
+    logger.info(
+        "Подключение к Telegram установлено: @%s (bot_id=%s)",
+        application.bot.username, application.bot.id,
+    )
+
+
+async def log_update(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    user = update.effective_user
+    if update.callback_query:
+        kind = "нажатие кнопки"
+    elif update.effective_message and update.effective_message.document:
+        kind = "документ"
+    else:
+        kind = "сообщение"
+    logger.info(
+        "Получено обновление %s: %s; user_id=%s; доступ=%s",
+        update.update_id, kind, user.id if user else None,
+        bool(user and user.id in ALLOWED_USERS),
+    )
+
+
+async def log_error(update, context: ContextTypes.DEFAULT_TYPE):
+    error = context.error
+    logger.error(
+        "Ошибка Telegram или обработчика: %s", type(error).__name__,
+        exc_info=(type(error), error, error.__traceback__),
+    )
+
+
+async def check_access(update: Update):
+    user = update.effective_user
+    if user and user.id in ALLOWED_USERS:
+        return True
+    logger.warning("Отказ в доступе: user_id=%s", user.id if user else None)
+    if user and update.effective_message:
+        await update.effective_message.reply_text(
+            "⛔ Ваш аккаунт не добавлен в список доступа.\n"
+            f"Ваш Telegram ID: {user.id}\n"
+            "Передайте этот ID владельцу бота."
+        )
+    return False
+
+
+async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    if not await check_access(update):
+        return
+    await update.effective_message.reply_text(
+        "✅ Бот на связи.\nПришли прайс текстом, затем нажми «Обработать».",
+        reply_markup=get_main_keyboard(),
+    )
 
 
 def delete_mapping_github(item):
@@ -243,7 +322,7 @@ async def process_and_reply(update: Update):
     try:
         msg = await update.message.reply_text("⏳ Обрабатываю прайс...")
 
-        os.system("python3 parse_prices.py")
+        subprocess.run([sys.executable, "parse_prices.py"], check=True)
 
         total = 0
         with open("prices_parsed.csv", "r", encoding="utf-8") as f:
@@ -322,7 +401,7 @@ async def handle_file(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 async def handle_mapping(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    if update.message.from_user.id not in ALLOWED_USERS:
+    if not await check_access(update):
         return
 
     text = update.message.text.strip()
@@ -496,7 +575,7 @@ async def add_mapping_button(update: Update, context: ContextTypes.DEFAULT_TYPE)
 
 
 async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    if update.message.from_user.id not in ALLOWED_USERS:
+    if not await check_access(update):
         return
 
     text = update.message.text
@@ -567,17 +646,36 @@ async def done_button(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 
-app = ApplicationBuilder().token(TOKEN).build()
+def build_application():
+    if not TOKEN or not TOKEN.strip():
+        raise RuntimeError("На сервере не задана переменная TOKEN")
+    app = (ApplicationBuilder().token(TOKEN)
+           .post_init(log_telegram_initialized).build())
+    app.add_handler(TypeHandler(Update, log_update), group=-1)
+    app.add_handler(CommandHandler("start", start_command))
+    app.add_handler(MessageHandler(filters.TEXT & filters.Regex("📦 Не найдено"), not_found_button))
+    app.add_handler(MessageHandler(filters.TEXT & filters.Regex(r".+=.+"), handle_mapping))
+    app.add_handler(MessageHandler(filters.TEXT, handle_text))
+    app.add_handler(CallbackQueryHandler(delete_mapping_button, pattern="delmap:"))
+    app.add_handler(CallbackQueryHandler(add_mapping_button, pattern="addmap:"))
+    app.add_handler(CallbackQueryHandler(not_found_nav, pattern="nf_"))
+    app.add_handler(CallbackQueryHandler(done_button, pattern="done"))
+    app.add_error_handler(log_error)
+    return app
 
-app.add_handler(MessageHandler(filters.TEXT & filters.Regex("📦 Не найдено"), not_found_button))
-app.add_handler(MessageHandler(filters.TEXT & filters.Regex(r".+=.+"), handle_mapping))
-app.add_handler(MessageHandler(filters.TEXT, handle_text))
 
-app.add_handler(CallbackQueryHandler(delete_mapping_button, pattern="delmap:"))
-app.add_handler(CallbackQueryHandler(add_mapping_button, pattern="addmap:"))
-app.add_handler(CallbackQueryHandler(not_found_nav, pattern="nf_"))
-app.add_handler(CallbackQueryHandler(done_button, pattern="done"))
+def main():
+    configure_logging()
+    logger.info("Запускаю бота. Подключаюсь к Telegram...")
+    try:
+        app = build_application()
+        # Явно запрашиваем сообщения и кнопки независимо от прежних настроек API.
+        app.run_polling(allowed_updates=["message", "callback_query"], bootstrap_retries=0)
+    except Exception:
+        logger.exception("Не удалось запустить бота")
+        return 1
+    return 0
 
-print("🤖 Бот запущен...")
-app.run_polling()
 
+if __name__ == "__main__":
+    sys.exit(main())
