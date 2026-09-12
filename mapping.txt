@@ -32687,3 +32687,4 @@ iPad Air 13 M4 2026 256GB LTE Starlight = ipadair13m4starlight256LTE(2026)
 iPad Pro 11 M5 2025 2TB Nanotexture Glass WiFi Space Black = ipad11prom5black2tb/nanoglass
 iPad Pro 13 M5 2025 1TB Standard Glass WiFi Silver = ipad13prom5silver1tb
 OnePlus 15R CPH2771 12/256 Black esim = oneplus15Rblack12/256
+OnePlus 15R CPH2771 12/256 Mint esim = oneplus15Rmint12/256
