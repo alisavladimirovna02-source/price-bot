@@ -19,3 +19,4 @@ date,telegram_user_id,action,source_name,sku,catalog_name,status,conflicts
 2026-09-12 17:51:21,800906903,ADD,Redmi 17 4G 4/128 NFC Purple,redmi17purple4/128,Redmi 17 4G 4/128 NFC Purple,OK,—
 2026-09-12 17:51:24,800906903,MASS_VALIDATE,Redmi 17 4G 8/256 NFC Purple,redmi17purple8/256,Redmi 17 4G 8/256 NFC Purple,OK,—
 2026-09-12 17:51:28,800906903,ADD,Redmi 17 4G 8/256 NFC Purple,redmi17purple8/256,Redmi 17 4G 8/256 NFC Purple,OK,—
+2026-09-12 17:51:31,800906903,MASS_VALIDATE,Note 15 4G 8/256 NFC Black,note15black8/256,Redmi Note 15 4G NFC 8/256 Black,REVIEW,Бренд: в названии поставщика отсутствует критичная характеристика; Оперативная память: в названии поставщика отсутствует критичная характеристика; Память: в названии поставщика отсутствует критичная характеристика; Сеть: в названии поставщика отсутствует критичная характеристика
