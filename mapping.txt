@@ -32695,3 +32695,4 @@ Note 17 4G 6/256 NFC Purple = note17purple6/256
 Note 17 Pro 5G 8/256 NFC Orange = note17proorange8/256
 Poco M8 Pro 8/256 Green = m8progreen8/256
 iPad Air 13 M3 2025 256GB LTE Purple = ipadair13M3purple256LTE
+iPad Air 13 M3 2025 512GB LTE Starlight = ipadair13M3starlight512LTE
