@@ -32693,3 +32693,4 @@ Redmi 17 4G 4/128 NFC Purple = redmi17purple4/128
 Redmi 17 4G 8/256 NFC Purple = redmi17purple8/256
 Note 17 4G 6/256 NFC Purple = note17purple6/256
 Note 17 Pro 5G 8/256 NFC Orange = note17proorange8/256
+Poco M8 Pro 8/256 Green = m8progreen8/256
