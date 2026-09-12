@@ -33,3 +33,4 @@ date,telegram_user_id,action,source_name,sku,catalog_name,status,conflicts
 2026-09-12 17:52:10,800906903,ADD,iPad Air 13 M3 2025 512GB LTE Starlight,ipadair13M3starlight512LTE,Apple iPad Air 13 M3 Wi-Fi+Cellular 512GB Starlight,OK,—
 2026-09-12 17:52:12,800906903,MASS_VALIDATE,"MacBook Air 15 Starlight M4 10Core, GPU 10Core, 16GB, 512GB",macair15m4starlight16/512,Apple MacBook Air 15” MW1K3 (M4 10-Core G PU 10-Core 16GB 512GB) («Сияющая звезда» | Starlight),OK,—
 2026-09-12 17:52:17,800906903,ADD,"MacBook Air 15 Starlight M4 10Core, GPU 10Core, 16GB, 512GB",macair15m4starlight16/512,Apple MacBook Air 15” MW1K3 (M4 10-Core G PU 10-Core 16GB 512GB) («Сияющая звезда» | Starlight),OK,—
+2026-09-12 17:52:20,800906903,MASS_VALIDATE,"MacBook Air 15 Sky Blue M4 10Core, GPU 10Core, 16GB, 512GB",macair15m4blue16/512,"Apple MacBook Air 15"" M4 16GB/512GB Blue (MC7C4)",REVIEW,Оперативная память: в названии поставщика отсутствует критичная характеристика
