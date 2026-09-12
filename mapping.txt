@@ -32700,3 +32700,4 @@ MacBook Air 15 Starlight M4 10Core, GPU 10Core, 16GB, 512GB = macair15m4starligh
 16 Pro Max 512 White 2sim = iphone16promaxwhite512-2sim
 17e 512 Black 1Sim+eSim = iphone17eblack512
 17e 512 White 1Sim+eSim = iphone17ewhite512
+Pro 14 MJLV4 Silver M5 Pro 24/2TB = macpro14m5silver24/2tb
