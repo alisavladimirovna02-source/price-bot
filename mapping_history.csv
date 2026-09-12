@@ -26,3 +26,4 @@ date,telegram_user_id,action,source_name,sku,catalog_name,status,conflicts
 2026-09-12 17:51:43,800906903,MASS_VALIDATE,Note 17 Pro 5G 8/256 NFC Orange,note17proorange8/256,Note 17 Pro 5G 8/256 NFC Orange,OK,—
 2026-09-12 17:51:48,800906903,ADD,Note 17 Pro 5G 8/256 NFC Orange,note17proorange8/256,Note 17 Pro 5G 8/256 NFC Orange,OK,—
 2026-09-12 17:51:50,800906903,MASS_VALIDATE,Poco M8 Pro 8/256 Green,m8progreen8/256,M8 Pro 8/256 Green,OK,—
+2026-09-12 17:51:55,800906903,ADD,Poco M8 Pro 8/256 Green,m8progreen8/256,M8 Pro 8/256 Green,OK,—
