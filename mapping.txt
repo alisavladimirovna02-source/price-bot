@@ -32689,3 +32689,4 @@ iPad Pro 13 M5 2025 1TB Standard Glass WiFi Silver = ipad13prom5silver1tb
 OnePlus 15R CPH2771 12/256 Black esim = oneplus15Rblack12/256
 OnePlus 15R CPH2771 12/256 Mint esim = oneplus15Rmint12/256
 Redmi 17 4G 4/128 NFC Green = redmi17green4/128
+Redmi 17 4G 4/128 NFC Purple = redmi17purple4/128
