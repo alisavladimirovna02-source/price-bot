@@ -54,3 +54,4 @@ date,telegram_user_id,action,source_name,sku,catalog_name,status,conflicts
 2026-09-12 17:53:26,800906903,ADD,Galaxy Tab S10 Lite 5G 8/256 Gray SMX406B,galaxytabS10litegray8/256cell,Galaxy Tab S10 Lite 5G (X406) 8/256 gray,OK,—
 2026-09-12 17:53:28,800906903,MASS_VALIDATE,Galaxy Tab S10 Lite 5G 8/256 Silver SMX406B,galaxytabs10litesilver8/256cell,Samsung Galaxy Tab S10 Lite 5G X406 8/256 silver,REVIEW,Бренд: в названии поставщика отсутствует критичная характеристика
 2026-09-12 17:53:31,800906903,MASS_VALIDATE,Galaxy Tab S10 Lite 5G 8/256 Coralred SMX406B,galaxytabs10litered8/256cell,Samsung Galaxy Tab S10 Lite 5G X406 8/256 red,REVIEW,Бренд: в названии поставщика отсутствует критичная характеристика; Цвет: цвет не указан в названии поставщика
+2026-09-12 17:53:34,800906903,MASS_VALIDATE,Galaxy S26 12/256 Black SMS942B/DS,s26black12/256,Samsung Galaxy S26 12GB/256GB S942B Black,REVIEW,Бренд: в названии поставщика отсутствует критичная характеристика
