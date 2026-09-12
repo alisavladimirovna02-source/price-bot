@@ -32704,3 +32704,4 @@ Pro 14 MJLV4 Silver M5 Pro 24/2TB = macpro14m5silver24/2tb
 Galaxy Tab A11 4/64 Gray SMX130 = galaxytabA11gray4/64
 Galaxy Tab A11 4/64 Silver SMX130 = galaxytabA11silver4/64
 Galaxy Tab A11 4/64 Gray SMX135G = galaxytabA11gray4/64LTE
+Galaxy Tab S10 Lite 5G 8/256 Gray SMX406B = galaxytabS10litegray8/256cell
