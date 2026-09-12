@@ -30,3 +30,4 @@ date,telegram_user_id,action,source_name,sku,catalog_name,status,conflicts
 2026-09-12 17:51:57,800906903,MASS_VALIDATE,iPad Air 13 M3 2025 256GB LTE Purple,ipadair13M3purple256LTE,iPad Air 13 M3 (2025) 256GB Wi-Fi+Cellular Purple,OK,—
 2026-09-12 17:52:02,800906903,ADD,iPad Air 13 M3 2025 256GB LTE Purple,ipadair13M3purple256LTE,iPad Air 13 M3 (2025) 256GB Wi-Fi+Cellular Purple,OK,—
 2026-09-12 17:52:05,800906903,MASS_VALIDATE,iPad Air 13 M3 2025 512GB LTE Starlight,ipadair13M3starlight512LTE,Apple iPad Air 13 M3 Wi-Fi+Cellular 512GB Starlight,OK,—
+2026-09-12 17:52:10,800906903,ADD,iPad Air 13 M3 2025 512GB LTE Starlight,ipadair13M3starlight512LTE,Apple iPad Air 13 M3 Wi-Fi+Cellular 512GB Starlight,OK,—
