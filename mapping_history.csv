@@ -14,3 +14,4 @@ date,telegram_user_id,action,source_name,sku,catalog_name,status,conflicts
 2026-09-12 17:51:03,800906903,MASS_VALIDATE,Galaxy Watch Ultra 47mm LTE Grey 2025,GalaxyWatchUltra47GrayLTE,Samsung Galaxy Watch Ultra 47mm Silver (LTE),REVIEW,Бренд: в названии поставщика отсутствует критичная характеристика; Цвет: Gray ≠ Silver
 2026-09-12 17:51:06,800906903,MASS_VALIDATE,Galaxy Watch Ultra 47mm LTE Silver 2025,GalaxyWatchUltra47SilverLTE,Samsung Galaxy Watch Ultra 47mm Gray (LTE),REVIEW,Бренд: в названии поставщика отсутствует критичная характеристика; Цвет: Silver ≠ Gray
 2026-09-12 17:51:09,800906903,MASS_VALIDATE,Redmi 17 4G 4/128 NFC Green,redmi17green4/128,Redmi 17 4G 4/128 NFC Green,OK,—
+2026-09-12 17:51:13,800906903,ADD,Redmi 17 4G 4/128 NFC Green,redmi17green4/128,Redmi 17 4G 4/128 NFC Green,OK,—
