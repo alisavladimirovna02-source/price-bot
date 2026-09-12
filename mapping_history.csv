@@ -11,3 +11,4 @@ date,telegram_user_id,action,source_name,sku,catalog_name,status,conflicts
 2026-09-12 17:50:54,800906903,MASS_VALIDATE,OnePlus 15R CPH2771 12/256 Mint esim,oneplus15Rmint12/256,OnePlus 15R 12GB/256GB Mint,OK,—
 2026-09-12 17:50:58,800906903,ADD,OnePlus 15R CPH2771 12/256 Mint esim,oneplus15Rmint12/256,OnePlus 15R 12GB/256GB Mint,OK,—
 2026-09-12 17:51:00,800906903,MASS_VALIDATE,Galaxy Watch 8 44mm Graphite,galaxywatch8graphite44,Samsung Galaxy Watch 8 44mm Graphite,REVIEW,Бренд: в названии поставщика отсутствует критичная характеристика
+2026-09-12 17:51:03,800906903,MASS_VALIDATE,Galaxy Watch Ultra 47mm LTE Grey 2025,GalaxyWatchUltra47GrayLTE,Samsung Galaxy Watch Ultra 47mm Silver (LTE),REVIEW,Бренд: в названии поставщика отсутствует критичная характеристика; Цвет: Gray ≠ Silver
