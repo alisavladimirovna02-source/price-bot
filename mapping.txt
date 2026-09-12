@@ -32708,3 +32708,4 @@ Galaxy Tab S10 Lite 5G 8/256 Gray SMX406B = galaxytabS10litegray8/256cell
 Dyson HT01 Airstrait Ceramic Pink = dysonairstraitHT01ceramicpink
 Dyson HT01 Airstrait Nickel/Copper = dysonairstraitHT01nickel/copper
 Dyson HT01 Airstrait Prussian Blue = dysonairstraitHT01prussianblue
+Dyson HS05 Ceramic Pop = dysonHS05Ceramicpop
