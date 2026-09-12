@@ -32690,3 +32690,4 @@ OnePlus 15R CPH2771 12/256 Black esim = oneplus15Rblack12/256
 OnePlus 15R CPH2771 12/256 Mint esim = oneplus15Rmint12/256
 Redmi 17 4G 4/128 NFC Green = redmi17green4/128
 Redmi 17 4G 4/128 NFC Purple = redmi17purple4/128
+Redmi 17 4G 8/256 NFC Purple = redmi17purple8/256
