@@ -8,3 +8,4 @@ date,telegram_user_id,action,source_name,sku,catalog_name,status,conflicts
 2026-09-12 17:50:44,800906903,DUPLICATE,Pro 14 MGDN4 Silver M5 Pro 24/1TB,macpro14m5silver24/1tb2026,Apple MacBook Pro 14 2026 MG DN4 (M5 Pro 16-Core G PU 24GB/1024GB) Silver (Silver),OK,—
 2026-09-12 17:50:47,800906903,MASS_VALIDATE,OnePlus 15R CPH2771 12/256 Black esim,oneplus15Rblack12/256,OnePlus 15R CPH2767 12GB/256GB Black,OK,—
 2026-09-12 17:50:51,800906903,ADD,OnePlus 15R CPH2771 12/256 Black esim,oneplus15Rblack12/256,OnePlus 15R CPH2767 12GB/256GB Black,OK,—
+2026-09-12 17:50:54,800906903,MASS_VALIDATE,OnePlus 15R CPH2771 12/256 Mint esim,oneplus15Rmint12/256,OnePlus 15R 12GB/256GB Mint,OK,—
