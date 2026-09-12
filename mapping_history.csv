@@ -5,3 +5,4 @@ date,telegram_user_id,action,source_name,sku,catalog_name,status,conflicts
 2026-09-12 17:50:35,800906903,MASS_VALIDATE,Z Fold 7 12/256 F966B Mint,Zfold7mint12/256,Samsung Z Fold 7 12GB/256GB Mint,REVIEW,Бренд: в названии поставщика отсутствует критичная характеристика
 2026-09-12 17:50:38,800906903,MASS_VALIDATE,"Apple MacBook Pro 14 MGDN4 Silver M5 Pro 15Core, GPU 16Core, 24GB, 1TB",macpro14m5silver24/1tb2026,Apple MacBook Pro 14 2026 MG DN4 (M5 Pro 16-Core G PU 24GB/1024GB) Silver (Silver),REVIEW,Оперативная память: в названии поставщика отсутствует критичная характеристика
 2026-09-12 17:50:41,800906903,MASS_VALIDATE,Pro 14 MGDN4 Silver M5 Pro 24/1TB,macpro14m5silver24/1tb2026,Apple MacBook Pro 14 2026 MG DN4 (M5 Pro 16-Core G PU 24GB/1024GB) Silver (Silver),OK,—
+2026-09-12 17:50:44,800906903,DUPLICATE,Pro 14 MGDN4 Silver M5 Pro 24/1TB,macpro14m5silver24/1tb2026,Apple MacBook Pro 14 2026 MG DN4 (M5 Pro 16-Core G PU 24GB/1024GB) Silver (Silver),OK,—
