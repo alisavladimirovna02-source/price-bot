@@ -50,3 +50,4 @@ date,telegram_user_id,action,source_name,sku,catalog_name,status,conflicts
 2026-09-12 17:53:09,800906903,ADD,Galaxy Tab A11 4/64 Silver SMX130,galaxytabA11silver4/64,Galaxy Tab A11 Wi-Fi (X130) 4/64 silver,OK,—
 2026-09-12 17:53:12,800906903,MASS_VALIDATE,Galaxy Tab A11 4/64 Gray SMX135G,galaxytabA11gray4/64LTE,Tab A11 LTE X135 4/64 gray,OK,—
 2026-09-12 17:53:17,800906903,ADD,Galaxy Tab A11 4/64 Gray SMX135G,galaxytabA11gray4/64LTE,Tab A11 LTE X135 4/64 gray,OK,—
+2026-09-12 17:53:21,800906903,MASS_VALIDATE,Galaxy Tab S10 Lite 5G 8/256 Gray SMX406B,galaxytabS10litegray8/256cell,Galaxy Tab S10 Lite 5G (X406) 8/256 gray,OK,—
