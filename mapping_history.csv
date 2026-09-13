@@ -333,3 +333,4 @@ date,telegram_user_id,action,source_name,sku,catalog_name,status,conflicts
 2026-09-13 10:52:43,5652216103,MASS_VALIDATE,Galaxy Tab S10 FE 5G 8/128 Gray SMX526B,galaxytabs10FEgray8/128SM-X526B,Samsung Galaxy Tab S10 FE 8GB/128GB Wi-Fi (SM-X526B) Gray,REVIEW,Бренд: в названии поставщика отсутствует критичная характеристика
 2026-09-13 10:52:45,5652216103,MASS_VALIDATE,Galaxy Tab S10 FE 5G 8/128 Silver SMX526B,galaxytabs10fesilver8/128cell,Tab S10 FE 5G X526 8/128 silver,OK,—
 2026-09-13 10:52:49,5652216103,MASS_VALIDATE,Galaxy Tab S10 FE 5G 8/128 Blue SMX526B,galaxytabs10FEblue8/128SM-X526B,Samsung Galaxy Tab S10 FE 8GB/128GB 5G (SM-X526B) Blue | Blue,REVIEW,Бренд: в названии поставщика отсутствует критичная характеристика
+2026-09-13 10:52:51,5652216103,MASS_VALIDATE,Galaxy S26 12/256 Black SMS942B/DS,S26black12/256,Samsung Galaxy S26 12GB/256GB S942B Black,REVIEW,Бренд: в названии поставщика отсутствует критичная характеристика
