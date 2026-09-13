@@ -402,3 +402,4 @@ date,telegram_user_id,action,source_name,sku,catalog_name,status,conflicts
 2026-09-13 10:55:44,800906903,MASS_VALIDATE,Galaxy S26 Ultra 12/256 White SMS948B/DS,s26ultrawhite12/256,Samsung S26 Ultra 12GB/256GB White,REVIEW,Бренд: в названии поставщика отсутствует критичная характеристика
 2026-09-13 10:55:47,800906903,MASS_VALIDATE,Galaxy S26 Ultra 12/256 Cobalt Violet SMS948B/DS,s26ultraviolet12/256,Samsung S26 Ultra 12GB/256GB Violet,REVIEW,Бренд: в названии поставщика отсутствует критичная характеристика
 2026-09-13 10:55:49,800906903,MASS_VALIDATE,Galaxy S26 Ultra 12/256 Sky Blue SMS948B/DS,s26ultrablue12/256,Samsung Galaxy S26 Ultra 12/256 S948B Blue,REVIEW,Бренд: в названии поставщика отсутствует критичная характеристика
+2026-09-13 10:55:52,800906903,MASS_VALIDATE,Galaxy S26 Ultra 12/512 Black SMS948B/DS,s26ultrablack12/512,Samsung S26 Ultra 12GB/512GB Black,REVIEW,Бренд: в названии поставщика отсутствует критичная характеристика
