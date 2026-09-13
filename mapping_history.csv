@@ -295,3 +295,4 @@ date,telegram_user_id,action,source_name,sku,catalog_name,status,conflicts
 2026-09-13 10:26:33,5652216103,MASS_VALIDATE,Note 15 4G 8/256 NFC Blue,note15blue8/256,Redmi Note 15 8/256 NFC Blue,REVIEW,Бренд: в названии поставщика отсутствует критичная характеристика; Оперативная память: в названии поставщика отсутствует критичная характеристика; Память: в названии поставщика отсутствует критичная характеристика
 2026-09-13 10:26:36,5652216103,MASS_VALIDATE,Note 17 4G 6/256 NFC Purple,note17purple6/256,Note 17 4G 6/256 NFC Purple,OK,—
 2026-09-13 10:26:39,5652216103,MASS_VALIDATE,Note 17 Pro 5G 8/256 NFC Orange,note17proorange8/256,Note 17 Pro 5G 8/256 NFC Orange,OK,—
+2026-09-13 10:26:41,5652216103,MASS_VALIDATE,Poco M8 Pro 8/256 Green,m8progreen8/256,M8 Pro 8/256 Green,OK,—
