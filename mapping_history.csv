@@ -363,3 +363,4 @@ date,telegram_user_id,action,source_name,sku,catalog_name,status,conflicts
 2026-09-13 10:54:03,5652216103,MASS_VALIDATE,Galaxy S26 Ultra 16/1TB Sky Blue SMS948B/DS,s26ultrablue16/1tb,,SKU_NOT_FOUND,—
 2026-09-13 10:54:06,5652216103,MASS_VALIDATE,Honor 600 Lite 8/256 Green,honor600litegreen8/256,,SKU_NOT_FOUND,—
 2026-09-13 10:54:08,5652216103,MASS_VALIDATE,S25 12/128 S931B Silver,S25silver12/128,Samsung Galaxy S25 12/128 S931B Silver,REVIEW,Бренд: в названии поставщика отсутствует критичная характеристика; Модель: в названии поставщика отсутствует критичная характеристика; Оперативная память: в названии поставщика отсутствует критичная характеристика; Память: в названии поставщика отсутствует критичная характеристика
+2026-09-13 10:54:10,5652216103,MASS_VALIDATE,S26 12/128 S942B Black,S26black12/128,,SKU_NOT_FOUND,—
