@@ -32709,3 +32709,4 @@ Dyson HT01 Airstrait Ceramic Pink = dysonairstraitHT01ceramicpink
 Dyson HT01 Airstrait Nickel/Copper = dysonairstraitHT01nickel/copper
 Dyson HT01 Airstrait Prussian Blue = dysonairstraitHT01prussianblue
 Dyson HS05 Ceramic Pop = dysonHS05Ceramicpop
+SE3 40 StarlightM/L 2025 = awse2025starlight40m/l
