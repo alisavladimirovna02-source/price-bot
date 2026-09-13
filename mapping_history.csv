@@ -78,3 +78,4 @@ date,telegram_user_id,action,source_name,sku,catalog_name,status,conflicts
 2026-09-13 10:04:27,5652216103,DUPLICATE,17 256 Blue 1Sim+eSim,iphone17blue256,IPhone 17 12GB/256GB Blue (без RuStore и Max),REVIEW,Оперативная память: в названии поставщика отсутствует критичная характеристика
 2026-09-13 10:04:29,5652216103,PRICE_REVIEW,17 256 Sage 1Sim+eSim,iphone17green256,iPhone 17 256GB Green (без RuStore и Max),REVIEW,Цвет: цвет не указан в названии поставщика
 2026-09-13 10:04:35,5652216103,DUPLICATE,17 256 Sage 1Sim+eSim,iphone17green256,iPhone 17 256GB Green (без RuStore и Max),REVIEW,Цвет: цвет не указан в названии поставщика
+2026-09-13 10:04:37,5652216103,PRICE_REVIEW,17 512 Sage 1Sim+eSim,iphone17green512,iPhone 17 512GB Green (без RuStore и Max),REVIEW,Цвет: цвет не указан в названии поставщика
