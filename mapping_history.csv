@@ -274,3 +274,4 @@ date,telegram_user_id,action,source_name,sku,catalog_name,status,conflicts
 2026-09-13 10:25:38,800906903,MASS_VALIDATE,Galaxy S26+ 12/256 Sky Blue SMS947B/DS,s26plusblue12/256,Samsung Galaxy S26+ 12/256 S947B Blue,REVIEW,Бренд: в названии поставщика отсутствует критичная характеристика
 2026-09-13 10:25:40,800906903,MASS_VALIDATE,Galaxy S26+ 12/512 Sky Blue SMS947B/DS,s26plusblue12/512,Samsung Galaxy S26+ 12/512 S947B Blue,REVIEW,Бренд: в названии поставщика отсутствует критичная характеристика
 2026-09-13 10:25:43,800906903,MASS_VALIDATE,Dyson HT01 Airstrait Ceramic Pink,dysonairstraitHT01ceramicpink,Выпрямительно Dyson Airstrait HT01 Ceramicpink,OK,—
+2026-09-13 10:25:45,800906903,MASS_VALIDATE,Dyson HT01 Airstrait Nickel/Copper,dysonairstraitHT01nickel/copper,Выпрямительно Dyson Airstrait HT01 Nicek/copper,OK,—
