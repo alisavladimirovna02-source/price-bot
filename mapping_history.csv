@@ -336,3 +336,4 @@ date,telegram_user_id,action,source_name,sku,catalog_name,status,conflicts
 2026-09-13 10:52:51,5652216103,MASS_VALIDATE,Galaxy S26 12/256 Black SMS942B/DS,S26black12/256,Samsung Galaxy S26 12GB/256GB S942B Black,REVIEW,Бренд: в названии поставщика отсутствует критичная характеристика
 2026-09-13 10:52:54,5652216103,MASS_VALIDATE,Galaxy S26 12/256 White SMS942B/DS,S26white12/256,Samsung Galaxy S26 12/256 S942B White,REVIEW,Бренд: в названии поставщика отсутствует критичная характеристика
 2026-09-13 10:52:57,5652216103,MASS_VALIDATE,Galaxy S26 12/256 Cobalt Violet SMS942B/DS,S26violet12/256,Samsung S26 12GB/256GB Violet,REVIEW,Бренд: в названии поставщика отсутствует критичная характеристика
+2026-09-13 10:53:00,5652216103,MASS_VALIDATE,Galaxy S26 12/256 Pink Gold SMS942B/DS,S26pinkgold12/256,Samsung Galaxy S26 12GB/256GB S942B pink gold,REVIEW,Бренд: в названии поставщика отсутствует критичная характеристика
