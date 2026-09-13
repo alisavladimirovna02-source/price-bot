@@ -344,3 +344,4 @@ date,telegram_user_id,action,source_name,sku,catalog_name,status,conflicts
 2026-09-13 10:53:13,5652216103,MASS_VALIDATE,Galaxy S26 12/512 Sky Blue SMS942B/DS,s26blue12/512,,SKU_NOT_FOUND,—
 2026-09-13 10:53:15,5652216103,MASS_VALIDATE,Galaxy S26+ 12/256 Black SMS947B/DS,s26plusblack12/256,Samsung S26+ 12/256 S947B Black,REVIEW,Бренд: в названии поставщика отсутствует критичная характеристика
 2026-09-13 10:53:18,5652216103,MASS_VALIDATE,Galaxy S26+ 12/256 White SMS947B/DS,s26pluswhite12/256,Samsung S26+ 12/256 S947B White,REVIEW,Бренд: в названии поставщика отсутствует критичная характеристика
+2026-09-13 10:53:20,5652216103,MASS_VALIDATE,Galaxy S26+ 12/256 Sky Blue SMS947B/DS,s26plusblue12/256,Samsung Galaxy S26+ 12/256 S947B Blue,REVIEW,Бренд: в названии поставщика отсутствует критичная характеристика
