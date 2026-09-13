@@ -32892,3 +32892,7 @@ iPad 11 256GB Silver WiFi = ipad11silver256
 AirPods Pro 2 TypeC = airpodspro2typec
 MU9E3 16/512 = macminiM416/512
 MD2T4 24/512 Blue = imacM4blue24/512
+Galaxy Watch Ultra 47mm LTE Grey 2025 = GalaxyWatchUltra47GrayLTE
+Galaxy Watch Ultra 47mm LTE Silver 2025 = GalaxyWatchUltra47SilverLTE
+Note 15 4G 8/256 NFC Black = note15black8/256
+Note 15 4G 8/256 NFC Blue = note15blue8/256
