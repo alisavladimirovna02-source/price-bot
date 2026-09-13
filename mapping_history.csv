@@ -70,3 +70,4 @@ date,telegram_user_id,action,source_name,sku,catalog_name,status,conflicts
 2026-09-12 17:54:19,800906903,ADD,Dyson HS05 Ceramic Pop,dysonHS05Ceramicpop,Мультистайлер Dyson Airwrap Complete Long HS05 Ceramic Pop,OK,—
 2026-09-12 19:34:26,800906903,PRICE_REVIEW,iPad Air 13 M2 2024 512GB WiFi Space Gray,ipadair13gray512,iPad Air 13 (2024) 512GB Gray,REVIEW,Цвет: Space Gray ≠ Gray
 2026-09-12 19:47:23,800906903,PRICE_REVIEW,17e 256 Pink,iphone17epink256esim,iPhone 17e 256GB Pink eSIM,REVIEW,SIM: в названии поставщика отсутствует критичная характеристика
+2026-09-13 10:03:53,5652216103,PRICE_REVIEW,16 Pro 128 Desert 2sim,iphone16prodesert128-2sim,Apple Iphone16 Pro 128GB Desert Titanium 2sim,REVIEW,Бренд: в названии поставщика отсутствует критичная характеристика
