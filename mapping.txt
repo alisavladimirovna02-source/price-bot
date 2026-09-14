@@ -1465,7 +1465,32 @@ S11 46mm Space Gray Sport Band S/M = aws11gray/black46s/m
 S25 12/128 Icyblue = S25iceblue12/128
 S25 12/128 Navy = S25navy12/128
 S25 12/128 Silver = s25silver12/128
-
+S25 12/128 S931B Silver = s25silver12/128
+Galaxy Watch 8 44mm Graphite = GalaxyWatch8graphite44
+Note 15 4G 8/128 NFC Black = note15black8/128
+Poco F8 Pro 5G 12/256 Blue = f8problue12/256
+Poco F8 Pro 5G 12/512 Black = f8problack12/512
+Poco F8 Pro 5G 12/512 Silver = f8prosilver12/512
+Poco F8 Ultra 5G 12/256 Black = f8ultrablack12/256
+Poco F8 Ultra 5G 12/256 Blue = f8ultrablue12/256
+16 Pro Max 256 White esim = iphone16promaxwhite256esim
+16 Pro Max 256 Natural esim = iphone16promaxtitanium256esim
+17 Air 256 Black eSim = iphone17airblack256
+17 Air 256 White eSim = iphone17airwhite256
+17 Air 256 Gold eSim = iphone17airgold256
+17 Air 256 Blue eSim = iphone17airblue256
+17 Air 512 Black eSim = iphone17airblack512
+17 Air 512 Gold eSim = iphone17airgold512
+17 Air 512 Blue eSim = iphone17airblue512
+17 Air 1TB Black eSim = iphone17airblack1tb
+17 Air 1TB Blue eSim = iphone17airblue1tb
+iPad 11 128 Pink LTE = ipad11pink128LTE
+AIR 13 M3 256 Gray WiFi = ipadair13M3gray256
+AIR 13 M3 256 Starlight WiFi = ipadair13M3starlight256
+AIR 13 M4 128 Gray WiFi = ipadair13M4gray128
+AIR 13 M4 128 Starlight WiFi = ipadair13M4starlight128
+AIR 13 M4 128 Purple WiFi = ipadair13M4purple128
+AIR 13 M4 256 Blue WiFi = ipadair13M4blue256
 
 
 
