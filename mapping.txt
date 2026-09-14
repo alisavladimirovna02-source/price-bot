@@ -33069,3 +33069,6 @@ iPad 11 128 Yellow WiFi = ipad11yellow128
 iPad 11 256 Silver WiFi = ipad11silver256
 iPad 11 256 Blue WiFi = ipad11blue256
 S11 42 Rose GoldM/L = aws11rosegold42m/l
+17 512 Sage esim = iphone17green512eSIM
+MDE14 16/1TB Space Black = macpro14m5black16/1tb
+MDVQ4 16/512 Sky Blue = macair15m5blue16/512
