@@ -33132,3 +33132,4 @@ S11 42 Rose GoldM/L = aws11rosegold42m/l
 17 512 Sage esim = iphone17green512eSIM
 MDE14 16/1TB Space Black = macpro14m5black16/1tb
 MDVQ4 16/512 Sky Blue = macair15m5blue16/512
+17e 512 Pink = iphone17epink512
