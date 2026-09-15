@@ -1552,7 +1552,19 @@ Ultra 2 49mm Black Ti Dark Green Alpine Loop Small = awUltra2black/green49_Alpin
 Ultra 2 49mm Black Ti Dark Green Alpine Loop Large = awUltra2black/green49_AlpineLoopL
 Ultra 2 49mm Natural Ti Blue Trail Loop M/L = awUltra2natural/blue49_TrailLoopM/L
 Ultra 2 49mm Black Ti Dark Green Alpine Loop Medium = awUltra2black/green49_AlpineLoopM
-
+14 128 Midnight = iphone14black128
+16 512 Pink = iphone16pink512
+16 Pro 512 Natural = iphone16protitanium512
+16e 128 Black esim = iphone16eblack128-eSIM
+16e 256 Black 2sim = iphone16eblack256-2SIM
+17 Pro Max 256 Silver 2sim = iphone17promaxsilver2562sim
+A27 6/128 Blue = a27blue6/128
+A56 8/128 Blue = a56blue8/128
+AirPods Max Blue USBC = AirpodsMaxUSBCBlue
+AirPods Max Midnight USBC = AirpodsMaxUSBCMidnight
+AirPods Max Purple USBC = AirpodsMaxUSBCPurple
+Galaxy Tab A11 4/64 Gray WiFi = galaxytabA11gray4/64
+Galaxy Tab A11 4/64 Silver WiFi = galaxytabA11silver4/64
 
 
 
