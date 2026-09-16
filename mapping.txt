@@ -33564,3 +33564,5 @@ MDE14 16/1TB Space Black = macpro14m5black16/1tb
 MDVQ4 16/512 Sky Blue = macair15m5blue16/512
 17e 512 Pink = iphone17epink512
 UL 2 White OB = awUltra2white49_OceanBand
+MX2Y3 48/512 Space Black = macpro16m4black48512
+MDE04 16/512 Space Black = macpro14m5black16/512
