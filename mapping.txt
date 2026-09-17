@@ -33566,3 +33566,4 @@ MDVQ4 16/512 Sky Blue = macair15m5blue16/512
 UL 2 White OB = awUltra2white49_OceanBand
 MX2Y3 48/512 Space Black = macpro16m4black48512
 MDE04 16/512 Space Black = macpro14m5black16/512
+S10 46 Jet Black SL = aws10black46sportloop
