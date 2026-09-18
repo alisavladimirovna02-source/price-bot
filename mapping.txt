@@ -2058,7 +2058,25 @@ Redmi Pad 2 WiFi 4/256 Grey = redmipad2gray4/256
 Redmi Pad 2 WiFi 4/256 Purple = redmipad2purple4/256
 S10 46 Jet Black S/M = aws10jetblack46s/m
 S10 46 Rose Gold Plum SL = aws10rosegold46sportloop
-
+DJI Osmo 360 II Standard Combo = DJIOsmo360IIStandardCombo
+DJI Osmo Mobile 7 2sim = DJIOsmoMobile7
+DJI Osmo Mobile 8P Black = DJIOsmoMobile8PBlack
+DJI Osmo Nano 64GB = DJIOsmoNano64GB
+DJI Osmo Pocket 4 Bundle Standart Combo = DJIOsmoPocket4BundleStandartCombo
+Galaxy Tab S10 Lite 5G 8/256 Coralred SMX406B = galaxytabs10litered8/256cell
+Galaxy Watch 8 40mm Silver = GalaxyWatch8silver40
+Galaxy Watch Ultra 47mm LTE Blue 2025 = GalaxyWatchUltra47BlueLTE
+Galaxy Watch Ultra 47mm LTE White 2025 = GalaxyWatchUltra47WhiteLTE
+Galaxy Watch Ultra SML705F 2025 47mm LTE Silver = GalaxyWatchUltra47SilverLTE
+Galaxy Watch Ultra SML705F 2025 47mm LTE White = GalaxyWatchUltra47WhiteLTE
+Galaxy Watch9 44mm Графит SML355F = GalaxyWatch9graphite44LTE
+Galaxy Watch9 44mm Серебро SML355F = GalaxyWatch9silver44LTE
+GoPro Lit Hero 4K = GoProLitHero4K
+Poco C81 Pro 4/128 Black = c81problack4/128
+Redmi Pad 2 4G 4/256 Green = redmipad2green4/256cell
+S25 12/128 S931B Pink Gold = s25pinkgold12/128
+Z Fold 8 12/256 F971B Pistachio = zfold8pistachio12/256
+Z Fold 8 12/512 F971B Graphite = zfold8graphite12/512
 
 
 
