@@ -2077,7 +2077,10 @@ Redmi Pad 2 4G 4/256 Green = redmipad2green4/256cell
 S25 12/128 S931B Pink Gold = s25pinkgold12/128
 Z Fold 8 12/256 F971B Pistachio = zfold8pistachio12/256
 Z Fold 8 12/512 F971B Graphite = zfold8graphite12/512
-
+Redmi Pad 2 WiFi 4/128 Grey = redmipad2gray4/128
+S26 FE 8/128 S741B Pistachio = S26FEPistachio8/128
+Xiaomi 17T Pro 5G 12/512 Blue = mi17Tproblue12/512
+iPad 11 256 Pink WiFi = ipad11pink256
 
 
 
