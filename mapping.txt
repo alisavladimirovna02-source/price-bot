@@ -2081,7 +2081,12 @@ Redmi Pad 2 WiFi 4/128 Grey = redmipad2gray4/128
 S26 FE 8/128 S741B Pistachio = S26FEPistachio8/128
 Xiaomi 17T Pro 5G 12/512 Blue = mi17Tproblue12/512
 iPad 11 256 Pink WiFi = ipad11pink256
-
+Note 15 Pro 5G 8/512 NFC Black = note15problack5G8/512
+Note 15 Pro 5G 8/512 NFC Blue = note15problue5G8/512
+Note 15 Pro 5G 8/512 NFC Purple = note15propurple5G8/512
+Note 15 Pro 5G 8/512 NFC Titanium = note15protitanium5G8/512
+Poco M8 12/512 Silver = M8silver12/512
+S26 FE 8/256 S741B Graphite = S26FEGraphite8/256
 
 
 
