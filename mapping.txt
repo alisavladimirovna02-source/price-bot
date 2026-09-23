@@ -2087,7 +2087,7 @@ Note 15 Pro 5G 8/512 NFC Purple = note15propurple5G8/512
 Note 15 Pro 5G 8/512 NFC Titanium = note15protitanium5G8/512
 Poco M8 12/512 Silver = M8silver12/512
 S26 FE 8/256 S741B Graphite = S26FEGraphite8/256
-
+Huawei Nova 15 Max 8/256 Pink = huaweinova15maxpink8/256
 
 
 
