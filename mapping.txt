@@ -33659,3 +33659,4 @@ MX2Y3 48/512 Space Black = macpro16m4black48512
 MDE04 16/512 Space Black = macpro14m5black16/512
 S10 46 Jet Black SL = aws10black46sportloop
 Redmi Pad 2 4G 8/256 Grey = redmipad2gray8/256cell
+Galaxy Tab A11+ 6/128 Silver SMX230 = galaxytabA11+gray128
