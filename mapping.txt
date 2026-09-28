@@ -33661,3 +33661,5 @@ S10 46 Jet Black SL = aws10black46sportloop
 Redmi Pad 2 4G 8/256 Grey = redmipad2gray8/256cell
 Galaxy Tab A11+ 6/128 Silver SMX230 = galaxytabA11+gray128
 18 Pro 1TB Silver eSim = iphone18prosilver1024esim
+UL 3 Natural / Light Blue ALL = awultra3natural/blue_alpineloopL
+PRO 13 M5 256 Black LTE = ipad13prom5black256cell
