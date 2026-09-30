@@ -33663,3 +33663,5 @@ Galaxy Tab A11+ 6/128 Silver SMX230 = galaxytabA11+gray128
 18 Pro 1TB Silver eSim = iphone18prosilver1024esim
 UL 3 Natural / Light Blue ALL = awultra3natural/blue_alpineloopL
 PRO 13 M5 256 Black LTE = ipad13prom5black256cell
+S25 12/128 S931B Iceblue = S25iceblue12/128
+Xiaomi 17T Pro 5G 12/256 Violet = mi17Tproviolet12/256
