@@ -130,7 +130,7 @@ class RuntimeTests(unittest.IsolatedAsyncioTestCase):
         )
         def run_parser(command, check):
             self.assertTrue(check)
-            self.assertEqual(command[1:], ["parse_prices.py", "--input-json", "prices_input.json"])
+            self.assertEqual(command[1:], [str(Path(bot.__file__).parent / "parse_prices.py"), "--input-json", "prices_input.json"])
             parse_prices.main(command[-1])
         with tempfile.TemporaryDirectory() as directory:
             previous = Path.cwd()

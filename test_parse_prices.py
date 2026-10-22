@@ -215,6 +215,7 @@ class BotFailureTests(unittest.IsolatedAsyncioTestCase):
         namespace = {
             "Update": object, "subprocess": subprocess, "sys": sys,
             "os": os, "csv": csv,
+            "__file__": str(ROOT / "bot.py"),
         }
         exec(compile(ast.Module(body=[handler], type_ignores=[]),
                      "bot.py", "exec"), namespace)

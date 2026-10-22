@@ -507,7 +507,7 @@ async def process_and_reply(update: Update, input_json=None):
     try:
         msg = await update.message.reply_text("⏳ Обрабатываю прайс...")
 
-        command = [sys.executable, "parse_prices.py"]
+        command = [sys.executable, os.path.join(os.path.dirname(__file__), "parse_prices.py")]
         if input_json:
             command += ["--input-json", input_json]
         subprocess.run(command, check=True)
