@@ -145,10 +145,11 @@ class FileReaderTests(unittest.TestCase):
         entries += ["16 Plus 512 Pink 🇺🇸 - 83000"]
         mapping = parse_prices.parse_mapping("16 Plus 512 Pink = eu-sku\n16 Plus 512 Pink esim = us-sku")
         rows, missing = parse_prices.parse_prices(entries, mapping)
-        self.assertFalse(missing)
+        self.assertEqual(missing, {"16 Plus 512 Pink"})
         self.assertEqual(rows, [
+            ["16 Plus 512 Pink", 82200, "US", "", 0, "MAPPING_CONFLICT"],
+            ["16 Plus 512 Pink", 83000, "US", "", 0, "MAPPING_CONFLICT"],
             ["16 Plus 512 Pink", 92500, "EU", "eu-sku", 100, "OK"],
-            ["16 Plus 512 Pink esim", 83000, "US", "us-sku", 100, "OK"],
         ])
 
     def test_structured_names_keep_activation_and_explicit_sim(self):
@@ -177,11 +178,11 @@ class FileReaderTests(unittest.TestCase):
                     parse_prices.main("prices_input.json")
                 with Path("prices_parsed.csv").open(encoding="utf-8", newline="") as output:
                     rows = list(csv.DictReader(output))
-                self.assertEqual(len(rows), 3)
+                self.assertEqual(len(rows), 2)
                 by_name = {row["Название"]: row for row in rows}
                 self.assertEqual(by_name["16 Plus 512 Pink"]["SKU"], "eu-sku")
                 self.assertEqual(by_name["16 Plus 512 Pink"]["Цена"], "92500")
-                self.assertEqual(by_name["16 Plus 512 Pink esim"]["Страна"], "US")
+                self.assertNotIn("16 Plus 512 Pink esim", by_name)
                 self.assertIn("Unknown", Path("not_found.txt").read_text())
             finally:
                 os.chdir(previous)

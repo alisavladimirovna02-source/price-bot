@@ -5,18 +5,18 @@ from __future__ import annotations
 import os
 import re
 import unicodedata
+import zipfile
 from collections import Counter
 from dataclasses import dataclass, replace
 from functools import lru_cache
 from pathlib import Path
-
-import openpyxl
+from xml.etree import ElementTree as ET
 
 
 COLOR_ALIASES = {
     "черный": "black", "черная": "black", "black": "black",
     "белый": "white", "белая": "white", "white": "white",
-    "серый": "gray", "серебристый": "silver", "серебро": "silver",
+    "серый": "gray", "grey": "gray", "серебристый": "silver", "серебро": "silver",
     "silver": "silver", "space grey": "space gray", "space gray": "space gray",
     "midnight": "black", "синий": "blue", "голубой": "blue", "blue": "blue",
     "зеленый": "green", "green": "green", "красный": "red", "red": "red",
@@ -33,6 +33,7 @@ BRANDS = {
 CRITICAL_FIELDS = {
     "smartphone": ("brand", "model", "variant", "ram", "storage", "network", "sim"),
     "laptop": ("brand", "model", "screen", "chip", "ram", "storage"),
+    "desktop": ("brand", "model", "chip", "ram", "storage"),
     "tablet": ("brand", "model", "screen", "generation", "chip", "storage", "connectivity"),
     "smartwatch": ("brand", "model", "generation", "watch_size", "connectivity"),
     "headphones": ("brand", "model", "generation", "case_type"),
@@ -103,6 +104,8 @@ class ValidationResult:
 
     @property
     def reason(self) -> str:
+        if self.status == ValidationStatus.SKU_NOT_FOUND:
+            return "SKU отсутствует в Registry"
         differences = self.conflicts or self.reviews
         if differences:
             return "; ".join(item.display() for item in differences)
@@ -113,32 +116,27 @@ class NormalizedCatalog:
     def __init__(self, products: dict[str, str]) -> None:
         if not products:
             raise ValueError("Эталонная база SKU пуста")
-        self.products = products
+        self.products = {sku.strip().casefold(): name for sku, name in products.items()}
 
     @classmethod
     def from_xlsx(cls, path: str | Path) -> "NormalizedCatalog":
         source = Path(path)
         if not source.is_file():
             raise FileNotFoundError(f"Не найден файл эталонной базы: {source}")
-        workbook = openpyxl.load_workbook(source, read_only=True, data_only=True, keep_links=False)
-        try:
-            sheet = next((item for item in workbook.worksheets if item.sheet_state == "visible"), None)
-            if sheet is None:
-                raise ValueError("В эталонной базе нет видимого листа")
-            rows = sheet.iter_rows(values_only=True)
-            headers = [str(value or "").strip().casefold() for value in next(rows, ())]
-            if "sku" not in headers or "наименование товара" not in headers:
-                raise ValueError("В эталонной базе нужны колонки SKU и «Наименование товара»")
-            sku_index, name_index = headers.index("sku"), headers.index("наименование товара")
-            products: dict[str, str] = {}
-            for row in rows:
-                sku = str(row[sku_index] or "").strip() if sku_index < len(row) else ""
-                name = str(row[name_index] or "").strip() if name_index < len(row) else ""
-                if sku and name:
-                    products[sku.casefold()] = name
-            return cls(products)
-        finally:
-            workbook.close()
+        rows = _read_xlsx_rows(source)
+        if not rows:
+            raise ValueError("В эталонной базе нет строк")
+        headers = [str(value or "").strip().casefold() for value in rows[0]]
+        if "sku" not in headers or "наименование товара" not in headers:
+            raise ValueError("В эталонной базе нужны колонки SKU и «Наименование товара»")
+        sku_index, name_index = headers.index("sku"), headers.index("наименование товара")
+        products: dict[str, str] = {}
+        for row in rows[1:]:
+            sku = str(row[sku_index] or "").strip() if sku_index < len(row) else ""
+            name = str(row[name_index] or "").strip() if name_index < len(row) else ""
+            if sku and name:
+                products[sku.casefold()] = name
+        return cls(products)
 
     def get(self, sku: str) -> tuple[str, str] | None:
         name = self.products.get(sku.strip().casefold())
@@ -158,6 +156,7 @@ class MappingValidator:
         resolved_sku, catalog_name = catalog_row
         source, target = extract_features(product_name), extract_features(catalog_name)
         source = _infer_abbreviated_source(source, target)
+        source = _fill_short_storage(source, target)
         conflicts, reviews, matches = self._compare(source, target)
         signals = self._mapping_signals(mapping_names, target)
         status = ValidationStatus.BLOCKED if conflicts else ValidationStatus.REVIEW if reviews else ValidationStatus.OK
@@ -205,6 +204,66 @@ class MappingValidator:
         return signals
 
 
+_MAIN_NS = "http://schemas.openxmlformats.org/spreadsheetml/2006/main"
+_REL_NS = "http://schemas.openxmlformats.org/officeDocument/2006/relationships"
+_PACKAGE_REL_NS = "http://schemas.openxmlformats.org/package/2006/relationships"
+_NS = {"main": _MAIN_NS}
+
+
+def _read_xlsx_rows(path: Path) -> list[list[str]]:
+    """Read the first XLSX sheet without importing optional third-party packages."""
+    with zipfile.ZipFile(path) as archive:
+        shared = _read_shared_strings(archive)
+        workbook = ET.fromstring(archive.read("xl/workbook.xml"))
+        sheets = workbook.find("main:sheets", _NS)
+        if sheets is None or not list(sheets):
+            raise ValueError("В эталонной базе нет листов")
+        relation_id = list(sheets)[0].attrib.get(f"{{{_REL_NS}}}id")
+        relationships = ET.fromstring(archive.read("xl/_rels/workbook.xml.rels"))
+        targets = {
+            relation.attrib["Id"]: relation.attrib["Target"].lstrip("/")
+            for relation in relationships.findall(f"{{{_PACKAGE_REL_NS}}}Relationship")
+        }
+        if not relation_id or relation_id not in targets:
+            raise ValueError("Не удалось определить лист эталонной базы")
+        worksheet = ET.fromstring(archive.read(targets[relation_id]))
+
+    rows: list[list[str]] = []
+    for row in worksheet.findall(".//main:sheetData/main:row", _NS):
+        values: dict[int, str] = {}
+        for cell in row.findall("main:c", _NS):
+            reference = cell.attrib.get("r", "A1")
+            column = _xlsx_column_index(reference)
+            value_node = cell.find("main:v", _NS)
+            raw = value_node.text if value_node is not None and value_node.text is not None else ""
+            if cell.attrib.get("t") == "s" and raw:
+                values[column] = shared[int(raw)]
+            elif cell.attrib.get("t") == "inlineStr":
+                values[column] = "".join(node.text or "" for node in cell.findall(".//main:t", _NS))
+            else:
+                values[column] = raw
+        if values:
+            rows.append([values.get(index, "") for index in range(max(values) + 1)])
+    return rows
+
+
+def _read_shared_strings(archive: zipfile.ZipFile) -> list[str]:
+    if "xl/sharedStrings.xml" not in archive.namelist():
+        return []
+    root = ET.fromstring(archive.read("xl/sharedStrings.xml"))
+    return ["".join(node.text or "" for node in item.findall(".//main:t", _NS)) for item in root.findall("main:si", _NS)]
+
+
+def _xlsx_column_index(reference: str) -> int:
+    letters = re.match(r"[A-Z]+", reference)
+    if not letters:
+        return 0
+    index = 0
+    for letter in letters.group(0):
+        index = index * 26 + ord(letter) - ord("A") + 1
+    return index - 1
+
+
 def normalize_name(value: str) -> str:
     text = unicodedata.normalize("NFKC", value).casefold().replace("ё", "е")
     text = re.sub(r"(?<=\d)е\b", "e", text)  # Cyrillic «Е» in compact names such as 16Е.
@@ -212,12 +271,24 @@ def normalize_name(value: str) -> str:
     text = re.sub(r"\be\s*[- ]?\s*sim\b", "esim", text)
     text = re.sub(r"(?<!\w)2\s*sim\b", "dual sim", text)
     text = re.sub(r"\bwi\s*[- ]?\s*fi\b", "wifi", text)
+    text = re.sub(r"\bwf\b", "wifi", text)
     text = re.sub(r"\bpro\s*max\b", "pro max", text)
     text = re.sub(r"\bpromax\b", "pro max", text)
     text = re.sub(r"\bm\s*([1-9])\s*(pro|max|ultra)\b", r"m\1 \2", text)
     text = re.sub(r"\b(\d+(?:\.\d+)?)\s*(?:гб|gb)\b", r"\1gb", text)
     text = re.sub(r"\b(\d+(?:\.\d+)?)\s*(?:тб|tb)\b", r"\1tb", text)
-    text = re.sub(r"\b(\d{1,3})\s*(?:gb)?\s*[/+]\s*(\d{1,4})\s*(gb|tb)?\b", lambda m: f"{m.group(1)}gb/{m.group(2)}{m.group(3) or 'gb'}", text)
+
+    def normalize_memory_pair(match: re.Match[str]) -> str:
+        ram, storage, unit = match.group(1), match.group(2), match.group(3)
+        if unit is None and int(storage) not in {32, 64, 128, 256, 512, 1024, 2048, 4096}:
+            return match.group(0)
+        return f"{ram}gb/{storage}{unit or 'gb'}"
+
+    text = re.sub(
+        r"\b(\d{1,3})\s*(?:gb)?\s*[/+]\s*(\d{1,4})(?:\s*(gb|tb))?\b",
+        normalize_memory_pair,
+        text,
+    )
     for source, target in sorted(COLOR_ALIASES.items(), key=lambda item: len(item[0]), reverse=True):
         text = re.sub(rf"\b{re.escape(source)}\b", target, text)
     text = re.sub(r"^(?:смартфон|телефон|планшет|ноутбук|смарт[- ]?часы|часы|наушники)\s+", "", text)
@@ -230,9 +301,17 @@ def extract_features(raw_name: str) -> ProductFeatures:
     category = _category(text)
     common = {"raw_name": raw_name, "normalized_name": text, "brand": brand, "category": category}
     if category == "laptop":
-        model = "MacBook Pro" if "macbook pro" in text else "MacBook Air" if "macbook air" in text else None
+        model = (
+            "MacBook Pro" if "macbook pro" in text
+            else "MacBook Air" if "macbook air" in text
+            else "MacBook Neo" if "macbook neo" in text
+            else None
+        )
         screen = _first(r"\b(?:macbook\s+(?:pro|air)\s+)?(13(?:\.3)?|14(?:\.2)?|15(?:\.3)?|16(?:\.2)?)\s*(?:\"|inch)?\b", text)
         return ProductFeatures(**common, model=model, screen=(screen or "").split(".")[0] or None, chip=_chip(text), ram=_memory(text)[0], storage=_memory(text)[1], color=_color(text))
+    if category == "desktop":
+        model = "Mac Mini" if "mac mini" in text else None
+        return ProductFeatures(**common, model=model, chip=_chip(text), ram=_memory(text)[0], storage=_memory(text)[1], color=_color(text))
     if category == "smartphone":
         model, variant = _phone_model(text)
         ram, storage = _memory(text)
@@ -261,21 +340,49 @@ def _infer_abbreviated_source(source: ProductFeatures, target: ProductFeatures) 
         if re.match(rf"^{re.escape(number)}\b", text):
             storage = _memory(text)[1] or _short_storage(text, target.storage)
             return replace(source, brand="Apple", category="smartphone", model=target.model, variant=_variant(text), storage=storage, sim=_sim(text), network=_network(text))
-    if target.model in {"MacBook Pro", "MacBook Air"} and re.match(r"^(?:macbook\s+)?(?:pro|air)\b", text):
+    if target.model in {"MacBook Pro", "MacBook Air", "MacBook Neo"} and re.match(r"^(?:macbook\s+)?(?:pro|air|neo)\b", text):
         return replace(source, brand="Apple", category="laptop", model=target.model, screen=_first(r"\b(13|14|15|16)\b", text), chip=_chip(text), ram=_memory(text)[0], storage=_memory(text)[1])
+    if target.model in {"iPad Air", "iPad Pro", "iPad mini"} and re.match(r"^(?:ipad\s+)?(?:air|pro|mini)\b", text):
+        _, storage = _memory(text)
+        return replace(
+            source,
+            brand="Apple",
+            category="tablet",
+            model=target.model,
+            screen=_first(r"\b(8\.3|10\.2|10\.9|11|12\.9|13)\b", text),
+            generation=_first(r"\b(\d+)(?:st|nd|rd|th)?\s*(?:gen|generation)\b", text),
+            chip=_chip(text),
+            storage=storage or _short_storage(text, target.storage),
+            connectivity=_connectivity(text),
+        )
     return source
+
+
+def _fill_short_storage(source: ProductFeatures, target: ProductFeatures) -> ProductFeatures:
+    """Treat a bare capacity as storage only when it equals the SKU capacity.
+
+    Supplier mappings often write ``iPad 11 256`` instead of ``256GB``.  The
+    expected catalog capacity prevents the screen size, generation or a random
+    number from being accepted as storage.
+    """
+    if source.storage or not target.storage:
+        return source
+    storage = _short_storage(source.normalized_name, target.storage)
+    return replace(source, storage=storage) if storage else source
 
 
 def _brand(text: str) -> str | None:
     for token, brand in BRANDS.items():
         if re.search(rf"\b{re.escape(token)}\b", text):
             return brand
-    return "Apple" if re.search(r"\b(iphone|ipad|macbook|airpods|apple watch)\b", text) else None
+    return "Apple" if re.search(r"\b(iphone|ipad|macbook|mac mini|airpods|apple watch)\b", text) else None
 
 
 def _category(text: str) -> str | None:
     if "macbook" in text:
         return "laptop"
+    if "mac mini" in text:
+        return "desktop"
     if re.search(r"\b(iphone|galaxy|pixel|redmi|poco)\b", text):
         return "smartphone"
     if "ipad" in text:
@@ -319,6 +426,9 @@ def _short_storage(text: str, expected: str | None) -> str | None:
 
 def _chip(text: str) -> str | None:
     match = re.search(r"\b(m[1-9])(?:\s+(pro|max|ultra))?\b", text)
+    if match:
+        return " ".join((match.group(1).upper(), match.group(2).title())) if match.group(2) else match.group(1).upper()
+    match = re.search(r"\b(a\d{1,2})(?:\s+(pro|max|ultra))?\b", text)
     return " ".join((match.group(1).upper(), match.group(2).title())) if match and match.group(2) else match.group(1).upper() if match else None
 
 
@@ -342,7 +452,7 @@ def _sim(text: str) -> str | None:
 
 
 def _connectivity(text: str) -> str | None:
-    if "cellular" in text or "lte" in text: return "Cellular"
+    if "cellular" in text or "lte" in text or re.search(r"\bwifi\s*\+\s*cell\b", text): return "Cellular"
     if "wifi" in text: return "Wi-Fi"
     if "gps" in text: return "GPS"
     return None
@@ -377,4 +487,18 @@ def _capacity_in_gb(value: str) -> int | None:
 @lru_cache(maxsize=1)
 def get_runtime_validator() -> MappingValidator:
     path = Path(os.getenv("CATALOG_PATH", Path(__file__).with_name("catalog_normalized.xlsx")))
-    return MappingValidator(NormalizedCatalog.from_xlsx(path))
+    catalog = NormalizedCatalog.from_xlsx(path)
+    # Manually confirmed Registry reference cards must also be visible to the
+    # legacy price parser (which runs in a separate process).
+    import sqlite3
+    from contextlib import closing
+    database_path = Path(os.getenv("DATABASE_PATH") or (
+        Path(os.getenv("PRICE_BOT_ROOT", Path(__file__).parent)) / "bot.db"
+    ))
+    if database_path.is_file():
+        with closing(sqlite3.connect(database_path.resolve().as_uri() + "?mode=ro", uri=True)) as connection:
+            if connection.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='sku_reference'").fetchone():
+                for sku, name in connection.execute("SELECT sku, canonical_name FROM sku_reference"):
+                    if sku and name:
+                        catalog.products[sku.strip().casefold()] = name
+    return MappingValidator(catalog)

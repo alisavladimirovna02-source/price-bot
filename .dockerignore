@@ -1,0 +1,11 @@
+.env
+.env.*
+*.db
+*.db-*
+data/
+data-backup-*/
+__pycache__/
+*.pyc
+reports/
+prices_input.json
+*.zip
