@@ -143,10 +143,10 @@ class RuntimeTests(unittest.IsolatedAsyncioTestCase):
                     await self.app.process_update(update)
                 with Path("prices_parsed.csv").open(encoding="utf-8", newline="") as output:
                     rows = list(csv.DictReader(output))
-                self.assertEqual([row["SKU"] for row in rows], ["eu-sku", "us-sku", "text-sku"])
-                self.assertEqual([row["Цена"] for row in rows], ["92500", "82200", "100"])
-                self.assertTrue(all(row["Status"] == "OK" for row in rows))
-                self.assertEqual(sum(method == "sendDocument" for method, _ in self.transport.calls), 1)
+                self.assertEqual([row["SKU"] for row in rows], ["", "eu-sku", "text-sku"])
+                self.assertEqual([row["Цена"] for row in rows], ["82200", "92500", "100"])
+                self.assertEqual([row["Status"] for row in rows], ["MAPPING_CONFLICT", "OK", "OK"])
+                self.assertEqual(sum(method == "sendDocument" for method, _ in self.transport.calls), 2)
                 self.assertFalse(bot.user_store[user_id])
             finally:
                 os.chdir(previous)
@@ -198,7 +198,7 @@ class RuntimeTests(unittest.IsolatedAsyncioTestCase):
         await self.send("17 512 Black eSim Актив - 80200")
         await self.send("17 512 White eSim Актив - 81700")
         self.assertEqual([method for method, _ in self.transport.calls], [
-            "sendMessage", "sendMessage",
+            "sendMessage", "editMessageText",
         ])
         self.assertIn("Добавлено позиций: 2", self.transport.calls[-1][1]["text"])
         self.assertEqual(len(bot.user_store[bot.ALLOWED_USERS[0]]), 2)
