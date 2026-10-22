@@ -279,7 +279,7 @@ async def audit_mapping(update: Update, context: ContextTypes.DEFAULT_TYPE) -> N
     entries = parse_mapping_text(content)
     by_name: dict[str, set[str]] = {}
     for item in entries:
-        by_name.setdefault(normalize_text(item.name), set()).add(item.sku.casefold())
+        by_name.setdefault(normalize_text(item.name), set()).add(item.sku)
     output = io.StringIO(newline="")
     writer = csv.writer(output)
     writer.writerow(["Название mapping", "SKU", "Статус"])
