@@ -1567,3 +1567,4 @@ date,telegram_user_id,action,source_name,sku,catalog_name,status,conflicts
 2026-10-29 11:59:43,800906903,MASS_VALIDATE,Google Pixel 11 Pro XL 512 Obsidian,Pixel11ProXLObsidian16/512,,OK,—
 2026-10-29 11:59:47,800906903,MASS_VALIDATE,Google Pixel 11 Pro XL 512 Olive,Pixel11ProXLOlive16/512,,OK,—
 2026-10-29 11:59:50,800906903,MASS_VALIDATE,Neo 13 MHFE4 Citrus A18 Pro 8/512,macneo13citrus8/512,,OK,—
+2026-10-29 11:59:54,800906903,MASS_VALIDATE,Neo 13 MHFF4 Indigo A18 Pro 8/256,macneo13indigo8/256,,OK,—
