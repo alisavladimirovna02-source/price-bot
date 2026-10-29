@@ -1542,3 +1542,4 @@ date,telegram_user_id,action,source_name,sku,catalog_name,status,conflicts
 2026-10-29 11:58:17,800906903,MASS_VALIDATE,A27 6/128 Green,a27green6/128,,OK,—
 2026-10-29 11:58:21,800906903,MASS_VALIDATE,A37 6/128 GrayGreen,a37graygreen6/128,,OK,—
 2026-10-29 11:58:24,800906903,MASS_VALIDATE,A37 8/256 Lavander,a37lavender8/256,,OK,—
+2026-10-29 11:58:28,800906903,MASS_VALIDATE,Air 13 MDH94 Silver M5 24/1TB,macair13m5silver24/1tb,,OK,—
