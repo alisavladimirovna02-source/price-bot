@@ -107,13 +107,12 @@ async def text(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         return
     body = update.message.text or ""
     if context.user_data.get("v2_menu_action") == "add_mapping":
-        if await _admin(update):
-            try:
-                entries = parse_entries(body)
-                await offer_mapping_batch(update, context, entries)
-                context.user_data.pop("v2_menu_action", None)
-            except ValueError as error:
-                await update.effective_message.reply_text(str(error))
+        try:
+            entries = parse_entries(body)
+            await offer_mapping_batch(update, context, entries)
+            context.user_data.pop("v2_menu_action", None)
+        except ValueError as error:
+            await update.effective_message.reply_text(str(error))
         raise ApplicationHandlerStop
     if "wb_zero" in context.user_data:
         return
@@ -127,11 +126,10 @@ async def text(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         raise ApplicationHandlerStop
     nonempty = [line for line in body.splitlines() if line.strip()]
     if nonempty and all(line.count("=") == 1 for line in nonempty):
-        if await _admin(update):
-            try:
-                await offer_mapping_batch(update, context, parse_entries(body))
-            except ValueError as error:
-                await update.effective_message.reply_text(str(error))
+        try:
+            await offer_mapping_batch(update, context, parse_entries(body))
+        except ValueError as error:
+            await update.effective_message.reply_text(str(error))
         raise ApplicationHandlerStop
     # Plain text and files are collected by the existing price handlers.
 
@@ -175,7 +173,7 @@ async def registry_disabled_callback(update: Update, context: ContextTypes.DEFAU
 
 
 async def mapping_add(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    if not await _admin(update):
+    if not await _allowed(update):
         return
     body = (update.effective_message.text or "").split(maxsplit=1)
     if len(body) == 1 or not (update.effective_message.text or "").startswith("/mapping_add "):
@@ -226,7 +224,7 @@ async def offer_mapping_batch(update, context, entries):
 
 
 async def mapping_batch_callback(update, context):
-    if not await _admin(update) or not update.callback_query:
+    if not await _allowed(update) or not update.callback_query:
         raise ApplicationHandlerStop
     query = update.callback_query
     await query.answer()

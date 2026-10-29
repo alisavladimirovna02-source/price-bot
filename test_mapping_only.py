@@ -113,8 +113,8 @@ class MappingTelegramFlowTests(unittest.IsolatedAsyncioTestCase):
         await self.app.shutdown()
         bot.user_store.clear()
 
-    async def send(self, text):
-        user = bot.ALLOWED_USERS[0]
+    async def send(self, text, user=None):
+        user = bot.ALLOWED_USERS[0] if user is None else user
         update = Update.de_json({"update_id": 1, "message": {
             "message_id": 1, "date": 1, "text": text,
             "from": {"id": user, "is_bot": False, "first_name": "User"},
@@ -122,8 +122,8 @@ class MappingTelegramFlowTests(unittest.IsolatedAsyncioTestCase):
         }}, self.app.bot)
         await self.app.process_update(update)
 
-    async def confirm(self, token):
-        user = bot.ALLOWED_USERS[0]
+    async def confirm(self, token, user=None):
+        user = bot.ALLOWED_USERS[0] if user is None else user
         update = Update.de_json({"update_id": 2, "callback_query": {
             "id": "confirm", "chat_instance": "chat", "data": f"v2bulkmap:{token}:save",
             "from": {"id": user, "is_bot": False, "first_name": "User"},
@@ -145,6 +145,30 @@ class MappingTelegramFlowTests(unittest.IsolatedAsyncioTestCase):
             self.assertEqual(self.repo.writes, 1)
             self.assertIn("New device = new-sku", self.path.read_text())
             self.assertIn("Добавлено: 1", self.transport.calls[-1][1]["text"])
+
+    async def test_authorized_non_admin_can_confirm_mapping_from_button(self):
+        user = bot.ALLOWED_USERS[1]
+        with patch.object(v2_bridge, "ADMIN_USERS", {bot.ALLOWED_USERS[0]}), \
+                patch.object(v2_bridge, "github_repository", return_value=self.repo), \
+                patch.object(mapping_only, "github_repository", return_value=self.repo), \
+                patch.object(v2_bridge, "MAPPING_PATH", self.path):
+            await self.send(v2_bridge.BUTTON_ADD_MAPPING, user)
+            self.assertEqual(self.app.user_data[user]["v2_menu_action"], "add_mapping")
+            await self.send("New device = new-sku", user)
+            self.assertEqual(self.repo.writes, 0)
+            token = self.app.user_data[user]["pending_mappings"][0]
+            await self.confirm(token, user)
+            self.assertEqual(self.repo.writes, 1)
+            self.assertIn("New device = new-sku", self.repo.content)
+
+            await self.send(v2_bridge.BUTTON_AUDIT_MAPPING, user)
+            self.assertIn("только администратору", self.transport.calls[-1][1]["text"])
+
+    async def test_outsider_cannot_confirm_mapping(self):
+        outsider = 987654321
+        await self.send(v2_bridge.BUTTON_ADD_MAPPING, outsider)
+        self.assertNotIn("pending_mappings", self.app.user_data.get(outsider, {}))
+        self.assertEqual(self.repo.writes, 0)
 
     async def test_old_registry_button_is_disabled(self):
         await self.send("➕ Добавить SKU")
