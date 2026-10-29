@@ -1582,3 +1582,4 @@ date,telegram_user_id,action,source_name,sku,catalog_name,status,conflicts
 2026-10-29 12:00:35,800906903,MASS_VALIDATE,Poco M8 8/256 Black,m8black8/256,,OK,—
 2026-10-29 12:00:39,800906903,MASS_VALIDATE,Poco X8 Pro Max 5G 12/512 Orange,x8promaxorange12/512,,OK,—
 2026-10-29 12:00:42,800906903,MASS_VALIDATE,S12 42 Black M/L,aws12Black42M/L,,OK,—
+2026-10-29 12:00:46,800906903,MASS_VALIDATE,S12 46 Black S/M,aws12Black46S/M,,OK,—
