@@ -7,8 +7,10 @@ import json
 import logging
 from io import BytesIO, StringIO
 import os
-import subprocess
 import sys
+import threading
+import time
+from pathlib import Path
 import requests
 import base64
 import secrets
@@ -17,6 +19,9 @@ from v2_bridge import install as install_safe_pipeline
 from mapping_validation import ValidationStatus
 from mapping_only import validation_result as validate_mapping_without_registry
 from price_files import MAX_ROWS, PriceFileError, check_file, read_price_file
+from price_jobs import (
+    UserUpdateProcessor, create_job, latest_report_directory, publish_job, run_parser,
+)
 from telegram import ReplyKeyboardMarkup
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import (
@@ -46,6 +51,17 @@ def get_main_keyboard():
 
 TOKEN = os.getenv("TOKEN")
 logger = logging.getLogger("price_bot")
+_mvc_snapshot_lock = threading.RLock()
+
+
+def reports_root():
+    return Path(os.environ.get("REPORTS_DIR", Path.cwd())).resolve()
+
+
+def price_owner_key(update):
+    chat_id = update.effective_chat.id
+    user_id = update.effective_user.id
+    return chat_id if update.effective_chat.type == "private" else (chat_id, user_id)
 
 
 class RedactingFormatter(logging.Formatter):
@@ -139,7 +155,7 @@ def delete_mapping_github(item):
         "Authorization": f"token {token}"
     }
 
-    response = requests.get(url, headers=headers)
+    response = requests.get(url, headers=headers, timeout=20)
     data = response.json()
 
     if "content" not in data:
@@ -170,7 +186,8 @@ def delete_mapping_github(item):
             "message": f"delete mapping: {item}",
             "content": encoded_content,
             "sha": data["sha"]
-        }
+        },
+        timeout=20,
     )
 
     return "DELETED"
@@ -200,14 +217,24 @@ def load_mvc_from_google():
 
 
 
-def compare_mvc():
+def compare_mvc(output_dir=None):
     today = load_mvc_from_google()
     if not today:
         raise Exception("МВЦ не загрузилась или в колонке M не нашлись цены")
 
+    # Network requests can overlap. Only the shared baseline's read/update is
+    # serialized; each price receives its own diff and check files.
+    with _mvc_snapshot_lock:
+        return _compare_mvc_snapshot(today, Path(output_dir or Path.cwd()))
+
+
+def _compare_mvc_snapshot(today, output_dir):
+    output_dir.mkdir(parents=True, exist_ok=True)
+    baseline = reports_root() / "mvc_yesterday.csv"
+
     old = {}
-    if os.path.exists("mvc_yesterday.csv"):
-        with open("mvc_yesterday.csv", "r", encoding="utf-8") as f:
+    if baseline.exists():
+        with baseline.open("r", encoding="utf-8") as f:
             reader = csv.reader(f)
             for row in reader:
                 try:
@@ -257,17 +284,17 @@ def compare_mvc():
         if need_check:
             check_results.append(row)
 
-    with open("mvc_diff.csv", "w", newline="", encoding="utf-8") as f:
+    with (output_dir / "mvc_diff.csv").open("w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
         writer.writerow(["SKU", "Вчера", "Сегодня", "Разница", "Вчера/Сегодня", "Статус"])
         writer.writerows(results)
 
-    with open("mvc_check.csv", "w", newline="", encoding="utf-8") as f:
+    with (output_dir / "mvc_check.csv").open("w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
         writer.writerow(["SKU", "Вчера", "Сегодня", "Разница", "Вчера/Сегодня", "Статус"])
         writer.writerows(check_results)
 
-    with open("mvc_yesterday.csv", "w", newline="", encoding="utf-8") as f:
+    with baseline.open("w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
         for sku, price in today.items():
             writer.writerow([sku, price])
@@ -281,7 +308,7 @@ async def delete_mapping_button(update: Update, context: ContextTypes.DEFAULT_TY
 
     item = query.data.replace("delmap:", "")
 
-    result = delete_mapping_github(item)
+    result = await asyncio.to_thread(delete_mapping_github, item)
 
     if result == "DELETED":
         if "not_found_list" in context.user_data:
@@ -503,16 +530,16 @@ async def not_found_button(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await show_not_found(update, context)
 
 
-async def process_and_reply(update: Update, input_json=None):
+async def process_and_reply(update: Update, input_json=None, report_dir=None, job=None):
+    directory = Path(report_dir or Path.cwd()).resolve()
     try:
-        msg = await update.message.reply_text("⏳ Обрабатываю прайс...")
+        msg = update.message if job else await update.message.reply_text("⏳ Обрабатываю прайс...")
 
-        command = [sys.executable, os.path.join(os.path.dirname(__file__), "parse_prices.py")]
-        if input_json:
-            command += ["--input-json", input_json]
-        subprocess.run(command, check=True)
+        await run_parser(
+            Path(__file__).with_name("parse_prices.py"), input_json, directory,
+        )
 
-        with open("prices_parsed.csv", "r", encoding="utf-8", newline="") as f:
+        with (directory / "prices_parsed.csv").open("r", encoding="utf-8", newline="") as f:
             processed_rows = list(csv.DictReader(f))
         matched_count = sum(row["Status"] == "OK" for row in processed_rows)
         review_count = sum(row["Status"] == "REVIEW" for row in processed_rows)
@@ -522,9 +549,12 @@ async def process_and_reply(update: Update, input_json=None):
         )
 
         not_found_count = 0
-        if os.path.exists("not_found.txt"):
-            with open("not_found.txt", "r", encoding="utf-8") as f:
+        if (directory / "not_found.txt").exists():
+            with (directory / "not_found.txt").open("r", encoding="utf-8") as f:
                 not_found_count = sum(1 for _ in f)
+
+        if job:
+            await asyncio.to_thread(publish_job, job)
 
         report = (
             f"📊 Прайс обработан\n\n"
@@ -560,9 +590,10 @@ async def process_and_reply(update: Update, input_json=None):
         await msg.edit_text(report, reply_markup=reply_markup)
 
         try:
-            with open("prices_parsed.csv", "rb") as f:
+            with (directory / "prices_parsed.csv").open("rb") as f:
                 await update.message.reply_document(
                     f,
+                    filename="prices_parsed.csv",
                     read_timeout=120,
                     write_timeout=120,
                     connect_timeout=30,
@@ -573,9 +604,10 @@ async def process_and_reply(update: Update, input_json=None):
 
         if not_found_count > 0:
             try:
-                with open("not_found.txt", "rb") as f:
+                with (directory / "not_found.txt").open("rb") as f:
                     await update.message.reply_document(
                         f,
+                        filename="not_found.txt",
                         read_timeout=120,
                         write_timeout=120,
                         connect_timeout=30,
@@ -586,9 +618,10 @@ async def process_and_reply(update: Update, input_json=None):
 
         if mapping_error_count > 0:
             try:
-                with open("mapping_errors.csv", "rb") as f:
+                with (directory / "mapping_errors.csv").open("rb") as f:
                     await update.message.reply_document(
                         f,
+                        filename="mapping_errors.csv",
                         read_timeout=120,
                         write_timeout=120,
                         connect_timeout=30,
@@ -600,16 +633,17 @@ async def process_and_reply(update: Update, input_json=None):
         await update.message.reply_text("🔎 Запускаю проверку МВЦ...")
 
         try:
-            check_count = compare_mvc()
+            check_count = await asyncio.to_thread(compare_mvc, directory)
 
             if check_count > 0:
                 await update.message.reply_text(
                     f"⚠️ Проверка МВЦ: найдено позиций для проверки: {check_count}"
                 )
 
-                with open("mvc_check.csv", "rb") as f:
+                with (directory / "mvc_check.csv").open("rb") as f:
                     await update.message.reply_document(
                         f,
+                        filename="mvc_check.csv",
                         read_timeout=120,
                         write_timeout=120,
                         connect_timeout=30,
@@ -623,6 +657,7 @@ async def process_and_reply(update: Update, input_json=None):
 
         return True
     except Exception as e:
+        logger.exception("Ошибка обработки прайса; job=%s", job.job_id if job else "legacy")
         await update.message.reply_text(f"❌ Ошибка обработки прайса: {e}")
         return False
 
@@ -770,27 +805,21 @@ async def show_next_price_review(update: Update, context: ContextTypes.DEFAULT_T
             f"⛔ Не подтверждено после повторной проверки: {queue['not_confirmed']}"
         )
         if queue["confirmed"]:
-            columns = ["Название", "Цена", "Страна", "SKU", "Score", "Status"]
-            with open("prices_parsed_confirmed.csv", "w", encoding="utf-8-sig", newline="") as file:
-                writer = csv.DictWriter(file, fieldnames=columns)
-                writer.writeheader()
-                writer.writerows(queue["rows"])
-            with open("prices_parsed_confirmed.csv", "rb") as file:
-                await update.effective_message.reply_document(
-                    file,
-                    filename="prices_parsed_confirmed.csv",
-                    read_timeout=120,
-                    write_timeout=120,
-                    connect_timeout=30,
-                    pool_timeout=30,
-                )
+            await update.effective_message.reply_document(
+                _confirmed_price_document(queue["rows"]),
+                filename="prices_parsed_confirmed.csv",
+                read_timeout=120,
+                write_timeout=120,
+                connect_timeout=30,
+                pool_timeout=30,
+            )
         return
 
     entry = queue["entries"][queue["position"]]
     queue["position"] += 1
     try:
         result = await asyncio.to_thread(validate_mapping_entry, entry["name"], entry["sku"])
-        record_mapping_history(result, update.effective_user.id, "PRICE_REVIEW")
+        await asyncio.to_thread(record_mapping_history, result, update.effective_user.id, "PRICE_REVIEW")
     except Exception:
         logger.exception("Не удалось открыть REVIEW из обработанного прайса")
         queue["not_confirmed"] += 1
@@ -1173,11 +1202,14 @@ async def mapping_validation_callback(update: Update, context: ContextTypes.DEFA
 
 
 async def show_not_found(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    if not os.path.exists("not_found.txt"):
-        await update.message.reply_text("❌ Файл not_found.txt не найден")
+    directory = latest_report_directory(
+        reports_root(), update.effective_user.id, update.effective_chat.id,
+    )
+    if directory is None or not (directory / "not_found.txt").exists():
+        await update.message.reply_text("📦 Сначала обработай свой прайс — здесь появятся его ненайденные товары.")
         return
 
-    with open("not_found.txt", "r", encoding="utf-8") as f:
+    with (directory / "not_found.txt").open("r", encoding="utf-8") as f:
         lines = [line.strip() for line in f if line.strip()]
 
     if not lines:
@@ -1294,7 +1326,7 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def add_price_entries(update, context, entries, from_file=False):
     chat_id = update.effective_chat.id
-    data = user_store.setdefault(chat_id, [])
+    data = user_store.setdefault(price_owner_key(update), [])
     if len(data) + len(entries) > MAX_ROWS:
         await update.message.reply_text(f"❌ В одном прайсе может быть не больше {MAX_ROWS} позиций. Сначала обработай уже добавленные. Новые данные не добавлены.")
         return
@@ -1344,30 +1376,55 @@ async def done_button(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not await check_access(update):
         return
 
-    chat_id = query.message.chat.id
-    data = user_store.get(chat_id, [])
+    active = context.user_data.get("active_price_job")
+    if active:
+        await query.message.reply_text(
+            "⏳ Твой прайс уже обрабатывается. Результат придёт сюда. "
+            "Новые позиции сохранены для следующей обработки."
+        )
+        return
+
+    owner_key = price_owner_key(update)
+    data = list(user_store.get(owner_key, []))
 
     if not data:
         await query.message.reply_text("❌ Нет данных для обработки")
         return
 
-    # JSON keeps table columns separate and preserves text messages as text.
-    with open("prices_input.json", "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False)
+    job = await asyncio.to_thread(
+        create_job, reports_root(), update.effective_user.id, update.effective_chat.id, data,
+    )
+    await query.message.edit_text("⏳ Обрабатываю прайс. Можно отправлять позиции для следующего прайса.")
+    user_store[owner_key] = []
+    context.user_data.pop("data", None)
+    context.user_data.pop("process_prompt", None)
+    context.user_data["active_price_job"] = job.job_id
+    context.application.create_task(
+        process_price_job(update, context, job, owner_key, data), update=update,
+    )
 
-    await query.message.edit_text("⏳ Обрабатываю...")
 
-    class FakeUpdate:
-        def __init__(self, message, handler_context):
-            self.message = message
-            self.context = handler_context
+async def process_price_job(update, context, job, owner_key, entries):
+    from types import SimpleNamespace
 
-    if await process_and_reply(FakeUpdate(query.message, context), input_json="prices_input.json"):
-        user_store[chat_id] = []
-        context.user_data.pop("data", None)
-        context.user_data.pop("process_prompt", None)
-    else:
-        await query.message.reply_text(
+    started = time.monotonic()
+    logger.info("Начата обработка прайса: job=%s user_id=%s rows=%s",
+                job.job_id, job.owner_id, len(entries))
+    succeeded = False
+    try:
+        succeeded = await process_and_reply(
+            SimpleNamespace(message=update.callback_query.message, context=context),
+            input_json=job.directory / "prices_input.json", report_dir=job.directory, job=job,
+        )
+    finally:
+        if not succeeded:
+            user_store[owner_key] = entries + user_store.get(owner_key, [])
+        if context.user_data.get("active_price_job") == job.job_id:
+            context.user_data.pop("active_price_job", None)
+        logger.info("Завершена обработка прайса: job=%s user_id=%s success=%s seconds=%.2f",
+                    job.job_id, job.owner_id, succeeded, time.monotonic() - started)
+    if not succeeded:
+        await update.callback_query.message.reply_text(
             "Прайс сохранён. Можно повторить обработку.",
             reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("🚀 Обработать", callback_data="done")]]),
         )
@@ -1379,6 +1436,7 @@ def build_application():
     if not TOKEN or not TOKEN.strip():
         raise RuntimeError("На сервере не задана переменная TOKEN")
     app = (ApplicationBuilder().token(TOKEN)
+           .concurrent_updates(UserUpdateProcessor())
            .post_init(log_telegram_initialized).build())
     app.add_handler(TypeHandler(Update, log_update), group=-2)
     wb_handlers.register_handlers(app, check_access)

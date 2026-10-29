@@ -12,6 +12,7 @@ import unittest
 from unittest.mock import AsyncMock, Mock, patch
 
 import parse_prices as parser
+import bot
 
 
 ROOT = Path(__file__).resolve().parent
@@ -207,26 +208,14 @@ class IntegrationTests(unittest.TestCase):
 
 class BotFailureTests(unittest.IsolatedAsyncioTestCase):
     async def test_parser_failure_does_not_send_stale_csv(self):
-        # Load only this handler so the test cannot start Telegram polling.
-        module = ast.parse((ROOT / "bot.py").read_text())
-        handler = next(node for node in module.body if
-                       isinstance(node, ast.AsyncFunctionDef) and
-                       node.name == "process_and_reply")
-        namespace = {
-            "Update": object, "subprocess": subprocess, "sys": sys,
-            "os": os, "csv": csv,
-            "__file__": str(ROOT / "bot.py"),
-        }
-        exec(compile(ast.Module(body=[handler], type_ignores=[]),
-                     "bot.py", "exec"), namespace)
         message = SimpleNamespace(
             reply_text=AsyncMock(), reply_document=AsyncMock()
         )
         failure = subprocess.CalledProcessError(1, "parse_prices.py")
-        with patch.object(subprocess, "run", side_effect=failure), \
-                patch("builtins.open") as open_file:
-            await namespace["process_and_reply"](SimpleNamespace(message=message))
-        open_file.assert_not_called()
+        with patch.object(bot, "run_parser", AsyncMock(side_effect=failure)), \
+                patch.object(Path, "open") as open_file, self.assertLogs(bot.logger, level="ERROR"):
+            await bot.process_and_reply(SimpleNamespace(message=message))
+            open_file.assert_not_called()
         message.reply_document.assert_not_awaited()
         self.assertIn("Ошибка обработки прайса", message.reply_text.call_args.args[0])
 

@@ -1,4 +1,5 @@
 import io
+import asyncio
 import csv
 import json
 import logging
@@ -64,9 +65,11 @@ class RuntimeTests(unittest.IsolatedAsyncioTestCase):
                 patch.object(bot, "ApplicationBuilder", return_value=builder):
             self.app = bot.build_application()
         await self.app.initialize()
+        await self.app.start()
         self.transport.calls.clear()
 
     async def asyncTearDown(self):
+        await self.app.stop()
         await self.app.shutdown()
         bot.user_store.clear()
 
@@ -128,20 +131,29 @@ class RuntimeTests(unittest.IsolatedAsyncioTestCase):
         mapping = parse_prices.parse_mapping(
             "16 Plus 512 Pink = eu-sku\n16 Plus 512 Pink esim = us-sku\nText item = text-sku"
         )
-        def run_parser(command, check):
-            self.assertTrue(check)
-            self.assertEqual(command[1:], [str(Path(bot.__file__).parent / "parse_prices.py"), "--input-json", "prices_input.json"])
-            parse_prices.main(command[-1])
+        async def run_parser(script, input_json, directory):
+            self.assertEqual(script, Path(bot.__file__).parent / "parse_prices.py")
+            previous = Path.cwd()
+            try:
+                os.chdir(directory)
+                with patch.object(parse_prices, "load_mapping_from_github", return_value=mapping):
+                    parse_prices.main(input_json)
+            finally:
+                os.chdir(previous)
         with tempfile.TemporaryDirectory() as directory:
             previous = Path.cwd()
             try:
                 os.chdir(directory)
-                with patch.object(bot.subprocess, "run", side_effect=run_parser), \
-                        patch.object(parse_prices, "load_mapping_from_github", return_value=mapping), \
+                with patch.dict(os.environ, {"REPORTS_DIR": directory}), \
+                        patch.object(bot, "run_parser", side_effect=run_parser), \
                         patch.object(bot, "compare_mvc", return_value=0), \
                         patch("sys.stdout", new_callable=io.StringIO):
                     await self.app.process_update(update)
-                with Path("prices_parsed.csv").open(encoding="utf-8", newline="") as output:
+                    async with asyncio.timeout(2):
+                        while self.app.user_data[user_id].get("active_price_job"):
+                            await asyncio.sleep(0.001)
+                report_dir = bot.latest_report_directory(directory, user_id, user_id)
+                with (report_dir / "prices_parsed.csv").open(encoding="utf-8", newline="") as output:
                     rows = list(csv.DictReader(output))
                 self.assertEqual([row["SKU"] for row in rows], ["", "eu-sku", "text-sku"])
                 self.assertEqual([row["Цена"] for row in rows], ["82200", "92500", "100"])

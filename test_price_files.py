@@ -1,4 +1,5 @@
 import csv
+import asyncio
 import io
 import json
 import os
@@ -198,15 +199,26 @@ class QueueProcessingTests(unittest.IsolatedAsyncioTestCase):
                     entries = ["Text - 20", {"name": "Device 512", "price": 100, "country": "RU"}]
                     bot.user_store[1] = entries
                     message = SimpleNamespace(chat=SimpleNamespace(id=1), edit_text=AsyncMock(), reply_text=AsyncMock())
-                    update = SimpleNamespace(callback_query=SimpleNamespace(message=message, answer=AsyncMock()))
-                    context = SimpleNamespace(user_data={"data": entries})
-                    async def process(received_update, input_json):
+                    update = SimpleNamespace(
+                        callback_query=SimpleNamespace(message=message, answer=AsyncMock()),
+                        effective_chat=SimpleNamespace(id=1, type="private"),
+                        effective_user=SimpleNamespace(id=1),
+                    )
+                    tasks = []
+                    def create_task(coroutine, **kwargs):
+                        task = asyncio.create_task(coroutine)
+                        tasks.append(task)
+                        return task
+                    context = SimpleNamespace(user_data={"data": entries},
+                                              application=SimpleNamespace(create_task=create_task))
+                    async def process(received_update, input_json, **kwargs):
                         self.assertIs(received_update.message, message)
                         self.assertEqual(json.loads(Path(input_json).read_text()), entries)
                         return success
                     with patch.object(bot, "check_access", AsyncMock(return_value=True)), \
                             patch.object(bot, "process_and_reply", side_effect=process) as processing:
                         await bot.done_button(update, context)
+                        await asyncio.gather(*tasks)
                     processing.assert_awaited_once()
                     self.assertEqual(bot.user_store[1], [] if success else entries)
                     if not success:
