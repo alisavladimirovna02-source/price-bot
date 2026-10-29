@@ -1564,3 +1564,4 @@ date,telegram_user_id,action,source_name,sku,catalog_name,status,conflicts
 2026-10-29 11:59:33,800906903,MASS_VALIDATE,Google Pixel 11 Pro XL 256 Canyon,Pixel11ProXLCanyon12/256,,OK,—
 2026-10-29 11:59:36,800906903,MASS_VALIDATE,Google Pixel 11 Pro XL 256 Fog,Pixel11ProXLFog12/256,,OK,—
 2026-10-29 11:59:39,800906903,MASS_VALIDATE,Google Pixel 11 Pro XL 512 Fog,Pixel11ProXLFog16/512,,OK,—
+2026-10-29 11:59:43,800906903,MASS_VALIDATE,Google Pixel 11 Pro XL 512 Obsidian,Pixel11ProXLObsidian16/512,,OK,—
