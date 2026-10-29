@@ -1553,3 +1553,4 @@ date,telegram_user_id,action,source_name,sku,catalog_name,status,conflicts
 2026-10-29 11:58:55,800906903,MASS_VALIDATE,Google Pixel 11 512 Frost,Pixel11Frost12/512,,OK,—
 2026-10-29 11:58:59,800906903,MASS_VALIDATE,Google Pixel 11 512 Obsidian,Pixel11Obsidian12/512,,OK,—
 2026-10-29 11:59:02,800906903,MASS_VALIDATE,Google Pixel 11 512 Pistacho,Pixel11Pistachio12/512,,OK,—
+2026-10-29 11:59:06,800906903,MASS_VALIDATE,Google Pixel 11 Pro 1TB Obsidian,Pixel11ProObsidian16/1024,,OK,—
