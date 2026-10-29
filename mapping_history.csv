@@ -1576,3 +1576,4 @@ date,telegram_user_id,action,source_name,sku,catalog_name,status,conflicts
 2026-10-29 12:00:14,800906903,MASS_VALIDATE,OnePlus 15 16/512 CPH2749 Violet,oneplus15violet16/512,,OK,—
 2026-10-29 12:00:17,800906903,MASS_VALIDATE,OnePlus 15R 12/256 CPH2771 Black,oneplus15Rblack12/256,,OK,—
 2026-10-29 12:00:21,800906903,MASS_VALIDATE,OnePlus 15R 12/256 CPH2771 Mint,oneplus15Rmint12/256,,OK,—
+2026-10-29 12:00:25,800906903,MASS_VALIDATE,Poco F8 Ultra 5G 12/256 Black,f8ultrablack12/256,,BLOCKED,Название уже связано с другим SKU в mapping.txt
