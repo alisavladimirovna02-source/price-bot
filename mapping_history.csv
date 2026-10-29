@@ -1547,3 +1547,4 @@ date,telegram_user_id,action,source_name,sku,catalog_name,status,conflicts
 2026-10-29 11:58:35,800906903,MASS_VALIDATE,Air 15 MC7C4 Sky Blue M4 16/512,macair15m4blue16/512,,OK,—
 2026-10-29 11:58:39,800906903,MASS_VALIDATE,Air 15 MDV94 Silver M5 16/512,macair15m5silver16/512,,OK,—
 2026-10-29 11:58:42,800906903,MASS_VALIDATE,Air 15 MDVD4 Starlight M5 16/512,macair15m5starlight16/512,,OK,—
+2026-10-29 11:58:46,800906903,MASS_VALIDATE,Air 15 MDVE4 Starlight M5 16/1TB,macair15m5starlight16/1024,,OK,—
