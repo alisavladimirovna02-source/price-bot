@@ -33598,7 +33598,6 @@ iPad 11 256GB Silver WiFi = ipad11silver256
 17 512 White = iphone17white512eSIM
 17 512 Lavender = iphone17lavender512esim
 17 512 Sage = iphone17green512eSIM
-13 128 Midnight = iphone13black128esim
 17e 256 White = iphone17ewhite256esim
 17e 256 Black = iphone17eblack256esim
 17e 256 Pink = iphone17epink256esim
