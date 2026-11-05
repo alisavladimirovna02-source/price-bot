@@ -1477,7 +1477,6 @@ Poco F8 Ultra 5G 12/256 Blue = f8ultrablue12/256
 17 Air 512 Black eSim = iphone17airblack512
 17 Air 512 Gold eSim = iphone17airgold512
 17 Air 512 Blue eSim = iphone17airblue512
-17 Air 1TB Blue eSim = iphone17airblue1tb
 iPad 11 128 Pink LTE = ipad11pink128LTE
 AIR 13 M3 256 Gray WiFi = ipadair13M3gray256
 AIR 13 M3 256 Starlight WiFi = ipadair13M3starlight256
