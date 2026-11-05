@@ -33893,3 +33893,4 @@ Z Flip8 12/256 F776B Graphite = ZFlip8graphite12/256
 A37 8/128 Lavander = a37lavender8/128
 Google Pixel 11 Pro 256 Fog = Pixel11ProFog12/256
 Google Pixel 11 Pro 256 Obsidian = Pixel11ProObsidian12/256
+17 Air 1TB Blue eSim = iphone17airblue1TB
