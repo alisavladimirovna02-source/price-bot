@@ -348,7 +348,6 @@ MDE04 = macpro14m5black16/512
 MDE44 = macpro14m5silver16/512
 MDE14 = macpro14m5black16/1tb
 MDE54 = macpro14m5silver16/1tb
-MDE34 = macpro14m5black24/1tb
 MDE64 = macpro14m5silver24/1tb
 MCX04 = macpro14m4black24/1tb
 MCX14 = macpro14m4silver241tb
