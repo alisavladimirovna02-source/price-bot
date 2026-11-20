@@ -621,7 +621,6 @@ Poco F8 Pro 5G 12/256 Silver = pocof8prosilver12/256
 Poco F8 Pro 5G 12/512 Blue = pocof8problue12/512
 Poco F8 Pro 5G 12/512 Silver = f8prosilver12/512
 Poco F8 Ultra 5G 12/256 Black = f8ultrablack12/256
-Poco F8 Ultra 5G 12/256 Blue = pocof8ultrablue12/256
 Galaxy Tab A11+ 5G 6/128 LTE Silver = galaxytabA11+silver6/128cell
 Galaxy Tab S10 Lite 5G 8/256 LTE Gray = galaxytabS10litegray8/256cell
 Galaxy Tab S10 FE 8/128 WiFi Blue = galaxytabs10FEblue8/128SM-X520
