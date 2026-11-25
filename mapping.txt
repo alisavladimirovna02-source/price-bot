@@ -33973,3 +33973,7 @@ S12 42 Space GrayS/M = aws12Gray42S/M
 UL 4 Black / Burgundy Trail Loop M/L = awultra4Black/BurgundyTrailLoopM/L
 UL 4 Natural / Gray Ocean Band = awultra4Natural/GrayOceanBand
 iPad Air 13 M4 2026 512GB LTE Purple = ipadair13m4purple512LTE
+AIR 11 M4 128 Purple WiFi = ipadair11m4purple128
+AIR 11 M4 128 Starlight WiFi = ipadair11m4starlight128
+UL 4 Black / Burgundy Alpine Loop M = awultra4Black/BurgundyAlpineLoopM
+iPad Pro 13 M5 2025 2TB NanoTexture Glass LTE Black = ipad13prom5black2tbcell/nanoglass
