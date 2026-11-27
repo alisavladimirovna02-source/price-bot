@@ -33977,3 +33977,5 @@ AIR 11 M4 128 Purple WiFi = ipadair11m4purple128
 AIR 11 M4 128 Starlight WiFi = ipadair11m4starlight128
 UL 4 Black / Burgundy Alpine Loop M = awultra4Black/BurgundyAlpineLoopM
 iPad Pro 13 M5 2025 2TB NanoTexture Glass LTE Black = ipad13prom5black2tbcell/nanoglass
+AIR 11 M4 128 Blue WiFi = ipadair11m4blue128
+Xiaomi Pad 8 Pro 8/256 WiFi 11.2 Blue = xiaomipad8problue8/256
